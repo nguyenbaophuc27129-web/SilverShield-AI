@@ -288,7 +288,7 @@ if st.session_state['page'] == 'TRANG CHỦ':
         st.markdown('<div class="partner-img"><img src="https://tinnhiemmang.vn/handle_cert/images/logo.png" width="100"></div>', unsafe_allow_html=True)
         st.markdown("<p style='text-align:center; font-size:12px; font-weight:bold;'>TÍN NHIỆM MẠNG</p>", unsafe_allow_html=True)
     with p4:
-        st.markdown('<div class="partner-img"><img src="https://cdn-icons-png.flaticon.com/512/9664/9664268.png" width="60"></div>', unsafe_allow_html=True)
+        st.markdown('<div class="partner-img"><img src="https://github.com/nguyenbaophuc27129-web/SilverShield-AI/blob/5befa8d1b793de0b6934f56af0f4458a8967457b/t%E1%BA%A3i%20xu%E1%BB%91ng%20(1).png" width="60"></div>', unsafe_allow_html=True)
         st.markdown("<p style='text-align:center; font-size:12px; font-weight:bold;'>SILVERSHIELD AI</p>", unsafe_allow_html=True)
 
 # --- TRANG VỆ SĨ AI ---
@@ -333,6 +333,7 @@ st.markdown("""
         <small>Vì một không gian mạng an toàn cho người cao tuổi</small>
     </div>
 """, unsafe_allow_html=True)
+
 
 
 
