@@ -3,83 +3,130 @@ import streamlit as st
 def apply_styles():
     st.markdown("""
         <style>
-        /* RESET & FIX OVERFLOW */
-        * { box-sizing: border-box; }
+        /* 1. CẤU HÌNH KHUNG MÀN HÌNH CHUẨN 1200PX (QUAN TRỌNG NHẤT) */
+        .block-container {
+            max-width: 1200px !important;
+            padding-top: 0rem !important;
+            padding-bottom: 3rem !important;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            margin: 0 auto !important;
+        }
+        
+        /* 2. ẨN GIAO DIỆN MẶC ĐỊNH */
         [data-testid="stHeader"], [data-testid="stSidebar"] { display: none !important; }
-        .stApp { background-color: #ffffff; overflow-x: hidden; }
-        .block-container { padding: 0rem !important; max-width: 100%; }
+        .stApp { background-color: #f4f6f9; } /* Màu nền xám nhẹ sang trọng */
 
-        /* TOP BAR - GỌN GÀNG */
+        /* 3. THANH TOP BAR (XANH ĐẬM) */
         .top-info {
             background-color: #002147;
             color: white;
-            padding: 8px 5%; /* Giảm padding để không tràn */
+            padding: 8px 0;
+            font-size: 13px;
+            border-bottom: 3px solid #FFB300;
+            width: 100vw; /* Tràn viền màn hình */
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            display: flex;
+            justify-content: center;
+        }
+        .top-inner {
+            width: 1200px;
             display: flex;
             justify-content: space-between;
-            font-size: 12px;
-            border-bottom: 3px solid #FFB300;
-            width: 100%;
+            padding: 0 15px;
         }
 
-        /* BANNER - FIX CHIỀU CAO */
-        .main-banner {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(rgba(0,33,71,0.6), rgba(0,33,71,0.6)), 
-                        url('https://olympicenglish.vn/upload/banner-olympic-2025.png');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            flex-direction: column;
-            padding: 0 20px;
-        }
-
-        /* KHUNG NỘI DUNG - FIX TRÀN */
-        .section-container { 
-            padding: 30px 5%; 
-            width: 100%;
-            margin: 0 auto;
-        }
-        
-        .card-pro {
+        /* 4. THANH MENU (NAVIGATION) */
+        .nav-container {
             background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-top: 4px solid #002147;
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             margin-bottom: 20px;
-            height: 100%; /* Đảm bảo các card cao bằng nhau */
+            border-radius: 0 0 10px 10px;
         }
-
-        /* MENU BUTTONS - SÁT NHAU HƠN */
+        /* Chỉnh nút bấm menu cho sang */
         div.stButton > button {
             background-color: transparent !important;
             color: #333 !important;
             border: none !important;
-            font-weight: bold !important;
+            font-weight: 700 !important;
             text-transform: uppercase !important;
-            font-size: 13px !important;
-            padding: 5px !important;
+            font-size: 14px !important;
+            transition: 0.3s;
+            margin-top: 5px;
         }
-        div.stButton > button:hover { color: #007bff !important; }
-        
+        div.stButton > button:hover {
+            color: #002147 !important;
+            background-color: #f0f2f5 !important;
+            border-radius: 5px !important;
+        }
+        /* Nút Kiểm tra ngay nổi bật */
         .btn-check-ai button {
-            background: #d32f2f !important;
+            background: linear-gradient(90deg, #D32F2F, #C62828) !important;
             color: white !important;
-            border-radius: 4px !important;
-            padding: 8px 15px !important;
+            padding: 10px 25px !important;
+            border-radius: 50px !important;
+            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3) !important;
+        }
+
+        /* 5. BANNER HERO */
+        .hero-banner {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,33,71,0.15);
+            margin-bottom: 30px;
+        }
+
+        /* 6. CÁC KHỐI NỘI DUNG (CARD) */
+        .section-header {
+            color: #002147;
+            border-left: 5px solid #FFB300;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        
+        .card-box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            height: 100%;
+            transition: transform 0.2s;
+        }
+        .card-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-color: #FFB300;
+        }
+
+        /* 7. LOGO ĐỐI TÁC (FOOTER STYLE) */
+        .partner-logo img {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+        .partner-logo img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
         }
         </style>
     """, unsafe_allow_html=True)
 
 def render_top_bar():
-    st.markdown(f"""
+    st.markdown("""
         <div class="top-info">
-            <div>🚀 <b>DVT-Empire X CBZ</b> - THPT Dương Văn Thì</div>
-            <div>🛡️ <b>Silvershield</b> - Vì an toàn không gian mạng</div>
+            <div class="top-inner">
+                <span>🚀 Phát triển bởi <b>DVT-Empire X CBZ</b> - THPT Dương Văn Thì</span>
+                <span>🛡️ <b>SilverShield</b> - Vì an toàn không gian mạng</span>
+            </div>
         </div>
     """, unsafe_allow_html=True)
