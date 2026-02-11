@@ -8,142 +8,68 @@ styles.apply_styles()
 styles.render_top_bar()
 model = logic.init_ai()
 
-# 2. Quản lý trạng thái chuyển trang
 if 'page' not in st.session_state:
     st.session_state['page'] = '🏠 TRANG CHỦ'
 
-# 3. TẠO THANH MENU NGANG
-st.markdown("<br>", unsafe_allow_html=True)
-col_logo, col_m1, col_m2, col_m3, col_m4, col_btn = st.columns([1, 1.2, 1.2, 1.2, 1.2, 1.8])
+# 2. THANH MENU (Chia lại tỷ lệ cột để không bị tràn)
+st.markdown("<div style='padding: 0 5%;'>", unsafe_allow_html=True) # Tạo lề cho menu
+col_logo, col_m1, col_m2, col_m3, col_m4, col_spacer, col_btn = st.columns([0.8, 1, 1, 1, 1, 2, 1.5])
 
 with col_logo:
-    st.image("https://olympicenglish.vn/images/logo.png", width=70)
-
+    st.image("https://olympicenglish.vn/images/logo.png", width=60)
 with col_m1:
-    if st.button("🏠 TRANG CHỦ"): 
-        st.session_state['page'] = '🏠 TRANG CHỦ'
+    if st.button("🏠 TRANG CHỦ"): st.session_state['page'] = '🏠 TRANG CHỦ'
 with col_m2:
-    if st.button("👥 GIỚI THIỆU"): 
-        st.session_state['page'] = '👥 GIỚI THIỆU'
+    if st.button("👥 GIỚI THIỆU"): st.session_state['page'] = '👥 GIỚI THIỆU'
 with col_m3:
-    if st.button("🛡️ VỆ SĨ AI"): 
-        st.session_state['page'] = '🛡️ VỆ SĨ AI'
+    if st.button("🛡️ VỆ SĨ AI"): st.session_state['page'] = '🛡️ VỆ SĨ AI'
 with col_m4:
-    if st.button("📰 TIN TỨC"): 
-        st.session_state['page'] = '📰 TIN TỨC'
-
+    if st.button("📰 TIN TỨC"): st.session_state['page'] = '📰 TIN TỨC'
 with col_btn:
     st.markdown('<div class="btn-check-ai">', unsafe_allow_html=True)
-    if st.button("🚀 KIỂM TRA NGAY"):
-        st.session_state['page'] = '🛡️ VỆ SĨ AI'
+    if st.button("🚀 KIỂM TRA NGAY"): st.session_state['page'] = '🛡️ VỆ SĨ AI'
     st.markdown('</div>', unsafe_allow_html=True)
-
-st.markdown("---")
+st.markdown("</div>", unsafe_allow_html=True)
+st.markdown("<hr style='margin:0;'>", unsafe_allow_html=True)
 
 # --- NỘI DUNG TỪNG TRANG ---
 
-# TRANG CHỦ
 if st.session_state['page'] == '🏠 TRANG CHỦ':
-    st.markdown("""
-        <div class="main-banner">
-            <h1 style="font-size: 50px; margin: 0;">SILVERSHIELD</h1>
-            <p style="font-size: 22px;">Lá chắn AI bảo vệ người cao tuổi Việt Nam</p>
-        </div>
-    """, unsafe_allow_html=True)
-    
+    st.markdown('<div class="main-banner"><h1>SILVERSHIELD</h1><p>Lá chắn AI bảo vệ người cao tuổi</p></div>', unsafe_allow_html=True)
     st.markdown('<div class="section-container">', unsafe_allow_html=True)
-    col_l, col_r = st.columns(2)
+    col_l, col_r = st.columns(2, gap="large")
     with col_l:
-        st.markdown("""
-            <div class="card-pro">
-                <h3 style="color:#002147;">Về dự án SilverShield</h3>
-                <p>SilverShield là giải pháp ứng dụng trí tuệ nhân tạo nhằm hỗ trợ người cao tuổi 
-                nhận diện và phòng chống các hình thức lừa đảo trực tuyến đang ngày càng tinh vi.</p>
-                <p>Đội ngũ <b>DVT-Empire X CBZ</b> từ Trường THPT Dương Văn Thì cam kết mang lại một môi trường mạng an toàn hơn cho mọi người.</p>
-            </div>
-        """, unsafe_allow_html=True)
+        st.markdown('<div class="card-pro"><h3>Về dự án</h3><p>SilverShield bảo vệ người cao tuổi trước các hiểm họa mạng. Phát triển bởi đội ngũ <b>DVT-Empire X CBZ</b>.</p></div>', unsafe_allow_html=True)
     with col_r:
         st.image("https://baochinhphu.vn/Uploaded/tranducmanh/2023_03_14/lua-dao-con-cap-cuu-2.jpg", use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
-# TRANG GIỚI THIỆU
 elif st.session_state['page'] == '👥 GIỚI THIỆU':
-    st.markdown('<div class="section-container">', unsafe_allow_html=True)
-    st.markdown("<h1 style='text-align:center; color:#002147;'>👥 ĐỘI NGŨ DVT-EMPIRE X CBZ</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align:center; font-size:20px;'>Trường THPT Dương Văn Thì</p>", unsafe_allow_html=True)
-    
-    c1, c2, c3 = st.columns(3)
-    with c1:
-        st.markdown('<div class="card-pro" style="text-align:center;">', unsafe_allow_html=True)
-        st.image("https://cdn-icons-png.flaticon.com/512/3135/3135715.png", width=100)
-        st.markdown("<h4>Thành viên 1</h4><p>Trưởng nhóm / Lead Developer</p>", unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-    with c2:
-        st.markdown('<div class="card-pro" style="text-align:center;">', unsafe_allow_html=True)
-        st.image("https://cdn-icons-png.flaticon.com/512/3135/3135715.png", width=100)
-        st.markdown("<h4>Thành viên 2</h4><p>AI Researcher / Prompt Engineer</p>", unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-    with c3:
-        st.markdown('<div class="card-pro" style="text-align:center;">', unsafe_allow_html=True)
-        st.image("https://cdn-icons-png.flaticon.com/512/3135/3135715.png", width=100)
-        st.markdown("<h4>Thành viên 3</h4><p>UI/UX Designer / Content</p>", unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-container"><h1>👥 ĐỘI NGŨ DVT-EMPIRE X CBZ</h1><div class="card-pro"><h3>Trường THPT Dương Văn Thì</h3><p>Thông tin thành viên...</p></div></div>', unsafe_allow_html=True)
 
-# TRANG VỆ SĨ AI
 elif st.session_state['page'] == '🛡️ VỆ SĨ AI':
-    st.markdown('<div class="section-container">', unsafe_allow_html=True)
-    st.markdown("<h2 style='color:#002147;'>🛡️ TRUNG TÂM PHÂN TÍCH VỆ SĨ AI</h2>", unsafe_allow_html=True)
-    
-    col_in, col_out = st.columns([1, 1], gap="large")
-    with col_in:
+    st.markdown('<div class="section-container"><h2>🛡️ PHÂN TÍCH VỆ SĨ AI</h2>', unsafe_allow_html=True)
+    c_in, c_out = st.columns(2, gap="large")
+    with c_in:
         st.markdown('<div class="card-pro">', unsafe_allow_html=True)
-        txt = st.text_area("Nhập nội dung cần kiểm tra:", height=150, placeholder="Dán tin nhắn nghi ngờ vào đây...")
-        img_file = st.file_uploader("Hoặc tải ảnh chụp màn hình:", type=['jpg','png','jpeg'])
-        if st.button("🔍 BẮT ĐẦU PHÂN TÍCH"):
-            if txt or img_file:
-                with st.spinner("Đang quét dữ liệu..."):
-                    img = Image.open(img_file) if img_file else None
+        txt = st.text_area("Dán tin nhắn nghi ngờ:")
+        img_f = st.file_uploader("Hoặc gửi ảnh:")
+        if st.button("🔍 KIỂM TRA"):
+            if txt or img_f:
+                with st.spinner("Đang quét..."):
+                    img = Image.open(img_f) if img_f else None
                     st.session_state['res'] = logic.analyze_content(model, txt, img)
-            else:
-                st.error("Bà ơi, hãy nhập thông tin để cháu kiểm tra nhé!")
         st.markdown('</div>', unsafe_allow_html=True)
-        
-    with col_out:
-        st.markdown('<div class="card-pro">', unsafe_allow_html=True)
+    with c_out:
         if 'res' in st.session_state:
-            st.markdown("#### 💌 Lời khuyên từ SilverShield:")
+            st.markdown('<div class="card-pro">', unsafe_allow_html=True)
             st.success(st.session_state['res'])
-            audio = logic.text_to_speech(st.session_state['res'])
-            st.audio(audio)
-        else:
-            st.info("Cháu đang đợi tin nhắn hoặc hình ảnh từ bà ạ...")
-        st.markdown('</div>', unsafe_allow_html=True)
+            st.audio(logic.text_to_speech(st.session_state['res']))
+            st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
-# TRANG TIN TỨC
 elif st.session_state['page'] == '📰 TIN TỨC':
-    st.markdown('<div class="section-container">', unsafe_allow_html=True)
-    st.markdown("<h2 style='color:#002147;'>📰 TIN TỨC CHÍNH THỐNG</h2>", unsafe_allow_html=True)
-    
-    st.markdown("""
-        <div class="card-pro">
-            <h4 style="color:#d32f2f;">🚨 Cảnh báo lừa đảo Deepfake từ Bộ Công an</h4>
-            <p>Các đối tượng sử dụng AI để giả mạo khuôn mặt, giọng nói của người thân nhằm lừa đảo chuyển tiền...</p>
-            <a href="https://baochinhphu.vn/canh-bao-cac-thu-doan-lua-dao-truc-tuyen-moi-10223032415254247.htm" target="_blank">Xem chi tiết trên Báo Chính Phủ →</a>
-        </div>
-        <div class="card-pro">
-            <h4 style="color:#d32f2f;">🛡️ Nhận diện 24 hình thức lừa đảo trên không gian mạng</h4>
-            <p>Cục An toàn thông tin cung cấp cẩm nang giúp người dân phòng tránh bẫy lừa đảo...</p>
-            <a href="https://tinnhiemmang.vn/canh-bao" target="_blank">Xem tại Tín Nhiệm Mạng →</a>
-        </div>
-    """, unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-container"><h2>📰 TIN TỨC</h2><div class="card-pro"><h4>Cảnh báo từ Bộ Công An</h4><a href="https://baochinhphu.vn" target="_blank">Xem ngay →</a></div></div>', unsafe_allow_html=True)
 
 # FOOTER
-st.markdown(f"""
-    <div style="background:#002147; color:white; padding:40px 10%; text-align:center; margin-top:50px;">
-        <p style="font-size:18px;">© 2026 SilverShield Project - Đội ngũ DVT-Empire X CBZ</p>
-        <p style="font-size:14px; opacity:0.8;">Trường THPT Dương Văn Thì - Hội thi AI YOUNG GURU Toàn Quốc</p>
-    </div>
-""", unsafe_allow_html=True)
+st.markdown('<div style="background:#002147; color:white; padding:30px; text-align:center;">© 2026 SilverShield - THPT Dương Văn Thì</div>', unsafe_allow_html=True)
