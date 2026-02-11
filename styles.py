@@ -3,136 +3,133 @@ import streamlit as st
 def apply_styles():
     st.markdown("""
         <style>
-        /* 1. CẤU HÌNH KHUNG MÀN HÌNH CHUẨN 1200PX */
+        /* 1. CĂN CHỈNH KHUNG NHÌN CHUẨN OLYMPIC (1200px) */
         .block-container {
             max-width: 1200px !important;
-            padding-top: 1rem !important;
+            padding-top: 2rem !important;
             padding-bottom: 3rem !important;
             margin: 0 auto !important;
         }
         
-        /* ẨN GIAO DIỆN CŨ */
+        /* ẨN GIAO DIỆN MẶC ĐỊNH */
         [data-testid="stHeader"], [data-testid="stSidebar"] { display: none !important; }
-        .stApp { background-color: #f8f9fa; } 
+        .stApp { background-color: #f4f7f9; }
 
-        /* 2. THANH TOP BAR (XANH ĐẬM) */
-        .top-info {
+        /* 2. TOP HEADER (MÀU XANH ĐẬM) */
+        .top-header {
             background-color: #002147;
             color: white;
-            padding: 8px 0;
-            font-size: 13px;
-            width: 100vw;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
+            padding: 10px 0;
+            font-size: 14px;
+            font-weight: 500;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+            border-bottom: 3px solid #FFB300;
             display: flex;
             justify-content: center;
         }
-        .top-inner {
+        .header-content {
             width: 1200px;
             display: flex;
             justify-content: space-between;
             padding: 0 15px;
         }
 
-        /* 3. MENU NAVIGATION - CANH GIỮA TUYỆT ĐỐI */
-        /* Đây là đoạn code quan trọng nhất để hết 'lởn chởn' */
-        [data-testid="column"] {
-            display: flex !important;
-            align-items: center !important; /* Canh giữa chiều dọc */
-            justify-content: center !important; /* Canh giữa chiều ngang */
-            height: 100% !important;
+        /* 3. THANH MENU (NAVIGATION BAR) */
+        .nav-bar {
+            background: white;
+            padding: 15px 0;
+            margin-top: 30px; /* Né cái header fixed */
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
         }
-
-        /* Biến nút bấm thường thành dạng Text Menu (Giống Olympic) */
+        
+        /* Biến nút bấm thành Text Link sang trọng */
         div.stButton > button {
             background-color: transparent !important;
-            color: #444 !important; /* Màu chữ xám đen */
+            color: #002147 !important;
             border: none !important;
             font-weight: 700 !important;
             text-transform: uppercase !important;
             font-size: 15px !important;
-            padding: 0px !important;
-            margin: 0px !important;
+            border-radius: 0 !important;
+            padding: 10px 20px !important;
             transition: 0.3s;
-            box-shadow: none !important;
         }
         div.stButton > button:hover {
-            color: #002147 !important; /* Hover ra màu xanh Navy */
-            background-color: transparent !important;
-            text-decoration: underline;
+            color: #D32F2F !important;
+            background-color: #f0f2f5 !important;
+            border-bottom: 2px solid #D32F2F !important;
         }
-        div.stButton > button:active, div.stButton > button:focus {
-            color: #d32f2f !important;
-            border-color: transparent !important;
-            background-color: transparent !important;
-        }
-
-        /* Nút 'KIỂM TRA NGAY' - Nổi bật riêng biệt */
-        .btn-check-ai button {
-            background: linear-gradient(90deg, #D32F2F, #B71C1C) !important;
-            color: white !important;
-            padding: 10px 25px !important;
-            border-radius: 50px !important;
-            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3) !important;
-            text-decoration: none !important;
-        }
-        .btn-check-ai button:hover {
-            transform: translateY(-2px);
-            color: white !important;
-            text-decoration: none !important;
+        /* Nút đang được chọn (Active) */
+        div.stButton > button:focus {
+            color: #D32F2F !important;
+            border-bottom: 2px solid #D32F2F !important;
         }
 
-        /* 4. BANNER & CARD */
-        .stImage img {
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .section-header {
+        /* 4. ĐỊNH DẠNG KHỐI NỘI DUNG (CARD) */
+        .section-title {
             color: #002147;
+            font-weight: 800;
+            font-size: 24px;
+            text-transform: uppercase;
             border-left: 6px solid #FFB300;
             padding-left: 15px;
-            margin: 40px 0 20px 0;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 24px;
-        }
-        
-        .card-box {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid #eee;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            height: 100%;
+            margin: 30px 0 20px 0;
+            background: linear-gradient(90deg, #e3f2fd 0%, transparent 100%);
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
 
-        /* 5. LOGO ĐỐI TÁC */
-        .partner-img {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80px;
-            filter: grayscale(100%);
-            opacity: 0.6;
-            transition: 0.3s;
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+            height: 100%;
+            transition: transform 0.3s;
         }
-        .partner-img:hover { filter: grayscale(0%); opacity: 1; }
-        
-        hr { margin: 0 0 30px 0; border-color: #eee; }
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            border-color: #FFB300;
+        }
+
+        /* 5. FOOTER */
+        .footer {
+            background-color: #002147;
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+            border-top: 5px solid #D32F2F;
+            text-align: center;
+        }
         </style>
     """, unsafe_allow_html=True)
 
-def render_top_bar():
+def render_header():
     st.markdown("""
-        <div class="top-info">
-            <div class="top-inner">
-                <span>📧 Email: contact@silvershield.vn | 📞 Hotline: 156</span>
-                <span>🇻🇳 HỘI THI AI YOUNG GURU 2026</span>
+        <div class="top-header">
+            <div class="header-content">
+                <div>🛠️ Phát triển và xây dựng bởi <b>DVT - Empire CBZ X - THPT Dương Văn Thì</b></div>
+                <div style="font-weight:bold; letter-spacing: 1px;">🛡️ SILVERSHIELD</div>
             </div>
         </div>
-        <div style="height: 20px;"></div>
+        <div style="height: 40px;"></div> <!-- Khoảng trống để không bị che nội dung -->
+    """, unsafe_allow_html=True)
+
+def render_footer():
+    st.markdown("""
+        <div class="footer">
+            <h2 style="margin:0; font-size: 28px;">SILVERSHIELD</h2>
+            <p style="font-size: 16px; font-style: italic; margin-top: 10px;">"Vì một không gian mạng an toàn"</p>
+            <hr style="width: 200px; margin: 20px auto; border-color: #FFB300;">
+            <p style="font-size: 14px;">© 2026 Bản quyền thuộc về <b>Đội ngũ DVT - Empire CBZ X</b></p>
+        </div>
     """, unsafe_allow_html=True)
