@@ -51,12 +51,23 @@ st.markdown("""
 
 # --- 3. CẤU HÌNH AI GEMINI ---
 # Lấy API Key từ Secrets của Streamlit (Sẽ cài đặt sau trên web)
+# --- 3. CẤU HÌNH AI GEMINI (ĐOẠN ĐÃ SỬA) ---
 try:
     api_key = st.secrets["GEMINI_API_KEY"]
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-1.5-flash')
-except:
-    st.error("⚠️ Chưa có API Key. Hãy cấu hình trên Streamlit Cloud nhé!")
+    
+    # Tìm kiếm model khả dụng để không bị lỗi NotFound
+    available_models = [m.name for m in genai.list_models() if 'generateContent' in m.supported_generation_methods]
+    
+    # Ưu tiên chọn gemini-1.5-flash, nếu không có thì lấy cái đầu tiên
+    target_model = 'models/gemini-1.5-flash'
+    if target_model not in available_models:
+        target_model = available_models[0]
+        
+    model = genai.GenerativeModel(target_model)
+    st.sidebar.success(f"✅ Đang dùng: {target_model}")
+except Exception as e:
+    st.error(f"⚠️ Lỗi cấu hình API: {e}")
 
 # --- 4. HÀM XỬ LÝ ---
 def text_to_speech(text):
@@ -179,3 +190,4 @@ elif page == "🛡️ Vệ Sĩ AI (Kiểm Tra)":
                     if audio_file:
                         st.audio(audio_file, format='audio/mp3', start_time=0)
                         st.caption("🔊 Bấm nút Play ở trên để nghe cháu đọc ạ.")
+
