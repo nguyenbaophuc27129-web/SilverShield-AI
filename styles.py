@@ -3,12 +3,9 @@ import streamlit as st
 def apply_styles():
     st.markdown("""
         <style>
-        /* ẨN CÁC THÀNH PHẦN MẶC ĐỊNH */
         [data-testid="stHeader"], [data-testid="stSidebar"] { display: none !important; }
         .stApp { background-color: #ffffff; }
         .block-container { padding: 0rem; max-width: 100%; }
-
-        /* THANH THÔNG TIN TRÊN CÙNG (TOP BAR) */
         .top-info {
             background-color: #002147;
             color: white;
@@ -18,8 +15,6 @@ def apply_styles():
             font-size: 13px;
             border-bottom: 3px solid #FFB300;
         }
-
-        /* BANNER CHÍNH */
         .main-banner {
             width: 100%;
             height: 350px;
@@ -34,11 +29,7 @@ def apply_styles():
             text-align: center;
             flex-direction: column;
         }
-
-        /* KHUNG NỘI DUNG */
         .section-container { padding: 40px 10%; }
-        
-        /* CARD TRẮNG SANG TRỌNG */
         .card-pro {
             background: white;
             padding: 30px;
@@ -47,8 +38,6 @@ def apply_styles():
             border-top: 5px solid #002147;
             margin-bottom: 30px;
         }
-
-        /* CSS CHO MENU (LÀM CÁC NÚT STREAMLIT TRÔNG NHƯ MENU) */
         div.stButton > button {
             background-color: transparent !important;
             color: #333 !important;
@@ -57,11 +46,7 @@ def apply_styles():
             text-transform: uppercase !important;
             font-size: 14px !important;
         }
-        div.stButton > button:hover {
-            color: #007bff !important;
-        }
-        
-        /* NÚT ĐẶC BIỆT (KIỂM TRA NGAY) */
+        div.stButton > button:hover { color: #007bff !important; }
         .btn-check-ai button {
             background: #d32f2f !important;
             color: white !important;
@@ -77,8 +62,4 @@ def render_top_bar():
             <div>🚀 Phát triển và xây dựng bởi <b>DVT-Empire X CBZ - Trường THPT Dương Văn Thì</b></div>
             <div>🛡️ <b>Silvershield - Vì an toàn không gian mạng</b></div>
         </div>
-    """, unsafe_allow_html=True)
-                <a class="nav-item">Giới thiệu</a>
-                <a class="nav-item">Tin tức</a>
-            </div>
     """, unsafe_allow_html=True)
