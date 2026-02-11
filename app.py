@@ -47,7 +47,6 @@ st.markdown("<hr style='margin: 0 0 30px 0;'>", unsafe_allow_html=True)
 
 
 # --- 3. KHU VỰC HIỂN THỊ NỘI DUNG (BODY) ---
-# Quan trọng: Các dòng if/elif phải nằm sát lề trái, không được thụt vào
 
 if st.session_state['page'] == 'TRANG CHỦ':
     # --- NỘI DUNG TRANG CHỦ ---
@@ -121,4 +120,35 @@ elif st.session_state['page'] == 'VỆ SĨ AI':
         st.markdown('</div>', unsafe_allow_html=True)
 
 
-elif st.session_state['page'] == 'G
+elif st.session_state['page'] == 'GIỚI THIỆU':
+    # --- NỘI DUNG GIỚI THIỆU ---
+    st.markdown('<h2 class="section-header">👥 ĐỘI NGŨ THỰC HIỆN</h2>', unsafe_allow_html=True)
+    st.markdown("""
+    <div class="card-box">
+        <h3>Team DVT-Empire X CBZ</h3>
+        <p>Học sinh Trường THPT Dương Văn Thì - TP. Thủ Đức</p>
+        <p>Chúng em mong muốn dùng công nghệ để phục vụ cộng đồng.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+elif st.session_state['page'] == 'TIN TỨC':
+    # --- NỘI DUNG TIN TỨC ---
+    st.markdown('<h2 class="section-header">📰 TIN TỨC MỚI NHẤT</h2>', unsafe_allow_html=True)
+    col_news1, col_news2 = st.columns(2)
+    with col_news1:
+         st.info("⚠️ Cảnh báo: Hình thức lừa đảo 'Con đang cấp cứu' quay trở lại.")
+    with col_news2:
+         st.info("🛡️ Cục An toàn thông tin ra mắt cẩm nang phòng chống lừa đảo.")
+
+elif st.session_state['page'] == 'LIÊN HỆ':
+    st.markdown('<h2 class="section-header">📞 LIÊN HỆ HỖ TRỢ</h2>', unsafe_allow_html=True)
+    st.write("Email: hotro@silvershield.vn")
+
+# --- 4. FOOTER (LUÔN HIỆN Ở CUỐI) ---
+st.markdown("<br><br>", unsafe_allow_html=True)
+st.markdown("""
+    <div style="background:#002147; color:white; padding:40px; text-align:center; border-top: 5px solid #FFB300;">
+        <p style="font-size:18px; font-weight:bold; margin-bottom:10px;">© 2026 SILVERSHIELD PROJECT - THPT DƯƠNG VĂN THÌ</p>
+        <p>Vì một không gian mạng an toàn cho người cao tuổi</p>
+    </div>
+""", unsafe_allow_html=True)
