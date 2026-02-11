@@ -20,7 +20,7 @@ if 'page' not in st.session_state:
 
 # --- BANNER LỚN & LOGO ---
 # Banner Olympic mẫu (Bạn thay link ảnh banner thật của bạn vào đây)
-st.image("https://olympicenglish.vn/upload/banner-olympic-2025.png", use_container_width=True)
+st.image("https://github.com/nguyenbaophuc27129-web/SilverShield-AI/blob/5befa8d1b793de0b6934f56af0f4458a8967457b/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png", use_container_width=True)
 
 # --- MENU ĐIỀU HƯỚNG (TASKBAR) ---
 st.markdown('<div class="nav-bar">', unsafe_allow_html=True)
@@ -332,4 +332,5 @@ st.markdown("""
         <small>Vì một không gian mạng an toàn cho người cao tuổi</small>
     </div>
 """, unsafe_allow_html=True)
+
 
