@@ -3,29 +3,24 @@ from PIL import Image
 import styles
 import logic
 
-# --- 1. KHỞI TẠO & CẤU HÌNH ---
-# Bắt buộc chạy 3 dòng này đầu tiên
+# 1. KHỞI TẠO
 styles.apply_styles()
 styles.render_top_bar()
-try:
-    model = logic.init_ai()
-except:
-    st.error("Lỗi kết nối AI. Kiểm tra lại API Key nhé!")
+model = logic.init_ai()
 
-# Đặt mặc định là TRANG CHỦ nếu chưa chọn gì
 if 'page' not in st.session_state:
     st.session_state['page'] = 'TRANG CHỦ'
 
-# --- 2. MENU ĐIỀU HƯỚNG (HEADER) ---
-# Chia cột: Logo (1.5) | Menu (6) | Nút Action (2.5)
-c_logo, c_menu, c_action = st.columns([1.5, 6, 2.5])
+# 2. MENU ĐIỀU HƯỚNG (FINAL VERSION - THẲNG TẮP)
+# Chia làm 3 khu vực lớn: Logo | Các Link Menu | Nút Hành Động
+c_logo_area, c_menu_area, c_action_area = st.columns([1.5, 6, 2.5])
 
-with c_logo:
-    # Logo
+with c_logo_area:
+    # Logo của bạn (Tui để link icon tạm vì link cũ bị lỗi)
     st.image("https://cdn-icons-png.flaticon.com/512/9664/9664268.png", width=70)
 
-with c_menu:
-    # Menu ngang
+with c_menu_area:
+    # Chia nhỏ khu vực giữa thành 4 phần bằng nhau cho 4 menu
     m1, m2, m3, m4 = st.columns(4)
     with m1:
         if st.button("TRANG CHỦ"): st.session_state['page'] = 'TRANG CHỦ'
@@ -36,23 +31,23 @@ with c_menu:
     with m4:
         if st.button("LIÊN HỆ"): st.session_state['page'] = 'LIÊN HỆ'
 
-with c_action:
+with c_action_area:
     st.markdown('<div class="btn-check-ai">', unsafe_allow_html=True)
-    if st.button("🚀 KIỂM TRA NGAY"): 
-        st.session_state['page'] = 'VỆ SĨ AI'
+    if st.button("🚀 KIỂM TRA NGAY"): st.session_state['page'] = 'VỆ SĨ AI'
     st.markdown('</div>', unsafe_allow_html=True)
 
-# Đường kẻ phân cách
-st.markdown("<hr style='margin: 0 0 30px 0;'>", unsafe_allow_html=True)
+# Đường gạch ngang mờ phân cách menu
+st.markdown("<hr>", unsafe_allow_html=True)
 
 
-# --- 3. KHU VỰC HIỂN THỊ NỘI DUNG (BODY) ---
+# --- NỘI DUNG CHÍNH ---
 
 if st.session_state['page'] == 'TRANG CHỦ':
-    # --- NỘI DUNG TRANG CHỦ ---
+    # Banner
     st.image("https://olympicenglish.vn/upload/banner-olympic-2025.png", use_container_width=True)
     
     st.markdown('<h2 class="section-header">VỀ DỰ ÁN SILVERSHIELD</h2>', unsafe_allow_html=True)
+    
     c1, c2 = st.columns([1.5, 1], gap="large")
     with c1:
         st.markdown("""
@@ -69,10 +64,12 @@ if st.session_state['page'] == 'TRANG CHỦ':
         </div>
         """, unsafe_allow_html=True)
     with c2:
+        # Ảnh minh họa bên phải
         st.image("https://img.freepik.com/free-vector/old-woman-using-laptop_1308-133534.jpg", use_container_width=True)
 
     # ĐƠN VỊ ĐỒNG HÀNH
     st.markdown('<h2 class="section-header">ĐƠN VỊ CHỨC NĂNG & ĐỒNG HÀNH</h2>', unsafe_allow_html=True)
+    
     p1, p2, p3, p4 = st.columns(4)
     with p1:
         st.markdown('<div class="partner-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Logo_bo_cong_an.png/120px-Logo_bo_cong_an.png" width="60"></div>', unsafe_allow_html=True)
@@ -87,12 +84,11 @@ if st.session_state['page'] == 'TRANG CHỦ':
         st.markdown('<div class="partner-img"><img src="https://cdn-icons-png.flaticon.com/512/9664/9664268.png" width="60"></div>', unsafe_allow_html=True)
         st.markdown("<p style='text-align:center; font-size:12px; font-weight:bold;'>SILVERSHIELD AI</p>", unsafe_allow_html=True)
 
-
+# --- TRANG VỆ SĨ AI ---
 elif st.session_state['page'] == 'VỆ SĨ AI':
-    # --- NỘI DUNG VỆ SĨ AI ---
     st.markdown('<h2 class="section-header">🛡️ TRUNG TÂM PHÂN TÍCH</h2>', unsafe_allow_html=True)
-    c_in, c_out = st.columns([1, 1], gap="large")
     
+    c_in, c_out = st.columns([1, 1], gap="large")
     with c_in:
         st.markdown('<div class="card-box">', unsafe_allow_html=True)
         st.subheader("1. Nhập thông tin cần kiểm tra")
@@ -104,8 +100,6 @@ elif st.session_state['page'] == 'VỆ SĨ AI':
                 with st.spinner("Đang kết nối vệ sĩ AI..."):
                     img = Image.open(img_f) if img_f else None
                     st.session_state['res'] = logic.analyze_content(model, txt, img)
-            else:
-                st.warning("Vui lòng nhập nội dung hoặc tải ảnh lên ạ!")
         st.markdown('</div>', unsafe_allow_html=True)
     
     with c_out:
@@ -119,36 +113,16 @@ elif st.session_state['page'] == 'VỆ SĨ AI':
             st.info("👈 Vui lòng nhập dữ liệu bên trái để kiểm tra.")
         st.markdown('</div>', unsafe_allow_html=True)
 
-
-elif st.session_state['page'] == 'GIỚI THIỆU':
-    # --- NỘI DUNG GIỚI THIỆU ---
-    st.markdown('<h2 class="section-header">👥 ĐỘI NGŨ THỰC HIỆN</h2>', unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card-box">
-        <h3>Team DVT-Empire X CBZ</h3>
-        <p>Học sinh Trường THPT Dương Văn Thì - TP. Thủ Đức</p>
-        <p>Chúng em mong muốn dùng công nghệ để phục vụ cộng đồng.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
+# --- TRANG TIN TỨC ---
 elif st.session_state['page'] == 'TIN TỨC':
-    # --- NỘI DUNG TIN TỨC ---
-    st.markdown('<h2 class="section-header">📰 TIN TỨC MỚI NHẤT</h2>', unsafe_allow_html=True)
-    col_news1, col_news2 = st.columns(2)
-    with col_news1:
-         st.info("⚠️ Cảnh báo: Hình thức lừa đảo 'Con đang cấp cứu' quay trở lại.")
-    with col_news2:
-         st.info("🛡️ Cục An toàn thông tin ra mắt cẩm nang phòng chống lừa đảo.")
+    st.markdown('<h2 class="section-header">📰 TIN TỨC AN NINH MẠNG</h2>', unsafe_allow_html=True)
+    st.info("Đang cập nhật tin tức mới nhất từ Cục An toàn thông tin...")
 
-elif st.session_state['page'] == 'LIÊN HỆ':
-    st.markdown('<h2 class="section-header">📞 LIÊN HỆ HỖ TRỢ</h2>', unsafe_allow_html=True)
-    st.write("Email: hotro@silvershield.vn")
-
-# --- 4. FOOTER (LUÔN HIỆN Ở CUỐI) ---
+# FOOTER
 st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown("""
-    <div style="background:#002147; color:white; padding:40px; text-align:center; border-top: 5px solid #FFB300;">
-        <p style="font-size:18px; font-weight:bold; margin-bottom:10px;">© 2026 SILVERSHIELD PROJECT - THPT DƯƠNG VĂN THÌ</p>
-        <p>Vì một không gian mạng an toàn cho người cao tuổi</p>
+    <div style="background:#002147; color:white; padding:30px; text-align:center;">
+        <b>© 2026 SILVERSHIELD PROJECT - THPT DƯƠNG VĂN THÌ</b><br>
+        <small>Vì một không gian mạng an toàn cho người cao tuổi</small>
     </div>
 """, unsafe_allow_html=True)
