@@ -3,65 +3,135 @@ import streamlit as st
 def apply_styles():
     st.markdown("""
         <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-        html, body, [class*="css"] { font-family: 'Inter', sans-serif; background-color: #f4f7f9; }
+        /* 1. XÓA SẠCH GIAO DIỆN MẶC ĐỊNH CỦA STREAMLIT */
+        [data-testid="stHeader"], [data-testid="stSidebar"], .st-emotion-cache-1av54u3 {
+            display: none !important;
+        }
+        .stApp { background-color: #ffffff; }
+        .block-container { padding-top: 0rem; padding-bottom: 0rem; max-width: 100%; }
 
-        /* Header Navy Blue xịn */
-        .header-bar {
+        /* 2. THANH TOP-BAR (THÔNG TIN LIÊN HỆ) */
+        .top-info {
             background-color: #002147;
-            padding: 15px 50px;
             color: white;
+            padding: 8px 10%;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            border-bottom: 5px solid #FFB300;
-            margin: -6rem -5rem 2rem -5rem;
+            font-size: 13px;
         }
 
-        /* Khung nội dung trắng */
-        .content-card {
+        /* 3. THANH MENU CHÍNH (NAVIGATION) */
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 10px 10%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-logo { width: 80px; margin-right: 20px; }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-grow: 1;
+        }
+        .nav-item {
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .nav-item:hover { color: #007bff; }
+        
+        /* NÚT ĐĂNG KÝ / ĐĂNG NHẬP KIỂU OLYMPIC */
+        .btn-group { display: flex; gap: 10px; }
+        .btn-reg {
+            background-color: #d32f2f;
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        .btn-login {
+            background-color: #ff9800;
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        /* 4. BANNER KHỔ LỚN */
+        .main-banner {
+            width: 100%;
+            height: 450px;
+            background-image: linear-gradient(rgba(0,33,71,0.5), rgba(0,33,71,0.5)), 
+                              url('https://olympicenglish.vn/upload/banner-olympic-2025.png'); /* Chỗ này lát bà thay link hình */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            flex-direction: column;
+        }
+        .banner-btn {
+            background-color: #007bff;
+            padding: 12px 30px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 20px;
+            border: 2px solid white;
+        }
+
+        /* 5. KHUNG NỘI DUNG */
+        .section-container { padding: 40px 10%; }
+        .card-pro {
             background: white;
             padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border-top: 5px solid #002147;
-            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-top: 4px solid #002147;
         }
-
-        /* Nút bấm đỏ Gold */
-        .stButton button {
-            background: linear-gradient(135deg, #D32F2F 0%, #B71C1C 100%) !important;
-            color: white !important;
-            border-radius: 10px !important;
-            border: none !important;
-            font-weight: bold !important;
-            height: 3em;
-            width: 100%;
-        }
-
-        /* Thẻ tin tức có link */
-        .news-card {
-            border-left: 5px solid #FFB300;
-            background: #fff;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
-        }
-        .news-link {
-            color: #002147;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        .news-link:hover { color: #D32F2F; }
         </style>
     """, unsafe_allow_html=True)
 
-def header_component():
+def render_header():
+    # Top info
     st.markdown("""
-        <div class="header-bar">
-            <div style="font-size: 14px;">🛡️ HỆ THỐNG BẢO VỆ NGƯỜI CAO TUỔI TRÊN KHÔNG GIAN SỐ</div>
-            <div style="font-size: 14px;">DỰ ÁN DỰ THI: <b>SILVERSHIELD</b></div>
+        <div class="top-info">
+            <div>📧 Email: olympicenglish@gmail.com | 🌐 Fanpage: SilverShield.VN</div>
+            <div>HỘI THI AI YOUNG GURU 2026</div>
+        </div>
+    """, unsafe_allow_html=True)
+    
+    # Navbar
+    st.markdown("""
+        <div class="navbar">
+            <img class="nav-logo" src="https://olympicenglish.vn/images/logo.png">
+            <div class="nav-links">
+                <a class="nav-item">Giới thiệu</a>
+                <a class="nav-item">Thông báo BTC</a>
+                <a class="nav-item">Thể lệ</a>
+                <a class="nav-item" style="color:#007bff">Tra cứu kết quả</a>
+                <a class="nav-item">Tin tức</a>
+            </div>
+            <div class="btn-group">
+                <a class="btn-reg">ĐĂNG KÝ</a>
+                <a class="btn-login">ĐĂNG NHẬP</a>
+            </div>
         </div>
     """, unsafe_allow_html=True)
