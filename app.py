@@ -36,7 +36,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 # --- NỘI DUNG TRANG CHỦ ---
 if st.session_state['page'] == '🏠 TRANG CHỦ':
     # BANNER LỚN
-    st.image("https://olympicenglish.vn/upload/banner-olympic-2025.png", use_container_width=True, className="hero-banner")
+    st.image("https://olympicenglish.vn/upload/banner-olympic-2025.png", use_container_width=True)
     
     # SECTION 1: SƠ LƯỢC (2 Cột)
     st.markdown('<h2 class="section-header">VỀ DỰ ÁN SILVERSHIELD</h2>', unsafe_allow_html=True)
@@ -155,3 +155,4 @@ st.markdown("""
         <p style="font-size:12px; opacity:0.7;">Email: contact@silvershield.vn</p>
     </div>
 """, unsafe_allow_html=True)
+
