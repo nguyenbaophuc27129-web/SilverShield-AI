@@ -3,53 +3,48 @@ import streamlit as st
 def apply_styles():
     st.markdown("""
         <style>
-        /* 1. CĂN CHỈNH KHUNG NHÌN CHUẨN OLYMPIC (1200px) */
+        /* 1. KHUNG MÀN HÌNH CHUẨN 1200PX */
         .block-container {
             max-width: 1200px !important;
-            padding-top: 2rem !important;
+            padding-top: 0rem !important;
             padding-bottom: 3rem !important;
             margin: 0 auto !important;
         }
-        
+
         /* ẨN GIAO DIỆN MẶC ĐỊNH */
         [data-testid="stHeader"], [data-testid="stSidebar"] { display: none !important; }
-        .stApp { background-color: #f4f7f9; }
+        .stApp { background-color: #f4f7f9; font-family: 'Arial', sans-serif; }
 
-        /* 2. TOP HEADER (MÀU XANH ĐẬM) */
-        .top-header {
+        /* 2. THANH TOP BAR (MÀU XANH ĐẬM TRÊN CÙNG) */
+        .top-bar-container {
             background-color: #002147;
             color: white;
-            padding: 10px 0;
-            font-size: 14px;
-            font-weight: 500;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 9999;
-            border-bottom: 3px solid #FFB300;
+            font-size: 13px;
+            padding: 8px 0;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
             display: flex;
             justify-content: center;
         }
-        .header-content {
+        .top-bar-content {
             width: 1200px;
             display: flex;
             justify-content: space-between;
             padding: 0 15px;
         }
 
-        /* 3. THANH MENU (NAVIGATION BAR) */
-        .nav-bar {
+        /* 3. MENU NAVIGATION */
+        .nav-container {
             background: white;
-            padding: 15px 0;
-            margin-top: 30px; /* Né cái header fixed */
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
+            margin-top: 0px;
+            border-bottom: 4px solid #FFB300; /* Viền vàng dưới menu */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 10px 0;
         }
-        
-        /* Biến nút bấm thành Text Link sang trọng */
         div.stButton > button {
             background-color: transparent !important;
             color: #002147 !important;
@@ -58,78 +53,94 @@ def apply_styles():
             text-transform: uppercase !important;
             font-size: 15px !important;
             border-radius: 0 !important;
-            padding: 10px 20px !important;
-            transition: 0.3s;
+            transition: 0.2s;
         }
         div.stButton > button:hover {
             color: #D32F2F !important;
             background-color: #f0f2f5 !important;
-            border-bottom: 2px solid #D32F2F !important;
-        }
-        /* Nút đang được chọn (Active) */
-        div.stButton > button:focus {
-            color: #D32F2F !important;
-            border-bottom: 2px solid #D32F2F !important;
         }
 
-        /* 4. ĐỊNH DẠNG KHỐI NỘI DUNG (CARD) */
-        .section-title {
-            color: #002147;
+        /* 4. TIÊU ĐỀ KHỐI (GIỐNG MẪU OLYMPIC 'ĐƠN VỊ TỔ CHỨC') */
+        .olympic-header {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            color: #D32F2F; /* Màu đỏ đô sang trọng */
             font-weight: 800;
-            font-size: 24px;
             text-transform: uppercase;
-            border-left: 6px solid #FFB300;
-            padding-left: 15px;
-            margin: 30px 0 20px 0;
-            background: linear-gradient(90deg, #e3f2fd 0%, transparent 100%);
-            padding-top: 5px;
-            padding-bottom: 5px;
+            padding: 12px 20px;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 30px;
+            border-radius: 5px 5px 0 0;
+            position: relative;
+        }
+        /* Kẻ vạch màu xanh dưới tiêu đề */
+        .olympic-header::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #002147;
+            margin: 5px auto 0;
         }
 
-        .info-card {
+        /* 5. NỘI DUNG KHỐI (BOX) */
+        .olympic-box {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
-            height: 100%;
-            transition: transform 0.3s;
-        }
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-            border-color: #FFB300;
+            border: 1px solid #ddd;
+            padding: 25px;
+            border-radius: 0 0 5px 5px; /* Bo góc dưới */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
         }
 
-        /* 5. FOOTER */
-        .footer {
-            background-color: #002147;
+        /* 6. LOGO ĐỐI TÁC */
+        .partner-img {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+        }
+        .partner-label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #002147;
+            margin-top: 10px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        /* FOOTER */
+        .footer-container {
+            background: #002147;
             color: white;
+            text-align: center;
             padding: 40px 0;
             margin-top: 50px;
-            border-top: 5px solid #D32F2F;
-            text-align: center;
+            border-top: 5px solid #FFB300;
         }
         </style>
     """, unsafe_allow_html=True)
 
-def render_header():
+# ĐÂY LÀ HÀM BẠN ĐANG BỊ LỖI - TUI ĐÃ THÊM VÀO RỒI
+def render_top_bar():
     st.markdown("""
-        <div class="top-header">
-            <div class="header-content">
-                <div>🛠️ Phát triển và xây dựng bởi <b>DVT - Empire CBZ X - THPT Dương Văn Thì</b></div>
-                <div style="font-weight:bold; letter-spacing: 1px;">🛡️ SILVERSHIELD</div>
+        <div class="top-bar-container">
+            <div class="top-bar-content">
+                <div>🛠️ Phát triển bởi <b>DVT - Empire CBZ X</b> - THPT Dương Văn Thì</div>
+                <div>🛡️ <b>SILVERSHIELD</b> - VÌ KHÔNG GIAN MẠNG AN TOÀN</div>
             </div>
         </div>
-        <div style="height: 40px;"></div> <!-- Khoảng trống để không bị che nội dung -->
     """, unsafe_allow_html=True)
 
-def render_footer():
-    st.markdown("""
-        <div class="footer">
-            <h2 style="margin:0; font-size: 28px;">SILVERSHIELD</h2>
-            <p style="font-size: 16px; font-style: italic; margin-top: 10px;">"Vì một không gian mạng an toàn"</p>
-            <hr style="width: 200px; margin: 20px auto; border-color: #FFB300;">
-            <p style="font-size: 14px;">© 2026 Bản quyền thuộc về <b>Đội ngũ DVT - Empire CBZ X</b></p>
-        </div>
-    """, unsafe_allow_html=True)
+# Hàm tạo tiêu đề giống Olympic
+def section_header(title):
+    st.markdown(f'<div class="olympic-header">{title}</div>', unsafe_allow_html=True)
+
+def open_box():
+    st.markdown('<div class="olympic-box">', unsafe_allow_html=True)
+
+def close_box():
+    st.markdown('</div>', unsafe_allow_html=True)
