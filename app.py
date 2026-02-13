@@ -147,41 +147,33 @@ if st.session_state['page'] == 'TRANG CHỦ':
         """, unsafe_allow_html=True)
 
 
-    # --- KHỐI: TIN TỨC (GRID 6 BÀI) ---
-    st.markdown('<div class="news-header-bar">TIN TỨC</div>', unsafe_allow_html=True)
+   # --- KHỐI TIN TỨC (Sửa lỗi TypeError) ---
+    st.markdown('<div class="news-header-bar">TIN TỨC MỚI NHẤT</div>', unsafe_allow_html=True)
     
-    # Tạo dữ liệu giả lập cho 6 bài tin
-    # Bạn thay link ảnh thumbnail và tiêu đề thật vào đây
     news_data = [
-        {"title": "🚀 Cảnh báo thủ đoạn lừa đảo 'Con đang cấp cứu' quay trở lại", "img": "https://img.freepik.com/free-vector/hacker-operating-laptop-cartoon-icon-illustration-technology-icon-concept-isolated-flat-cartoon-style_138676-2387.jpg"},
-        {"title": "💡 5 Cách nhận biết website giả mạo ngân hàng", "img": "https://img.freepik.com/free-vector/cyber-security-concept_23-2148532223.jpg"},
-        {"title": "🔥 Giả danh công an gọi video call: Chiêu trò mới", "img": "https://img.freepik.com/free-vector/scam-alert-background_23-2148079148.jpg"},
-        {"title": "🚀 Bộ Công an ra mắt cẩm nang phòng chống tội phạm mạng", "img": "https://img.freepik.com/free-vector/internet-security-concept_23-2148532222.jpg"},
-        {"title": "💡 Deepfake là gì? Tại sao người già dễ bị lừa?", "img": "https://img.freepik.com/free-vector/cyber-attack-concept-illustration_114360-1934.jpg"},
-        {"title": "🔥 Hướng dẫn cài đặt sinh trắc học an toàn", "img": "https://img.freepik.com/free-vector/biometric-security-concept_23-2148532221.jpg"},
+        {"title": "Cảnh báo thủ đoạn lừa đảo 'Con đang cấp cứu'", "img": "https://img.freepik.com/free-vector/hacker-operating-laptop-cartoon-icon-illustration_138676-2387.jpg"},
+        {"title": "5 Cách nhận biết website giả mạo ngân hàng", "img": "https://img.freepik.com/free-vector/cyber-security-concept_23-2148532223.jpg"},
+        {"title": "Giả danh công an gọi video call: Chiêu trò mới", "img": "https://img.freepik.com/free-vector/scam-alert-background_23-2148079148.jpg"},
+        {"title": "Bộ Công an ra mắt cẩm nang phòng mạng", "img": "https://img.freepik.com/free-vector/internet-security-concept_23-2148532222.jpg"},
+        {"title": "Deepfake là gì? Tại sao người già dễ bị lừa?", "img": "https://img.freepik.com/free-vector/cyber-attack-concept-illustration_114360-1934.jpg"},
+        {"title": "Hướng dẫn cài đặt sinh trắc học an toàn", "img": "https://img.freepik.com/free-vector/biometric-security-concept_23-2148532221.jpg"},
     ]
-    
-    # Tạo lưới 3 cột x 2 hàng
-    for i in range(0, 6, 3): # Vòng lặp tạo từng hàng
+
+    for i in range(0, 6, 3):
         cols = st.columns(3)
         for j in range(3):
-            if i + j < 6:
-                news = news_data[i+j]
+            idx = i + j
+            if idx < len(news_data):
                 with cols[j]:
-                    # Nút ẩn để bấm vào tin tức (giả lập link)
-                    if st.button(f"news_btn_{i+j}", key=f"news_{i+j}", label_visibility="collapsed"):
-                        st.session_state['page'] = 'TIN TỨC'
-                    
-                    # Render thẻ tin tức HTML
                     st.markdown(f"""
                     <div class="news-card">
-                        <img src="{news['img']}" class="news-thumb">
-                        <div class="news-content">
-                            <div class="news-title">{news['title']}</div>
-                        </div>
+                        <img src="{news_data[idx]['img']}" class="news-thumb">
+                        <div class="news-title">{news_data[idx]['title']}</div>
                     </div>
                     """, unsafe_allow_html=True)
-
+                    if st.button(f"Xem chi tiết bài {idx+1}", key=f"btn_{idx}", use_container_width=True):
+                        st.session_state['page'] = 'TIN TỨC'
+                        st.rerun()
 
 # ==================== CÁC TRANG KHÁC (GIỮ NGUYÊN CODE CŨ CỦA BẠN) ====================
 elif st.session_state['page'] == 'VỆ SĨ AI':
@@ -213,6 +205,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
 
 # --- FOOTER ---
 styles.render_footer_structure()
+
 
 
 
