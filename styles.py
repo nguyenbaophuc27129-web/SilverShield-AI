@@ -49,7 +49,7 @@ def apply_styles():
             border-bottom: 3px solid #d32f2f;
         }
 
-        /* --- MỚI: HIỆU ỨNG CHỮ CHẠY --- */
+        /* --- HIỆU ỨNG CHỮ CHẠY --- */
         .marquee-strip {
             background: white;
             width: 100vw;
@@ -88,18 +88,16 @@ def apply_styles():
             color: #d32f2f !important;
         }
         
-        /* --- 3. HERO BANNER (FIX LỖI LỒNG KHỐI) --- */
+        /* --- 3. HERO BANNER (ĐÃ FIX LỖI BANNER NẰM DƯỚI) --- */
         .hero-container {
             width: 100vw;
             position: relative;
             left: 50%; right: 50%;
             margin-left: -50vw; margin-right: -50vw;
-            min-height: 450px;
+            min-height: 400px; /* Cố định chiều cao nền */
             background: linear-gradient(135deg, #002147 0%, #004080 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 0;
+            z-index: 1;
+            margin-bottom: 0px;
         }
         .hero-bg-overlay {
             position: absolute;
@@ -107,31 +105,32 @@ def apply_styles():
             background-image: url('https://img.freepik.com/free-vector/dark-blue-technology-background_23-2148443372.jpg');
             background-size: cover;
             opacity: 0.2;
-            z-index: 1;
-        }
-        .hero-content-wrapper {
-            width: 1200px;
             z-index: 2;
-            display: flex;
-            align-items: center;
-            padding: 0 15px;
         }
 
+        /* Lớp trung gian để kéo cái box lên trên nền */
         .glass-box {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            padding: 30px;
-            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.7) !important;
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.2);
             color: white;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            max-width: 500px;
+            margin: -320px auto 100px auto !important; /* KÉO LÊN TRÊN NỀN 320PX */
+            position: relative;
+            z-index: 99; /* Đảm bảo nổi lên trên cùng */
         }
+        
         .btn-check-now button {
             background: linear-gradient(to right, #00c6ff, #0072ff) !important;
             color: white !important;
             border-radius: 50px !important;
             border: 2px solid white !important;
+            padding: 12px 30px !important;
+            font-size: 18px !important;
         }
 
         /* --- 4. CÁC KHỐI KHÁC --- */
@@ -162,7 +161,7 @@ def render_header_structure():
             </div>
         </div>
     """, unsafe_allow_html=True)
-    # MỚI: TẦNG CHỮ CHẠY
+    # TẦNG CHỮ CHẠY
     st.markdown("""
         <div class="marquee-strip">
             <div class="marquee-text">
