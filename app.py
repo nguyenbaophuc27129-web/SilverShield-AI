@@ -62,7 +62,7 @@ col_btn1, col_btn2, col_btn3 = st.columns([2, 1, 2])
 with col_btn2:
     st.markdown('<div style="margin-top: -80px; position: relative; z-index: 100;">', unsafe_allow_html=True)
     if st.button("KIỂM TRA NGAY", key="hero_btn", use_container_width=True):
-        st.session_state['page'] = 'VỆ SĨ AI'
+        st.session_state['page'] = 'VỆ SĨ SILVER'
         st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -120,6 +120,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
+
 
 
 
