@@ -3,111 +3,70 @@ import streamlit as st
 def apply_styles():
     st.markdown("""
         <style>
-        /* 1. CĂN CHỈNH KHUNG NHÌN CHUẨN OLYMPIC (1200px) */
+        /* --- 1. GLOBAL RESET & LAYOUT --- */
+        html, body, [class*="css"] {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+        }
         .block-container {
             max-width: 1200px !important;
-            padding-top: 2rem !important;
-            padding-bottom: 3rem !important;
+            padding: 1rem 1rem 3rem 1rem !important;
             margin: 0 auto !important;
         }
-        
-        /* ẨN GIAO DIỆN MẶC ĐỊNH */
         [data-testid="stHeader"], [data-testid="stSidebar"] { display: none !important; }
-        .stApp { background-color: #f4f7f9; }
 
-        /* 2. TOP HEADER (MÀU XANH ĐẬM) */
-        .top-header {
-            background-color: #002147;
+        /* --- 2. HEADER & MENU --- */
+        .top-bar {
+            background-color: #0d2a4f;
             color: white;
-            padding: 10px 0;
-            font-size: 14px;
-            font-weight: 500;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 9999;
-            border-bottom: 3px solid #FFB300;
-            display: flex;
-            justify-content: center;
+            padding: 8px 0;
+            font-size: 13px;
         }
-        .header-content {
-            width: 1200px;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 15px;
-        }
-
-        /* 3. THANH MENU (NAVIGATION BAR) */
         .nav-bar {
             background: white;
-            padding: 15px 0;
-            margin-top: 30px; /* Né cái header fixed */
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
         }
-        
-        /* Biến nút bấm thành Text Link sang trọng */
         div.stButton > button {
-            background-color: transparent !important;
-            color: #002147 !important;
+            background: transparent !important;
+            color: #0d2a4f !important;
             border: none !important;
-            font-weight: 700 !important;
+            font-weight: bold !important;
             text-transform: uppercase !important;
-            font-size: 15px !important;
-            border-radius: 0 !important;
-            padding: 10px 20px !important;
-            transition: 0.3s;
+            font-size: 14px !important;
         }
-        div.stButton > button:hover {
-            color: #D32F2F !important;
-            background-color: #f0f2f5 !important;
-            border-bottom: 2px solid #D32F2F !important;
-        }
-        /* Nút đang được chọn (Active) */
-        div.stButton > button:focus {
-            color: #D32F2F !important;
-            border-bottom: 2px solid #D32F2F !important;
-        }
+        div.stButton > button:hover { color: #c53030 !important; }
 
-        /* 4. ĐỊNH DẠNG KHỐI NỘI DUNG (CARD) */
-        .section-title {
-            color: #002147;
-            font-weight: 800;
-            font-size: 24px;
-            text-transform: uppercase;
-            border-left: 6px solid #FFB300;
-            padding-left: 15px;
-            margin: 30px 0 20px 0;
-            background: linear-gradient(90deg, #e3f2fd 0%, transparent 100%);
-            padding-top: 5px;
-            padding-bottom: 5px;
+        /* --- 3. CONTENT STYLING --- */
+        .section-header {
+            color: #0d2a4f;
+            font-size: 22px;
+            font-weight: bold;
+            border-left: 5px solid #c53030;
+            padding-left: 10px;
+            margin: 30px 0 15px 0;
         }
-
-        .info-card {
+        .content-box {
             background: white;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
             height: 100%;
-            transition: transform 0.3s;
         }
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-            border-color: #FFB300;
+        .content-box h3 {
+            color: #0d2a4f;
+            font-size: 18px;
+            margin-top: 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
         }
 
-        /* 5. FOOTER */
+        /* --- 4. FOOTER --- */
         .footer {
-            background-color: #002147;
+            background: #0d2a4f;
             color: white;
-            padding: 40px 0;
-            margin-top: 50px;
-            border-top: 5px solid #D32F2F;
+            padding: 30px 0;
+            margin-top: 40px;
             text-align: center;
         }
         </style>
@@ -115,21 +74,12 @@ def apply_styles():
 
 def render_header():
     st.markdown("""
-        <div class="top-header">
-            <div class="header-content">
-                <div>🛠️ Phát triển và xây dựng bởi <b>DVT - Empire CBZ X - THPT Dương Văn Thì</b></div>
-                <div style="font-weight:bold; letter-spacing: 1px;">🛡️ SILVERSHIELD</div>
+        <div style="background-color:#0d2a4f; width:100vw; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw;">
+            <div class="block-container top-bar">
+                <div style="display:flex; justify-content:space-between;">
+                    <span>Phát triển bởi: DVT-Empire CBZ X</span>
+                    <span>SILVERSHIELD</span>
+                </div>
             </div>
-        </div>
-        <div style="height: 40px;"></div> <!-- Khoảng trống để không bị che nội dung -->
-    """, unsafe_allow_html=True)
-
-def render_footer():
-    st.markdown("""
-        <div class="footer">
-            <h2 style="margin:0; font-size: 28px;">SILVERSHIELD</h2>
-            <p style="font-size: 16px; font-style: italic; margin-top: 10px;">"Vì một không gian mạng an toàn"</p>
-            <hr style="width: 200px; margin: 20px auto; border-color: #FFB300;">
-            <p style="font-size: 14px;">© 2026 Bản quyền thuộc về <b>Đội ngũ DVT - Empire CBZ X</b></p>
         </div>
     """, unsafe_allow_html=True)
