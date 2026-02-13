@@ -100,37 +100,37 @@ def apply_styles():
             opacity: 0.2;
         }
         
+       /* Đảm bảo nội dung nằm chính giữa vùng xanh */
         .hero-content-wrapper {
-            position: relative;
-            z-index: 10;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 1200px;
+            z-index: 20;
             display: flex;
             align-items: center;
-            gap: 30px;
         }
 
-        .glass-box {
-            background: rgba(0, 0, 0, 0.7) !important;
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            text-align: center;
+        /* Kéo nút bấm lên đè lên Banner */
+        div.btn-check-now {
+            display: flex;
+            justify-content: flex-end; /* Căn nút sang phải cho khớp với khối chữ */
+            width: 1200px;
+            margin: -110px auto 50px auto !important; /* Số âm để kéo nút lên */
+            padding-right: 80px;
+            position: relative;
+            z-index: 1001;
         }
 
-        /* NÚT KIỂM TRA NGAY */
         div.btn-check-now div.stButton > button {
             background: linear-gradient(90deg, #ff8a00, #e52e71) !important;
             color: white !important;
             border-radius: 50px !important;
-            padding: 15px 40px !important;
+            padding: 12px 40px !important;
             font-size: 18px !important;
             font-weight: 900 !important;
             border: 2px solid white !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
-            margin-top: 10px !important;
-            text-transform: uppercase !important;
         }
 
         /* --- 5. BANNER STRIPS & CARDS --- */
