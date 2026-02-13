@@ -98,7 +98,7 @@ with col_btn2:
             st.link_button("CHI TIẾT", item['url'], use_container_width=True)
 
 # --- GIỮ NGUYÊN PHẦN LOGIC VỆ SĨ AI ---
-elif st.session_state['page'] == 'VỆ SĨ AI':
+elif st.session_state['page'] == 'VỆ SĨ SILVER':
     st.markdown('<div class="rules-main-header">🛡️ TRUNG TÂM PHÂN TÍCH AI</div>', unsafe_allow_html=True)
     c1, c2 = st.columns([1, 1], gap="large")
     with c1:
@@ -120,6 +120,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
+
 
 
 
