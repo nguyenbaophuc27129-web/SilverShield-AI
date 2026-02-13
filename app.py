@@ -32,36 +32,36 @@ with m4:
 st.markdown('</div></div>', unsafe_allow_html=True)
 
 # ==================== TRANG CHỦ (CHÍNH) ====================
-    # --- PHẦN BANNER CHÍNH (FIX LỖI NHẢY KHỐI) ---
-    
-    # Mở khối nền Hero
-    st.markdown('<div class="hero-container"><div class="hero-bg-overlay"></div>', unsafe_allow_html=True)
-    
-    # Gộp Ảnh và Chữ vào một khối HTML duy nhất để cố định vị trí
-    # Sử dụng link RAW của GitHub để đảm bảo ảnh hiển thị
-    st.markdown("""
-        <div class="hero-content-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 40px; width: 1200px; margin: 0 auto; height: 100%;">
-            <div style="flex: 2; display: flex; justify-content: center;">
-                <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/de467deafaddee37c8ed8fb255d2631da0d6753a/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png" 
-                     style="width: 90%; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.1);">
-            </div>
-            
-            <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                <div class="glass-box" style="width: 100%;">
-                    <h2 style="color:#FFB300; margin:0; font-size: 32px; font-weight: 900; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">VỆ SĨ SILVER</h2>
-                    <div style="height: 3px; background: #d32f2f; width: 50px; margin: 15px auto;"></div>
-                    <p style="font-size:18px; color: white; font-weight: 500; line-height: 1.5;">Hệ thống trí tuệ nhân tạo<br>bảo vệ người cao tuổi</p>
-                </div>
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
-    
-    # Đóng khối nền Hero
-    st.markdown('</div>', unsafe_allow_html=True) 
+    # --- PHẦN BANNER CHÍNH (FIX LỖI THỤT LỀ & VỊ TRÍ) ---
+# Mở khối nền Hero
+st.markdown('<div class="hero-container"><div class="hero-bg-overlay"></div>', unsafe_allow_html=True)
 
-    # Nút bấm nằm ngay dưới (CSS sẽ dùng margin âm để kéo nó lên đè lên Banner)
-    st.markdown('<div class="btn-check-now">', unsafe_allow_html=True)
-    if st.button("KIỂM TRA NGAY", key="hero_btn"):
+# Nội dung Banner dùng HTML để không bị Streamlit tự ngắt dòng
+st.markdown("""
+<div class="hero-content-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 40px; width: 100%; max-width: 1200px; margin: 0 auto;">
+    <div style="flex: 2; display: flex; justify-content: center;">
+        <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png" 
+             style="width: 100%; max-width: 750px; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.4);">
+    </div>
+    
+    <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+        <div class="glass-box" style="padding: 30px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); text-align: center;">
+            <h2 style="color:#FFB300; margin:0; font-size: 32px; font-weight: 900;">VỆ SĨ SILVER</h2>
+            <div style="height: 3px; background: #d32f2f; width: 50px; margin: 15px auto;"></div>
+            <p style="font-size:18px; color: white; margin: 0;">Hệ thống trí tuệ nhân tạo<br>bảo vệ người cao tuổi</p>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# Đóng khối nền Hero
+st.markdown('</div>', unsafe_allow_html=True)
+
+# Nút bấm đặt riêng để Streamlit xử lý sự kiện click
+col_btn1, col_btn2, col_btn3 = st.columns([2, 1, 2])
+with col_btn2:
+    st.markdown('<div style="margin-top: -80px; position: relative; z-index: 100;">', unsafe_allow_html=True)
+    if st.button("KIỂM TRA NGAY", key="hero_btn", use_container_width=True):
         st.session_state['page'] = 'VỆ SĨ AI'
         st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
@@ -120,5 +120,6 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
+
 
 
