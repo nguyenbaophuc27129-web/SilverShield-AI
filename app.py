@@ -28,7 +28,7 @@ with m2:
 with m3:
     if st.button("TIN TỨC", use_container_width=True): st.session_state['page'] = 'TIN TỨC'
 with m4:
-    if st.button("VỆ SĨ SILVER", use_container_width=True): st.session_state['page'] = 'VỆ SĨ SILVER'
+    if st.button("VỆ SĨ AI", use_container_width=True): st.session_state['page'] = 'VỆ SĨ AI'
 st.markdown('</div></div>', unsafe_allow_html=True)
 
 # ==================== TRANG CHỦ (CHÍNH) ====================
@@ -62,7 +62,7 @@ col_btn1, col_btn2, col_btn3 = st.columns([2, 1, 2])
 with col_btn2:
     st.markdown('<div style="margin-top: -80px; position: relative; z-index: 100;">', unsafe_allow_html=True)
     if st.button("KIỂM TRA NGAY", key="hero_btn", use_container_width=True):
-        st.session_state['page'] = 'VỆ SĨ SILVER'
+        st.session_state['page'] = 'VỆ SĨ AI'
         st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -98,7 +98,7 @@ with col_btn2:
             st.link_button("CHI TIẾT", item['url'], use_container_width=True)
 
 # --- GIỮ NGUYÊN PHẦN LOGIC VỆ SĨ AI ---
-elif st.session_state['page'] == 'VỆ SĨ SILVER':
+elif st.session_state['page'] == 'VỆ SĨ AI':
     st.markdown('<div class="rules-main-header">🛡️ TRUNG TÂM PHÂN TÍCH AI</div>', unsafe_allow_html=True)
     c1, c2 = st.columns([1, 1], gap="large")
     with c1:
@@ -120,6 +120,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
+
 
 
 
