@@ -148,33 +148,58 @@ if st.session_state['page'] == 'TRANG CHỦ':
 
 
    # --- KHỐI TIN TỨC (Sửa lỗi TypeError) ---
-    st.markdown('<div class="news-header-bar">TIN TỨC MỚI NHẤT</div>', unsafe_allow_html=True)
+    st.markdown('<div class="news-header-bar">📰 Tin tức an ninh mạng</div>', unsafe_allow_html=True)
     
     news_data = [
-        {"title": "Cảnh báo thủ đoạn lừa đảo 'Con đang cấp cứu'", "img": "https://img.freepik.com/free-vector/hacker-operating-laptop-cartoon-icon-illustration_138676-2387.jpg"},
-        {"title": "5 Cách nhận biết website giả mạo ngân hàng", "img": "https://img.freepik.com/free-vector/cyber-security-concept_23-2148532223.jpg"},
-        {"title": "Giả danh công an gọi video call: Chiêu trò mới", "img": "https://img.freepik.com/free-vector/scam-alert-background_23-2148079148.jpg"},
-        {"title": "Bộ Công an ra mắt cẩm nang phòng mạng", "img": "https://img.freepik.com/free-vector/internet-security-concept_23-2148532222.jpg"},
-        {"title": "Deepfake là gì? Tại sao người già dễ bị lừa?", "img": "https://img.freepik.com/free-vector/cyber-attack-concept-illustration_114360-1934.jpg"},
-        {"title": "Hướng dẫn cài đặt sinh trắc học an toàn", "img": "https://img.freepik.com/free-vector/biometric-security-concept_23-2148532221.jpg"},
+        {
+            "title": "Cảnh báo thủ đoạn lừa đảo chiếm đoạt tài khoản qua mã QR",
+            "img": "https://vnn-imgs-f.vgcloud.vn/2023/08/15/11/qr-code-lua-dao.jpg",
+            "url": "https://chinhphu.vn/canh-bao-thu-doan-lua-dao-moi-qua-ma-qr-103230815"
+        },
+        {
+            "title": "Deepfake giả danh người thân gọi video call vay tiền",
+            "img": "https://vnn-imgs-f.vgcloud.vn/2023/03/27/10/deepfake-lua-dao.jpg",
+            "url": "https://tuoitre.vn/canh-bao-lua-dao-bang-video-call-deepfake-20230327101530456.htm"
+        },
+        {
+            "title": "Cảnh giác bẫy 'việc làm nhẹ lương cao' trên mạng",
+            "img": "https://vnn-imgs-f.vgcloud.vn/2022/06/20/16/lua-dao-viec-lam.jpg",
+            "url": "https://vnexpress.net/cac-bay-lua-dao-truc-tuyen-pho-bien-tai-viet-nam-4621535.html"
+        },
+        {
+            "title": "Cách nhận biết các trang web giả mạo cơ quan chức năng",
+            "img": "https://ict-imgs.vnncdn.net/files/2023/05/22/gia-mao-website-1.jpg",
+            "url": "https://xaydungchinhphu.vn/bo-cong-an-huong-dan-ky-nang-phong-chong-lua-dao-truc-tuyen-119230522"
+        },
+        {
+            "title": "Rủi ro mất tài khoản ngân hàng từ việc cài app lạ (.apk)",
+            "img": "https://vnn-imgs-f.vgcloud.vn/2023/07/05/09/app-gia-mao-thue.jpg",
+            "url": "https://thanhnien.vn/canh-bao-mat-tien-vi-cai-app-la-gia-danh-co-quan-thue-185230705091530.htm"
+        },
+        {
+            "title": "Chiến dịch nhận diện và phòng chống lừa đảo trực tuyến",
+            "img": "https://vnn-imgs-f.vgcloud.vn/2023/06/23/14/chien-dich-lua-dao.jpg",
+            "url": "https://mic.gov.vn/chien-dich-tuyen-truyen-ky-nang-nhan-dien-va-phong-chong-lua-dao-truc-tuyen-172230623143050.htm"
+        }
     ]
 
     for i in range(0, 6, 3):
-        cols = st.columns(3)
+        cols = st.columns(3, gap="medium")
         for j in range(3):
             idx = i + j
             if idx < len(news_data):
+                item = news_data[idx]
                 with cols[j]:
                     st.markdown(f"""
                     <div class="news-card">
-                        <img src="{news_data[idx]['img']}" class="news-thumb">
-                        <div class="news-title">{news_data[idx]['title']}</div>
+                        <img src="{item['img']}" style="width:100%; height:160px; object-fit:cover;">
+                        <div style="padding:15px;">
+                            <p style="font-weight:700; color:#002147; font-size:14px; height:60px; overflow:hidden;">{item['title']}</p>
+                            <p style="font-size:12px; color:#777;">📍 Nguồn: Tin tức Chính thống</p>
+                        </div>
                     </div>
                     """, unsafe_allow_html=True)
-                    if st.button(f"Xem chi tiết bài {idx+1}", key=f"btn_{idx}", use_container_width=True):
-                        st.session_state['page'] = 'TIN TỨC'
-                        st.rerun()
-
+                    st.link_button("ĐỌC CHI TIẾT", item['url'], use_container_width=True)
 # ==================== CÁC TRANG KHÁC (GIỮ NGUYÊN CODE CŨ CỦA BẠN) ====================
 elif st.session_state['page'] == 'VỆ SĨ AI':
     st.markdown('<div class="rules-main-header">🛡️ TRUNG TÂM PHÂN TÍCH AI</div>', unsafe_allow_html=True)
@@ -205,6 +230,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
 
 # --- FOOTER ---
 styles.render_footer_structure()
+
 
 
 
