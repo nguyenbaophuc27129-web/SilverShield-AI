@@ -1,5 +1,7 @@
 import streamlit as st
 
+import streamlit as st
+
 def apply_styles():
     st.markdown("""
         <style>
@@ -88,13 +90,13 @@ def apply_styles():
             color: #d32f2f !important;
         }
         
-        /* --- 3. HERO BANNER (ĐÃ FIX LỖI BANNER NẰM DƯỚI) --- */
+        /* --- 3. HERO BANNER (FIX LỖI NẰM DƯỚI) --- */
         .hero-container {
             width: 100vw;
             position: relative;
             left: 50%; right: 50%;
             margin-left: -50vw; margin-right: -50vw;
-            min-height: 400px; /* Cố định chiều cao nền */
+            min-height: 420px; /* Tăng nhẹ chiều cao để chứa đủ nội dung */
             background: linear-gradient(135deg, #002147 0%, #004080 100%);
             z-index: 1;
             margin-bottom: 0px;
@@ -108,7 +110,7 @@ def apply_styles():
             z-index: 2;
         }
 
-        /* Lớp trung gian để kéo cái box lên trên nền */
+        /* Khối banner chữ */
         .glass-box {
             background: rgba(0, 0, 0, 0.7) !important;
             backdrop-filter: blur(10px);
@@ -118,10 +120,20 @@ def apply_styles():
             color: white;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            max-width: 500px;
-            margin: -320px auto 100px auto !important; /* KÉO LÊN TRÊN NỀN 320PX */
+            max-width: 600px;
+            margin: -380px auto 20px auto !important; /* Kéo khối chữ lên cao */
             position: relative;
-            z-index: 99; /* Đảm bảo nổi lên trên cùng */
+            z-index: 99;
+        }
+
+        /* FIX: Kéo nút "Kiểm tra ngay" lên trên nền */
+        .btn-check-now {
+            position: relative;
+            z-index: 100;
+            margin-top: -80px !important; /* Kéo nút lên khỏi vùng trắng */
+            margin-bottom: 40px !important;
+            display: flex;
+            justify-content: center;
         }
         
         .btn-check-now button {
@@ -129,8 +141,10 @@ def apply_styles():
             color: white !important;
             border-radius: 50px !important;
             border: 2px solid white !important;
-            padding: 12px 30px !important;
+            padding: 12px 35px !important;
             font-size: 18px !important;
+            font-weight: 700 !important;
+            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.4);
         }
 
         /* --- 4. CÁC KHỐI KHÁC --- */
