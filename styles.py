@@ -21,7 +21,7 @@ def apply_styles():
         
         [data-testid="stHeader"], [data-testid="stSidebar"] { display: none !important; }
 
-        /* --- 2. HEADER 2 TẦNG (FIXED THEO MẪU) --- */
+        /* --- 2. HEADER 2 TẦNG (OLYMPIC STYLE) --- */
         .olympic-topbar {
             background-color: #002147;
             color: white;
@@ -33,6 +33,7 @@ def apply_styles():
             left: 50%; right: 50%;
             margin-left: -50vw; margin-right: -50vw;
             display: flex; justify-content: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
         .olympic-navbar {
@@ -44,19 +45,19 @@ def apply_styles():
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             display: flex; justify-content: center;
             padding: 10px 0;
-            border-bottom: 3px solid #d32f2f; /* Gạch chân đỏ chuẩn mẫu */
             z-index: 100;
+            border-bottom: 3px solid #d32f2f;
         }
 
-        /* --- 3. HIỆU ỨNG CHỮ CHẠY (MARQUEE) --- */
-        .marquee-container {
-            background: #fff;
-            padding: 5px 0;
-            border-bottom: 1px solid #eee;
+        /* --- MỚI: HIỆU ỨNG CHỮ CHẠY --- */
+        .marquee-strip {
+            background: white;
             width: 100vw;
             position: relative;
             left: 50%; right: 50%;
             margin-left: -50vw; margin-right: -50vw;
+            border-bottom: 1px solid #eee;
+            padding: 5px 0;
             overflow: hidden;
         }
         .marquee-text {
@@ -72,117 +73,110 @@ def apply_styles():
             100% { transform: translateX(-100%); }
         }
 
-        /* --- 4. HERO BANNER (XẾP LỚP CHUẨN ẢNH C1DE18) --- */
-        .hero-bg {
-            background: linear-gradient(135deg, #002147 0%, #004080 100%);
+        div.stButton > button {
+            background: transparent !important;
+            color: #002147 !important;
+            border: none !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            font-size: 15px !important;
+            padding: 10px 20px !important;
+            transition: all 0.3s;
+        }
+        div.stButton > button:hover {
+            background-color: #f0f4f8 !important;
+            color: #d32f2f !important;
+        }
+        
+        /* --- 3. HERO BANNER (FIX LỖI LỒNG KHỐI) --- */
+        .hero-container {
             width: 100vw;
             position: relative;
             left: 50%; right: 50%;
             margin-left: -50vw; margin-right: -50vw;
-            padding: 50px 0;
-            display: flex; justify-content: center;
-        }
-        .hero-inner {
-            width: 1200px;
+            min-height: 450px;
+            background: linear-gradient(135deg, #002147 0%, #004080 100%);
             display: flex;
-            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+        }
+        .hero-bg-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://img.freepik.com/free-vector/dark-blue-technology-background_23-2148443372.jpg');
+            background-size: cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        .hero-content-wrapper {
+            width: 1200px;
+            z-index: 2;
+            display: flex;
             align-items: center;
             padding: 0 15px;
         }
-        .banner-img-box img {
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        /* Glass box cho nút bắt đầu thi */
+
         .glass-box {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
             padding: 30px;
             border-radius: 8px;
             border: 1px solid rgba(255,255,255,0.2);
             color: white;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .btn-check-now button {
+            background: linear-gradient(to right, #00c6ff, #0072ff) !important;
+            color: white !important;
+            border-radius: 50px !important;
+            border: 2px solid white !important;
         }
 
-        /* Style nút Streamlit trong Header/Banner */
-        div.stButton > button {
-            font-weight: 700 !important;
-            text-transform: uppercase !important;
-            transition: all 0.3s;
-        }
+        /* --- 4. CÁC KHỐI KHÁC --- */
+        .banner-strip { background: white; border: 1px solid #e0e0e0; padding: 30px; text-align: center; height: 100%; }
+        .banner-header { color: #d32f2f; font-weight: 700; font-size: 20px; text-transform: uppercase; margin-bottom: 15px; }
+        .banner-divider { height: 1px; background-color: #e0e0e0; width: 50px; margin: 0 auto 15px auto; }
+        .rules-main-header { background-color: #002147; color: white; padding: 15px 20px; font-size: 18px; font-weight: 700; text-transform: uppercase; margin-top: 40px; display: flex; align-items: center; gap: 10px; }
+        .rule-card { background: white; border: 1px solid #ddd; height: 100%; }
+        .rule-header { padding: 15px; text-align: center; color: white; font-weight: bold; font-size: 18px; text-transform: uppercase; }
+        .bg-red { background-color: #e53935; }
+        .bg-green { background-color: #43a047; }
+        .bg-teal { background-color: #00897b; }
+        .rule-body { padding: 20px; font-size: 14px; line-height: 1.8; }
+        .rule-item { border-bottom: 1px solid #eee; padding: 5px 0; }
+        .news-header-bar { background-color: #0044cc; border-top: 3px solid #d32f2f; color: white; text-align: center; padding: 10px; font-weight: 700; font-size: 20px; margin-top: 40px; margin-bottom: 20px; }
+        .news-card { background: white; border: 1px solid #eee; margin-bottom: 15px; transition: 0.3s; }
+        .footer { background-color: #002147; color: white; padding: 40px 0; text-align: center; border-top: 5px solid #d32f2f; margin-top: 50px; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; }
         </style>
     """, unsafe_allow_html=True)
 
-def render_header():
+def render_header_structure():
     # TẦNG 1: TOP BAR
     st.markdown("""
         <div class="olympic-topbar">
             <div style="width:1200px; display:flex; justify-content:space-between; padding:0 15px;">
-                <span>🛠️ Phát triển: <b>DVT - Empire CBZ X - THPT Dương Văn Thì</b></span>
-                <span>📍 Vị trí: <b>SILVERSHIELD</b></span>
+                <span>🛠️ Phát triển và xây dựng bởi <b>DVT - Empire CBZ X - THPT Dương Văn Thì</b></span>
+                <span>🛡️ <b>SILVERSHIELD</b></span>
             </div>
         </div>
     """, unsafe_allow_html=True)
-
-    # TẦNG 2: NAVBAR (Sử dụng columns để đặt logo và menu)
-    st.markdown('<div class="olympic-navbar">', unsafe_allow_html=True)
-    nav_col1, nav_col2 = st.columns([1, 4])
-    with nav_col1:
-        st.image("https://cdn-icons-png.flaticon.com/512/9664/9664268.png", width=50)
-    with nav_col2:
-        m1, m2, m3, m4, m5 = st.columns(5)
-        m1.button("Trang chủ", key="nav_home")
-        m2.button("Giới thiệu", key="nav_intro")
-        m3.button("Tin tức", key="nav_news")
-        m4.button("Vệ sĩ AI", key="nav_ai")
-        m5.button("Liên hệ", key="nav_contact")
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    # CHỮ CHẠY
+    # MỚI: TẦNG CHỮ CHẠY
     st.markdown("""
-        <div class="marquee-container">
+        <div class="marquee-strip">
             <div class="marquee-text">
-                📢 CHÀO MỪNG BẠN ĐẾN VỚI HỆ THỐNG SILVERSHIELD AI - BẢO VỆ NGƯỜI CAO TUỔI TRÊN KHÔNG GIAN MẠNG. HÃY CẨN THẬN VỚI CÁC CUỘC GỌI LẠ VÀ LINK GIẢ MẠO!
+                📢 CHÀO MỪNG BẠN ĐẾN VỚI HỆ THỐNG SILVERSHIELD AI - PHÒNG CHỐNG LỪA ĐẢO TRỰC TUYẾN. HÃY CẨN THẬN VỚI CÁC YÊU CẦU CHUYỂN TIỀN VÀ CÀI ĐẶT ỨNG DỤNG LẠ!
             </div>
         </div>
     """, unsafe_allow_html=True)
 
-def render_hero_banner():
-    # KHỐI BANNER CHÍNH
-    st.markdown('<div class="hero-bg"><div class="hero-inner">', unsafe_allow_html=True)
-    
-    col_banner, col_action = st.columns([2.5, 1])
-    
-    with col_banner:
-        # Ảnh banner chính (giống ảnh c1d736)
-        st.image("https://olympicenglish.vn/upload/banner-olympic-2025.png", use_container_width=True)
-        
-    with col_action:
-        st.markdown("""
-            <div class="glass-box">
-                <h3 style="color:white; margin-bottom:10px;">Bắt đầu thi</h3>
-                <p style="font-size:13px; opacity:0.9; margin-bottom:20px;">
-                    Vui lòng nhấn nút bên dưới để tham gia hệ thống kiểm tra an ninh mạng.
-                </p>
-            </div>
-        """, unsafe_allow_html=True)
-        # Nút kiểm tra ngay (Dùng style gradient như yêu cầu của bạn)
-        if st.button("🚀 KIỂM TRA NGAY", use_container_width=True, type="primary"):
-            st.switch_page("pages/ai_check.py") # Hoặc logic của bạn
-
-    st.markdown('</div></div>', unsafe_allow_html=True)
-
-# --- CHƯƠNG TRÌNH CHÍNH ---
-def main():
-    st.set_page_config(layout="wide", page_title="SilverShield AI")
-    apply_styles()
-    
-    # Render Header & Banner
-    render_header()
-    render_hero_banner()
-    
-    # Thêm các phần Section khác của bạn ở dưới này...
-    st.markdown('<div class="news-header-bar">TIN MỚI NHẤT</div>', unsafe_allow_html=True)
-
-if __name__ == "__main__":
-    main()
+def render_footer_structure():
+    st.markdown("""
+        <div class="footer">
+            <h2 style="margin:0;">SILVERSHIELD</h2>
+            <p style="opacity:0.8; margin-top:5px;">"Vì một không gian mạng an toàn"</p>
+            <div style="border-top:1px solid rgba(255,255,255,0.2); width:200px; margin:20px auto;"></div>
+            <p style="font-size:13px;">© 2026 Bản quyền thuộc về Đội ngũ DVT - Empire CBZ X</p>
+        </div>
+    """, unsafe_allow_html=True)
