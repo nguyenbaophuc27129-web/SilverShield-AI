@@ -3,205 +3,213 @@ from PIL import Image
 import styles
 import logic
 
-# --- KHỞI TẠO ---
+# --- 1. KHỞI TẠO ---
 styles.apply_styles()
-styles.render_header()
+styles.render_header_structure() # Top Bar Xanh
 try:
     model = logic.init_ai()
 except:
-    pass # Bỏ qua nếu chưa config key để web vẫn hiện
+    pass 
 
 if 'page' not in st.session_state:
     st.session_state['page'] = 'TRANG CHỦ'
 
-# --- BANNER LỚN & LOGO ---
-# Banner Olympic mẫu (Bạn thay link ảnh banner thật của bạn vào đây)
-st.image("https://olympicenglish.vn/upload/banner-olympic-2025.png", use_container_width=True)
+# --- 2. NAVBAR (Thanh trắng chứa Logo và Menu) ---
+st.markdown('<div class="olympic-navbar"><div style="width:1200px;">', unsafe_allow_html=True)
+c_logo, c_menu = st.columns([1.5, 8.5])
 
-# --- MENU ĐIỀU HƯỚNG (TASKBAR) ---
-st.markdown('<div class="nav-bar">', unsafe_allow_html=True)
-# Chia 4 cột đều nhau cho menu
-m1, m2, m3, m4 = st.columns(4)
-with m1:
-    if st.button("🏠 TRANG CHỦ", use_container_width=True): st.session_state['page'] = 'TRANG CHỦ'
-with m2:
-    if st.button("👥 GIỚI THIỆU", use_container_width=True): st.session_state['page'] = 'GIỚI THIỆU'
-with m3:
-    if st.button("📰 TIN TỨC", use_container_width=True): st.session_state['page'] = 'TIN TỨC'
-with m4:
-    if st.button("🛡️ VỆ SĨ SILVER", use_container_width=True): st.session_state['page'] = 'VỆ SĨ SILVER'
-st.markdown('</div>', unsafe_allow_html=True)
+with c_logo:
+    # Logo tròn bên trái (Thay link logo của bạn)
+    st.markdown('<img src="https://cdn-icons-png.flaticon.com/512/9664/9664268.png" style="height:60px; margin-top:-10px;">', unsafe_allow_html=True)
 
-# --- NỘI DUNG CHÍNH ---
+with c_menu:
+    # Menu ngang phải (Trang chủ, Giới thiệu...)
+    m1, m2, m3, m4 = st.columns(4)
+    with m1:
+        if st.button("🏠 TRANG CHỦ", use_container_width=True): st.session_state['page'] = 'TRANG CHỦ'
+    with m2:
+        if st.button("👥 GIỚI THIỆU", use_container_width=True): st.session_state['page'] = 'GIỚI THIỆU'
+    with m3:
+        if st.button("📰 TIN TỨC", use_container_width=True): st.session_state['page'] = 'TIN TỨC'
+    with m4:
+        if st.button("🛡️ VỆ SĨ AI", use_container_width=True): st.session_state['page'] = 'VỆ SĨ AI'
 
-# ================= TRANG CHỦ =================
+st.markdown('</div></div>', unsafe_allow_html=True)
+
+
+# ==================== TRANG CHỦ (CHÍNH) ====================
 if st.session_state['page'] == 'TRANG CHỦ':
     
-    # MỤC 1: VỀ SILVERSHIELD & HƯỚNG DẪN (Chia cột 2:1)
-    st.markdown('<div class="section-title">TỔNG QUAN</div>', unsafe_allow_html=True)
-    c1, c2 = st.columns([2, 1], gap="medium")
+    # --- PHẦN 1, 2, 3: BANNER CHÍNH (XẾP LỚP) ---
+    st.markdown('<div class="hero-container"><div class="hero-bg-overlay"></div>', unsafe_allow_html=True)
     
-    with c1:
+    # Tạo layout 1200px bên trong nền xanh
+    col_hero_1, col_hero_2 = st.columns([2.5, 1])
+    
+    with col_hero_1:
+        # PHẦN 2: Khối Banner kích thước nhỏ hơn nằm trọn trong nền
+        # Bạn thay link banner THẬT của bạn vào đây
+        st.image("https://olympicenglish.vn/upload/banner-olympic-2025.png", use_container_width=True)
+        
+    with col_hero_2:
+        # PHẦN 3: Khối đen mờ + Nút kiểm tra
         st.markdown("""
-        <div class="info-card">
-            <h3 style="color:#D32F2F; margin-top:0;">🛡️ Về SilverShield</h3>
-            <p style="text-align: justify;">
-                <b>SilverShield</b> là giải pháp công nghệ tiên phong dành riêng cho người cao tuổi, 
-                đóng vai trò như một "lớp khiên bạc" bảo vệ ông bà, cha mẹ trước làn sóng lừa đảo trực tuyến.
-                Sử dụng trí tuệ nhân tạo (AI) thế hệ mới, chúng tôi giúp phân tích tin nhắn, hình ảnh để đưa ra cảnh báo tức thì.
+        <div class="glass-box">
+            <h2 style="color:#FFB300; margin-top:0;">VỆ SĨ SILVER</h2>
+            <p style="font-size:14px; margin-bottom:20px;">Hệ thống AI bảo vệ người cao tuổi</p>
+        </div>
+        """, unsafe_allow_html=True)
+        # Nút bấm nổi lên
+        st.markdown('<div class="btn-check-now">', unsafe_allow_html=True)
+        if st.button("KIỂM TRA NGAY", use_container_width=True):
+            st.session_state['page'] = 'VỆ SĨ AI'
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    st.markdown('</div>', unsafe_allow_html=True) # Đóng hero-container
+
+
+    # --- KHỐI: VỀ ỨNG DỤNG & HƯỚNG DẪN (BANNER STRIP) ---
+    st.markdown("<br>", unsafe_allow_html=True)
+    c_intro, c_guide = st.columns(2, gap="large")
+    
+    with c_intro:
+        st.markdown("""
+        <div class="banner-strip">
+            <div class="banner-header">VỀ ỨNG DỤNG SILVERSHIELDAI</div>
+            <div class="banner-divider"></div>
+            <p style="text-align:justify; color:#555;">
+                SilverShield là giải pháp công nghệ tiên phong, sử dụng trí tuệ nhân tạo để phân tích và cảnh báo lừa đảo trực tuyến, 
+                được thiết kế chuyên biệt cho người cao tuổi với giao diện đơn giản, dễ sử dụng.
             </p>
         </div>
         """, unsafe_allow_html=True)
         
-        # Grid nhỏ bên trong cho 2 mục con
-        sub1, sub2 = st.columns(2)
-        with sub1:
-             st.markdown("""<div class="info-card" style="margin-top:15px; background:#e8eaf6;">
-                <b>🎯 Sứ mệnh</b><br>Xóa bỏ khoảng cách số, mang lại sự an tâm.
-             </div>""", unsafe_allow_html=True)
-        with sub2:
-             st.markdown("""<div class="info-card" style="margin-top:15px; background:#e8eaf6;">
-                <b>🚀 Tầm nhìn</b><br>Trở thành ứng dụng quốc dân cho người cao tuổi.
-             </div>""", unsafe_allow_html=True)
-
-    with c2:
+    with c_guide:
         st.markdown("""
-        <div class="info-card">
-            <h3 style="color:#002147; margin-top:0;">📖 Hướng dẫn nhanh</h3>
-            <ul style="padding-left: 20px;">
-                <li><b>B1:</b> Chọn Tab "Vệ sĩ Silver".</li>
-                <li><b>B2:</b> Dán tin nhắn hoặc chụp ảnh màn hình.</li>
-                <li><b>B3:</b> Bấm "Kiểm tra".</li>
-                <li><b>B4:</b> Nghe lời khuyên từ AI.</li>
+        <div class="banner-strip">
+            <div class="banner-header">HƯỚNG DẪN SỬ DỤNG SILVERSHIELDAI</div>
+            <div class="banner-divider"></div>
+            <ul style="text-align:left; color:#555; padding-left:20px;">
+                <li>Bước 1: Truy cập mục "Vệ sĩ AI".</li>
+                <li>Bước 2: Nhập văn bản hoặc tải ảnh cần kiểm tra.</li>
+                <li>Bước 3: Nhận kết quả và lời khuyên từ AI.</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
 
-    # MỤC 2: TIN TỨC & QUY TẮC (Chia cột 1:1:1)
-    st.markdown('<div class="section-title">THÔNG TIN & QUY TẮC AN TOÀN</div>', unsafe_allow_html=True)
-    n1, n2, n3 = st.columns(3, gap="medium")
-    
-    with n1:
-        st.markdown("""
-        <div class="info-card">
-            <h4 style="color:#002147">📰 Tin tức nổi bật</h4>
-            <hr>
-            <p>🔥 Cảnh báo thủ đoạn giả danh công an gọi video...</p>
-            <p>🔥 Lừa đảo "con cấp cứu" tái xuất hiện...</p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with n2:
-        st.markdown("""
-        <div class="info-card">
-            <h4 style="color:#002147">⛔ 5 KHÔNG</h4>
-            <hr>
-            1. Không chuyển tiền cho người lạ.<br>
-            2. Không bấm link lạ.<br>
-            3. Không cung cấp mã OTP.<br>
-            4. Không cài app lạ.<br>
-            5. Không sợ hãi trước lời đe dọa.
-        </div>
-        """, unsafe_allow_html=True)
-        
-    with n3:
-        st.markdown("""
-        <div class="info-card">
-            <h4 style="color:#002147">✅ 3 NÊN</h4>
-            <hr>
-            1. Nên gọi điện xác thực.<br>
-            2. Nên hỏi ý kiến con cháu.<br>
-            3. Nên báo cơ quan chức năng (156).
-        </div>
-        """, unsafe_allow_html=True)
 
-
-# ================= TRANG GIỚI THIỆU =================
-elif st.session_state['page'] == 'GIỚI THIỆU':
-    st.markdown('<div class="section-title">👥 ĐỘI NGŨ DVT - EMPIRE CBZ X</div>', unsafe_allow_html=True)
-    st.info("Học sinh Trường THPT Dương Văn Thì - TP. Thủ Đức")
-    
-    col1, col2, col3 = st.columns(3)
-    
-    # Bạn thay tên và thông tin thật vào đây nhé
-    with col1:
-        st.image("https://cdn-icons-png.flaticon.com/512/4140/4140048.png", width=120)
-        st.markdown("### Thành viên 1\n*Trưởng nhóm & Lập trình*")
-    
-    with col2:
-        st.image("https://cdn-icons-png.flaticon.com/512/4140/4140047.png", width=120)
-        st.markdown("### Thành viên 2\n*Nội dung & Dữ liệu AI*")
-
-    with col3:
-        st.image("https://cdn-icons-png.flaticon.com/512/4140/4140037.png", width=120)
-        st.markdown("### Thành viên 3\n*Thiết kế & Truyền thông*")
-
-
-# ================= TRANG TIN TỨC =================
-elif st.session_state['page'] == 'TIN TỨC':
-    st.markdown('<div class="section-title">📰 ĐIỂM TIN AN NINH MẠNG</div>', unsafe_allow_html=True)
-    
-    # Bài 1
+    # --- KHỐI: QUY TẮC AN TOÀN (3 CỘT MÀU) ---
     st.markdown("""
-    <div class="info-card" style="margin-bottom: 20px;">
-        <h3 style="color:#D32F2F;">Cảnh báo: 24 hình thức lừa đảo trực tuyến phổ biến</h3>
-        <p>Theo Cục An toàn thông tin (Bộ TT&TT), các hình thức lừa đảo ngày càng tinh vi...</p>
-        <a href="https://tinnhiemmang.vn" target="_blank" style="color:#002147; font-weight:bold;">Xem chi tiết tại Tín Nhiệm Mạng >></a>
+    <div class="rules-main-header">
+        <img src="https://cdn-icons-png.flaticon.com/512/2092/2092663.png" width="30" style="filter: brightness(0) invert(1);">
+        CÁC QUY TẮC AN TOÀN TRÊN KHÔNG GIAN MẠNG
     </div>
     """, unsafe_allow_html=True)
     
-    # Bài 2
-    st.markdown("""
-    <div class="info-card">
-        <h3 style="color:#D32F2F;">Cổng cảnh báo an toàn thông tin Việt Nam</h3>
-        <p>Người dân có thể phản ánh các cuộc gọi rác, tin nhắn lừa đảo qua đầu số 156.</p>
-        <a href="https://khonggianmang.vn" target="_blank" style="color:#002147; font-weight:bold;">Truy cập Cổng Không Gian Mạng >></a>
-    </div>
-    """, unsafe_allow_html=True)
-
-
-# ================= TRANG VỆ SĨ SILVER =================
-elif st.session_state['page'] == 'VỆ SĨ SILVER':
-    st.markdown('<div class="section-title">🛡️ VỆ SĨ AI PHÂN TÍCH</div>', unsafe_allow_html=True)
+    r1, r2, r3 = st.columns(3, gap="medium")
     
-    c_input, c_result = st.columns([1, 1], gap="large")
-    
-    with c_input:
-        st.markdown('<div class="info-card">', unsafe_allow_html=True)
-        st.subheader("1. Nhập thông tin nghi ngờ")
-        user_text = st.text_area("Dán nội dung tin nhắn vào đây:", height=150)
-        uploaded_file = st.file_uploader("Hoặc tải ảnh chụp màn hình:", type=['jpg','png','jpeg'])
+    with r1:
+        st.markdown("""
+        <div class="rule-card">
+            <div class="rule-header bg-red">5 KHÔNG</div>
+            <div class="rule-body">
+                <div class="rule-item">1. KHÔNG chuyển tiền cho người lạ</div>
+                <div class="rule-item">2. KHÔNG bấm link lạ</div>
+                <div class="rule-item">3. KHÔNG cung cấp mã OTP</div>
+                <div class="rule-item">4. KHÔNG cài app lạ</div>
+                <div class="rule-item">5. KHÔNG sợ hãi lời đe dọa</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
         
-        # Nút bấm kiểm tra đẹp
-        if st.button("🔍 KIỂM TRA NGAY", type="primary", use_container_width=True):
-            if user_text or uploaded_file:
-                with st.spinner("Vệ sĩ Silver đang phân tích dữ liệu..."):
-                    try:
-                        img = Image.open(uploaded_file) if uploaded_file else None
-                        st.session_state['result'] = logic.analyze_content(model, user_text, img)
-                    except Exception as e:
-                        st.error(f"Có lỗi xảy ra: {e}")
-            else:
-                st.warning("Bạn chưa nhập nội dung nào cả!")
-        st.markdown('</div>', unsafe_allow_html=True)
+    with r2:
+        st.markdown("""
+        <div class="rule-card">
+            <div class="rule-header bg-green">3 NÊN</div>
+            <div class="rule-body">
+                <div class="rule-item">1. NÊN gọi điện xác thực lại</div>
+                <div class="rule-item">2. NÊN hỏi ý kiến con cháu</div>
+                <div class="rule-item">3. NÊN báo cơ quan chức năng (156)</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+    with r3:
+        st.markdown("""
+        <div class="rule-card">
+            <div class="rule-header bg-teal">LƯU Ý QUAN TRỌNG</div>
+            <div class="rule-body">
+                <div class="rule-item">1. Bình tĩnh trước mọi tình huống</div>
+                <div class="rule-item">2. Cập nhật tin tức thường xuyên</div>
+                <div class="rule-item">3. Sử dụng SilverShield để kiểm tra</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
-    with c_result:
-        st.markdown('<div class="info-card" style="background:#f1f8e9; border-color:#81c784;">', unsafe_allow_html=True)
-        st.subheader("2. Kết quả từ SilverShield")
-        
-        if 'result' in st.session_state:
-            st.success("Đã hoàn tất phân tích!")
-            st.markdown(f"<div style='font-size:18px;'>{st.session_state['result']}</div>", unsafe_allow_html=True)
-            # Giọng nói
-            try:
-                audio_bytes = logic.text_to_speech(st.session_state['result'])
-                st.audio(audio_bytes, format='audio/mp3')
-            except:
-                st.warning("Không thể tạo giọng nói lúc này.")
+
+    # --- KHỐI: TIN TỨC (GRID 6 BÀI) ---
+    st.markdown('<div class="news-header-bar">TIN TỨC</div>', unsafe_allow_html=True)
+    
+    # Tạo dữ liệu giả lập cho 6 bài tin
+    # Bạn thay link ảnh thumbnail và tiêu đề thật vào đây
+    news_data = [
+        {"title": "🚀 Cảnh báo thủ đoạn lừa đảo 'Con đang cấp cứu' quay trở lại", "img": "https://img.freepik.com/free-vector/hacker-operating-laptop-cartoon-icon-illustration-technology-icon-concept-isolated-flat-cartoon-style_138676-2387.jpg"},
+        {"title": "💡 5 Cách nhận biết website giả mạo ngân hàng", "img": "https://img.freepik.com/free-vector/cyber-security-concept_23-2148532223.jpg"},
+        {"title": "🔥 Giả danh công an gọi video call: Chiêu trò mới", "img": "https://img.freepik.com/free-vector/scam-alert-background_23-2148079148.jpg"},
+        {"title": "🚀 Bộ Công an ra mắt cẩm nang phòng chống tội phạm mạng", "img": "https://img.freepik.com/free-vector/internet-security-concept_23-2148532222.jpg"},
+        {"title": "💡 Deepfake là gì? Tại sao người già dễ bị lừa?", "img": "https://img.freepik.com/free-vector/cyber-attack-concept-illustration_114360-1934.jpg"},
+        {"title": "🔥 Hướng dẫn cài đặt sinh trắc học an toàn", "img": "https://img.freepik.com/free-vector/biometric-security-concept_23-2148532221.jpg"},
+    ]
+    
+    # Tạo lưới 3 cột x 2 hàng
+    for i in range(0, 6, 3): # Vòng lặp tạo từng hàng
+        cols = st.columns(3)
+        for j in range(3):
+            if i + j < 6:
+                news = news_data[i+j]
+                with cols[j]:
+                    # Nút ẩn để bấm vào tin tức (giả lập link)
+                    if st.button(f"news_btn_{i+j}", key=f"news_{i+j}", label_visibility="collapsed"):
+                        st.session_state['page'] = 'TIN TỨC'
+                    
+                    # Render thẻ tin tức HTML
+                    st.markdown(f"""
+                    <div class="news-card">
+                        <img src="{news['img']}" class="news-thumb">
+                        <div class="news-content">
+                            <div class="news-title">{news['title']}</div>
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+
+# ==================== CÁC TRANG KHÁC (GIỮ NGUYÊN CODE CŨ CỦA BẠN) ====================
+elif st.session_state['page'] == 'VỆ SĨ AI':
+    st.markdown('<div class="rules-main-header">🛡️ TRUNG TÂM PHÂN TÍCH AI</div>', unsafe_allow_html=True)
+    c1, c2 = st.columns([1, 1], gap="large")
+    with c1:
+        txt = st.text_area("Nhập nội dung cần kiểm tra:", height=200)
+        img = st.file_uploader("Tải ảnh chụp màn hình:", type=['png','jpg','jpeg'])
+        if st.button("PHÂN TÍCH NGAY", type="primary", use_container_width=True):
+            if txt or img:
+                with st.spinner("AI đang quét dữ liệu..."):
+                    i = Image.open(img) if img else None
+                    st.session_state['res'] = logic.analyze_content(model, txt, i)
+    with c2:
+        if 'res' in st.session_state:
+            st.success("KẾT QUẢ PHÂN TÍCH")
+            st.write(st.session_state['res'])
+            st.audio(logic.text_to_speech(st.session_state['res']))
         else:
-            st.info("👈 Hãy nhập thông tin bên trái để Vệ sĩ bảo vệ bạn.")
-            st.image("https://cdn-icons-png.flaticon.com/512/1161/1161388.png", width=100)
-        st.markdown('</div>', unsafe_allow_html=True)
+            st.info("Kết quả sẽ hiển thị tại đây.")
+
+elif st.session_state['page'] == 'TIN TỨC':
+    st.markdown('<div class="news-header-bar">TIN TỨC AN NINH MẠNG</div>', unsafe_allow_html=True)
+    st.info("Danh sách bài báo chi tiết sẽ được cập nhật tại đây...")
+
+elif st.session_state['page'] == 'GIỚI THIỆU':
+    st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
+    st.markdown("### DVT - EMPIRE CBZ X")
 
 # --- FOOTER ---
-styles.render_footer()
+styles.render_footer_structure()
