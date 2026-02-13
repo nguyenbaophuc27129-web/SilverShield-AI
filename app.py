@@ -1,73 +1,54 @@
 import streamlit as st
 from PIL import Image
 import styles
-import logic
+# import logic # Mở comment này khi bạn đã có file logic.py
 
 # --- 1. KHỞI TẠO ---
 styles.apply_styles()
-styles.render_header_structure() # Top Bar Xanh
-try:
-    model = logic.init_ai()
-except:
-    pass 
+styles.render_header_structure()
 
 if 'page' not in st.session_state:
     st.session_state['page'] = 'TRANG CHỦ'
 
 # --- 2. NAVBAR (Thanh trắng chứa Logo và Menu) ---
-st.markdown('<div class="olympic-navbar"><div style="width:1200px;">', unsafe_allow_html=True)
-c_logo, c_menu = st.columns([1.5, 8.5])
+st.markdown('<div class="olympic-navbar"><div style="width:1200px; display:flex; align-items:center;">', unsafe_allow_html=True)
+c_logo, c_menu = st.columns([2, 8])
 
 with c_logo:
-    # Logo tròn bên trái (Thay link logo của bạn)
-    st.markdown('<img src="https://cdn-icons-png.flaticon.com/512/9664/9664268.png" style="height:60px; margin-top:-10px;">', unsafe_allow_html=True)
+    st.markdown('<img src="https://cdn-icons-png.flaticon.com/512/9664/9664268.png" style="height:50px;">', unsafe_allow_html=True)
 
 with c_menu:
-    # Menu ngang phải (Trang chủ, Giới thiệu...)
     m1, m2, m3, m4 = st.columns(4)
-    with m1:
-        if st.button("🏠 TRANG CHỦ", use_container_width=True): st.session_state['page'] = 'TRANG CHỦ'
-    with m2:
-        if st.button("👥 GIỚI THIỆU", use_container_width=True): st.session_state['page'] = 'GIỚI THIỆU'
-    with m3:
-        if st.button("📰 TIN TỨC", use_container_width=True): st.session_state['page'] = 'TIN TỨC'
-    with m4:
-        if st.button("🛡️ VỆ SĨ AI", use_container_width=True): st.session_state['page'] = 'VỆ SĨ AI'
-
+    if m1.button("🏠 TRANG CHỦ"): st.session_state['page'] = 'TRANG CHỦ'
+    if m2.button("👥 GIỚI THIỆU"): st.session_state['page'] = 'GIỚI THIỆU'
+    if m3.button("📰 TIN TỨC"): st.session_state['page'] = 'TIN TỨC'
+    if m4.button("🛡️ VỆ SĨ AI"): st.session_state['page'] = 'VỆ SĨ AI'
 st.markdown('</div></div>', unsafe_allow_html=True)
 
-
-# ==================== TRANG CHỦ (CHÍNH) ====================
+# ==================== TRANG CHỦ ====================
 if st.session_state['page'] == 'TRANG CHỦ':
     
-    # --- PHẦN 1, 2, 3: BANNER CHÍNH (Tỉ lệ 7/3 chuẩn) ---
-    st.markdown('<div class="hero-container"><div class="hero-bg-overlay"></div>', unsafe_allow_html=True)
+    # --- HERO BANNER (Đã sửa để ảnh lồng vào nền) ---
+    st.markdown('<div class="hero-container"><div style="width:1200px; display:flex; align-items:center; gap:20px;">', unsafe_allow_html=True)
+    col_hero_1, col_hero_2 = st.columns([2, 1])
     
-    # Dùng container để bó nội dung 1200px bên trong Hero Section
-    with st.container():
-        # Chia tỉ lệ chuẩn 7:3
-        col_hero_1, col_hero_2 = st.columns([7, 3], gap="medium")
+    with col_hero_1:
+        # Ảnh banner chính nằm gọn bên trái
+        st.image("https://olympicenglish.vn/upload/banner-olympic-2025.png", use_container_width=True)
         
-        with col_hero_1:
-            # Ảnh banner chính (Phần chữ Vòng sơ loại + 3D)
-            st.image("https://olympicenglish.vn/upload/banner-olympic-2025.png", use_container_width=True)
-            
-        with col_hero_2:
-            # Khối Action (Bắt đầu thi/Kiểm tra)
-            st.markdown("""
-            <div class="glass-box">
-                <h2 style="color:white; font-size:24px; margin-bottom:10px; font-weight:500;">Bắt đầu thi</h2>
-                <p style="font-size:14px; color:rgba(255,255,255,0.7); margin-bottom:30px;">Vui lòng nhấn nút bên dưới để tham gia hệ thống</p>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            # Nút bấm lồng vào CSS btn-check-now
-            st.markdown('<div class="btn-check-now" style="margin-top:-20px; padding: 0 20px;">', unsafe_allow_html=True)
-            if st.button("KIỂM TRA NGAY", use_container_width=True, key="hero_btn"):
-                st.session_state['page'] = 'VỆ SĨ AI'
-            st.markdown('</div>', unsafe_allow_html=True)
+    with col_hero_2:
+        st.markdown("""
+        <div class="glass-box">
+            <h2 style="color:#FFB300; margin:0;">Bắt đầu thi</h2>
+            <p style="font-size:14px; margin:15px 0;">Hệ thống AI bảo vệ người cao tuổi khỏi lừa đảo trực tuyến.</p>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("KIỂM TRA NGAY", use_container_width=True, type="primary"):
+            st.session_state['page'] = 'VỆ SĨ AI'
+            st.rerun()
 
-    st.markdown('</div>', unsafe_allow_html=True) # Đóng hero-container
+    st.markdown('</div></div>', unsafe_allow_html=True)
+
     # --- KHỐI: VỀ ỨNG DỤNG & HƯỚNG DẪN (BANNER STRIP) ---
     st.markdown("<br>", unsafe_allow_html=True)
     c_intro, c_guide = st.columns(2, gap="large")
@@ -147,41 +128,33 @@ if st.session_state['page'] == 'TRANG CHỦ':
         """, unsafe_allow_html=True)
 
 
-    # --- KHỐI: TIN TỨC (GRID 6 BÀI) ---
-    st.markdown('<div class="news-header-bar">TIN TỨC</div>', unsafe_allow_html=True)
+    # --- KHỐI TIN TỨC (Sửa lỗi TypeError) ---
+    st.markdown('<div class="news-header-bar">TIN TỨC MỚI NHẤT</div>', unsafe_allow_html=True)
     
-    # Tạo dữ liệu giả lập cho 6 bài tin
-    # Bạn thay link ảnh thumbnail và tiêu đề thật vào đây
     news_data = [
-        {"title": "🚀 Cảnh báo thủ đoạn lừa đảo 'Con đang cấp cứu' quay trở lại", "img": "https://img.freepik.com/free-vector/hacker-operating-laptop-cartoon-icon-illustration-technology-icon-concept-isolated-flat-cartoon-style_138676-2387.jpg"},
-        {"title": "💡 5 Cách nhận biết website giả mạo ngân hàng", "img": "https://img.freepik.com/free-vector/cyber-security-concept_23-2148532223.jpg"},
-        {"title": "🔥 Giả danh công an gọi video call: Chiêu trò mới", "img": "https://img.freepik.com/free-vector/scam-alert-background_23-2148079148.jpg"},
-        {"title": "🚀 Bộ Công an ra mắt cẩm nang phòng chống tội phạm mạng", "img": "https://img.freepik.com/free-vector/internet-security-concept_23-2148532222.jpg"},
-        {"title": "💡 Deepfake là gì? Tại sao người già dễ bị lừa?", "img": "https://img.freepik.com/free-vector/cyber-attack-concept-illustration_114360-1934.jpg"},
-        {"title": "🔥 Hướng dẫn cài đặt sinh trắc học an toàn", "img": "https://img.freepik.com/free-vector/biometric-security-concept_23-2148532221.jpg"},
+        {"title": "Cảnh báo thủ đoạn lừa đảo 'Con đang cấp cứu'", "img": "https://img.freepik.com/free-vector/hacker-operating-laptop-cartoon-icon-illustration_138676-2387.jpg"},
+        {"title": "5 Cách nhận biết website giả mạo ngân hàng", "img": "https://img.freepik.com/free-vector/cyber-security-concept_23-2148532223.jpg"},
+        {"title": "Giả danh công an gọi video call: Chiêu trò mới", "img": "https://img.freepik.com/free-vector/scam-alert-background_23-2148079148.jpg"},
+        {"title": "Bộ Công an ra mắt cẩm nang phòng mạng", "img": "https://img.freepik.com/free-vector/internet-security-concept_23-2148532222.jpg"},
+        {"title": "Deepfake là gì? Tại sao người già dễ bị lừa?", "img": "https://img.freepik.com/free-vector/cyber-attack-concept-illustration_114360-1934.jpg"},
+        {"title": "Hướng dẫn cài đặt sinh trắc học an toàn", "img": "https://img.freepik.com/free-vector/biometric-security-concept_23-2148532221.jpg"},
     ]
-    
-    # Tạo lưới 3 cột x 2 hàng
-    for i in range(0, 6, 3): # Vòng lặp tạo từng hàng
+
+    for i in range(0, 6, 3):
         cols = st.columns(3)
         for j in range(3):
-            if i + j < 6:
-                news = news_data[i+j]
+            idx = i + j
+            if idx < len(news_data):
                 with cols[j]:
-                    # Nút ẩn để bấm vào tin tức (giả lập link)
-                    if st.button(f"news_btn_{i+j}", key=f"news_{i+j}", label_visibility="collapsed"):
-                        st.session_state['page'] = 'TIN TỨC'
-                    
-                    # Render thẻ tin tức HTML
                     st.markdown(f"""
                     <div class="news-card">
-                        <img src="{news['img']}" class="news-thumb">
-                        <div class="news-content">
-                            <div class="news-title">{news['title']}</div>
-                        </div>
+                        <img src="{news_data[idx]['img']}" class="news-thumb">
+                        <div class="news-title">{news_data[idx]['title']}</div>
                     </div>
                     """, unsafe_allow_html=True)
-
+                    if st.button(f"Xem chi tiết bài {idx+1}", key=f"btn_{idx}", use_container_width=True):
+                        st.session_state['page'] = 'TIN TỨC'
+                        st.rerun()
 
 # ==================== CÁC TRANG KHÁC (GIỮ NGUYÊN CODE CŨ CỦA BẠN) ====================
 elif st.session_state['page'] == 'VỆ SĨ AI':
@@ -213,6 +186,3 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
 
 # --- FOOTER ---
 styles.render_footer_structure()
-
-
-
