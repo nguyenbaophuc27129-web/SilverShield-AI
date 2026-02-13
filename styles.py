@@ -3,133 +3,165 @@ import streamlit as st
 def apply_styles():
     st.markdown("""
         <style>
-        /* 1. CĂN CHỈNH KHUNG NHÌN CHUẨN OLYMPIC (1200px) */
+        /* IMPORT FONT CHUẨN */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        /* 1. RESET LAYOUT & CẤU HÌNH CHUNG */
+        html, body, [class*="css"] {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7f9;
+        }
         .block-container {
-            max-width: 1200px !important;
-            padding-top: 2rem !important;
-            padding-bottom: 3rem !important;
-            margin: 0 auto !important;
+            max-width: 100% !important; /* Full màn hình để làm banner */
+            padding: 0 !important;
+            margin: 0 !important;
         }
         
-        /* ẨN GIAO DIỆN MẶC ĐỊNH */
+        /* ẨN MẶC ĐỊNH */
         [data-testid="stHeader"], [data-testid="stSidebar"] { display: none !important; }
-        .stApp { background-color: #f4f7f9; }
 
-        /* 2. TOP HEADER (MÀU XANH ĐẬM) */
-        .top-header {
-            background-color: #002147;
+        /* 2. TOP BAR (THANH TRÊN CÙNG - MÀU XANH ĐẬM) */
+        .top-bar {
+            background-color: #003366; /* Màu xanh Olympic */
             color: white;
-            padding: 10px 0;
-            font-size: 14px;
+            padding: 8px 0;
+            font-size: 13px;
             font-weight: 500;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 9999;
-            border-bottom: 3px solid #FFB300;
-            display: flex;
-            justify-content: center;
         }
-        .header-content {
-            width: 1200px;
+        .top-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             padding: 0 15px;
         }
 
-        /* 3. THANH MENU (NAVIGATION BAR) */
-        .nav-bar {
+        /* 3. NAVBAR (MENU CHÍNH - MÀU TRẮNG) */
+        .nav-wrapper {
             background: white;
-            padding: 15px 0;
-            margin-top: 30px; /* Né cái header fixed */
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 999;
         }
-        
-        /* Biến nút bấm thành Text Link sang trọng */
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 15px;
+        }
+
+        /* Nút menu Streamlit chỉnh lại cho giống Text Link */
         div.stButton > button {
-            background-color: transparent !important;
-            color: #002147 !important;
+            background: transparent !important;
+            color: #003366 !important;
             border: none !important;
             font-weight: 700 !important;
             text-transform: uppercase !important;
             font-size: 15px !important;
+            margin: 0 !important;
+            padding: 10px 15px !important;
             border-radius: 0 !important;
-            padding: 10px 20px !important;
-            transition: 0.3s;
         }
         div.stButton > button:hover {
-            color: #D32F2F !important;
-            background-color: #f0f2f5 !important;
-            border-bottom: 2px solid #D32F2F !important;
+            color: #d32f2f !important; /* Hover đỏ giống Olympic */
+            background: #f8f9fa !important;
         }
-        /* Nút đang được chọn (Active) */
         div.stButton > button:focus {
-            color: #D32F2F !important;
-            border-bottom: 2px solid #D32F2F !important;
+            color: #d32f2f !important;
+            box-shadow: none !important;
         }
 
-        /* 4. ĐỊNH DẠNG KHỐI NỘI DUNG (CARD) */
-        .section-title {
-            color: #002147;
-            font-weight: 800;
+        /* 4. HERO SECTION (BANNER + NỀN ĐEN MỜ) */
+        .hero-section {
+            position: relative;
+            /* Ảnh nền công nghệ chìm phía sau */
+            background-image: url('https://img.freepik.com/free-vector/gradient-technological-background_23-2148884155.jpg'); 
+            background-size: cover;
+            background-position: center;
+            padding: 60px 0;
+            color: white;
+            overflow: hidden;
+        }
+        
+        /* Lớp phủ đen mờ (Overlay) */
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, rgba(0,51,102,0.9) 0%, rgba(0,51,102,0.7) 100%);
+            z-index: 1;
+        }
+
+        /* Nội dung Banner nổi lên trên */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Khối đen mờ bên phải (Giống khung 'Bắt đầu thi' của Olympic) */
+        .glass-box {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        /* 5. CÁC SECTION NỘI DUNG */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 15px;
+        }
+        
+        .section-header {
+            color: #003366;
             font-size: 24px;
+            font-weight: 700;
             text-transform: uppercase;
-            border-left: 6px solid #FFB300;
+            border-left: 5px solid #d32f2f; /* Vạch đỏ bên trái */
             padding-left: 15px;
-            margin: 30px 0 20px 0;
-            background: linear-gradient(90deg, #e3f2fd 0%, transparent 100%);
+            margin-bottom: 25px;
+            background: #eef2f6;
             padding-top: 5px;
             padding-bottom: 5px;
         }
 
-        .info-card {
+        /* Card tin tức */
+        .news-card {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
-            height: 100%;
-            transition: transform 0.3s;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            transition: 0.3s;
         }
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-            border-color: #FFB300;
+        .news-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #003366;
         }
 
-        /* 5. FOOTER */
+        /* 6. FOOTER */
         .footer {
-            background-color: #002147;
+            background: #003366;
             color: white;
             padding: 40px 0;
             margin-top: 50px;
-            border-top: 5px solid #D32F2F;
             text-align: center;
+            border-top: 4px solid #d32f2f;
         }
         </style>
     """, unsafe_allow_html=True)
 
-def render_header():
+def render_top_bar():
     st.markdown("""
-        <div class="top-header">
-            <div class="header-content">
+        <div class="top-bar">
+            <div class="top-content">
                 <div>🛠️ Phát triển và xây dựng bởi <b>DVT - Empire CBZ X - THPT Dương Văn Thì</b></div>
-                <div style="font-weight:bold; letter-spacing: 1px;">🛡️ SILVERSHIELD</div>
+                <div>🛡️ SILVERSHIELD</div>
             </div>
-        </div>
-        <div style="height: 40px;"></div> <!-- Khoảng trống để không bị che nội dung -->
-    """, unsafe_allow_html=True)
-
-def render_footer():
-    st.markdown("""
-        <div class="footer">
-            <h2 style="margin:0; font-size: 28px;">SILVERSHIELD</h2>
-            <p style="font-size: 16px; font-style: italic; margin-top: 10px;">"Vì một không gian mạng an toàn"</p>
-            <hr style="width: 200px; margin: 20px auto; border-color: #FFB300;">
-            <p style="font-size: 14px;">© 2026 Bản quyền thuộc về <b>Đội ngũ DVT - Empire CBZ X</b></p>
         </div>
     """, unsafe_allow_html=True)
