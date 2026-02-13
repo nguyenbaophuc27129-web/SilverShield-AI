@@ -40,34 +40,34 @@ st.markdown('</div></div>', unsafe_allow_html=True)
 # ==================== TRANG CHỦ (CHÍNH) ====================
 if st.session_state['page'] == 'TRANG CHỦ':
     
-    # --- PHẦN 1, 2, 3: BANNER CHÍNH (XẾP LỚP) ---
+    # --- PHẦN 1, 2, 3: BANNER CHÍNH (Tỉ lệ 7/3 chuẩn) ---
     st.markdown('<div class="hero-container"><div class="hero-bg-overlay"></div>', unsafe_allow_html=True)
     
-    # Tạo layout 1200px bên trong nền xanh
-    col_hero_1, col_hero_2 = st.columns([2.5, 1])
-    
-    with col_hero_1:
-        # PHẦN 2: Khối Banner kích thước nhỏ hơn nằm trọn trong nền
-        # Bạn thay link banner THẬT của bạn vào đây
-        st.image("https://olympicenglish.vn/upload/banner-olympic-2025.png", use_container_width=True)
+    # Dùng container để bó nội dung 1200px bên trong Hero Section
+    with st.container():
+        # Chia tỉ lệ chuẩn 7:3
+        col_hero_1, col_hero_2 = st.columns([7, 3], gap="medium")
         
-    with col_hero_2:
-        # PHẦN 3: Khối đen mờ + Nút kiểm tra
-        st.markdown("""
-        <div class="glass-box">
-            <h2 style="color:#FFB300; margin-top:0;">VỆ SĨ SILVER</h2>
-            <p style="font-size:14px; margin-bottom:20px;">Hệ thống AI bảo vệ người cao tuổi</p>
-        </div>
-        """, unsafe_allow_html=True)
-        # Nút bấm nổi lên
-        st.markdown('<div class="btn-check-now">', unsafe_allow_html=True)
-        if st.button("KIỂM TRA NGAY", use_container_width=True):
-            st.session_state['page'] = 'VỆ SĨ AI'
-        st.markdown('</div>', unsafe_allow_html=True)
+        with col_hero_1:
+            # Ảnh banner chính (Phần chữ Vòng sơ loại + 3D)
+            st.image("https://olympicenglish.vn/upload/banner-olympic-2025.png", use_container_width=True)
+            
+        with col_hero_2:
+            # Khối Action (Bắt đầu thi/Kiểm tra)
+            st.markdown("""
+            <div class="glass-box">
+                <h2 style="color:white; font-size:24px; margin-bottom:10px; font-weight:500;">Bắt đầu thi</h2>
+                <p style="font-size:14px; color:rgba(255,255,255,0.7); margin-bottom:30px;">Vui lòng nhấn nút bên dưới để tham gia hệ thống</p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Nút bấm lồng vào CSS btn-check-now
+            st.markdown('<div class="btn-check-now" style="margin-top:-20px; padding: 0 20px;">', unsafe_allow_html=True)
+            if st.button("KIỂM TRA NGAY", use_container_width=True, key="hero_btn"):
+                st.session_state['page'] = 'VỆ SĨ AI'
+            st.markdown('</div>', unsafe_allow_html=True)
 
     st.markdown('</div>', unsafe_allow_html=True) # Đóng hero-container
-
-
     # --- KHỐI: VỀ ỨNG DỤNG & HƯỚNG DẪN (BANNER STRIP) ---
     st.markdown("<br>", unsafe_allow_html=True)
     c_intro, c_guide = st.columns(2, gap="large")
@@ -213,5 +213,6 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
 
 # --- FOOTER ---
 styles.render_footer_structure()
+
 
 
