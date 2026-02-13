@@ -22,43 +22,43 @@ c_logo, m1, m2, m3, m4 = st.columns([1.5, 2, 2, 2, 2])
 with c_logo:
     st.markdown('<img src="https://cdn-icons-png.flaticon.com/512/9664/9664268.png" style="height:50px; margin-left:15px;">', unsafe_allow_html=True)
 with m1:
-    if st.button("🏠 TRANG CHỦ", use_container_width=True): st.session_state['page'] = 'TRANG CHỦ'
+    if st.button("TRANG CHỦ", use_container_width=True): st.session_state['page'] = 'TRANG CHỦ'
 with m2:
-    if st.button("👥 GIỚI THIỆU", use_container_width=True): st.session_state['page'] = 'GIỚI THIỆU'
+    if st.button("GIỚI THIỆU", use_container_width=True): st.session_state['page'] = 'GIỚI THIỆU'
 with m3:
-    if st.button("📰 TIN TỨC", use_container_width=True): st.session_state['page'] = 'TIN TỨC'
+    if st.button("TIN TỨC", use_container_width=True): st.session_state['page'] = 'TIN TỨC'
 with m4:
-    if st.button("🛡️ VỆ SĨ AI", use_container_width=True): st.session_state['page'] = 'VỆ SĨ AI'
+    if st.button("VỆ SĨ SILVER", use_container_width=True): st.session_state['page'] = 'VỆ SĨ SILVER'
 st.markdown('</div></div>', unsafe_allow_html=True)
 
 # ==================== TRANG CHỦ (CHÍNH) ====================
 if st.session_state['page'] == 'TRANG CHỦ':
-    # --- PHẦN BANNER CHÍNH (FIX VỊ TRÍ) ---
-    st.markdown('<div class="hero-container"><div class="hero-bg-overlay"></div>', unsafe_allow_html=True)
-    
-    # Sử dụng Container để bọc nội dung cho đúng 1200px
-    hero_placeholder = st.container()
-    with hero_placeholder:
-        col_h1, col_h2 = st.columns([2, 1])
-        with col_h1:
-            # Banner ảnh lớn bên trái
-            st.image("https://olympicenglish.vn/upload/banner-olympic-2025.png", use_container_width=True)
-        with col_h2:
-            # Khối chữ và nút bên phải
-            st.markdown("""
-            <div class="glass-box">
-                <h2 style="color:#FFB300; margin:0;">VỆ SĨ SILVER</h2>
-                <p style="font-size:15px;">Hệ thống trí tuệ nhân tạo<br>bảo vệ người cao tuổi</p>
+ st.markdown(f"""
+        <div class="hero-container">
+            <div class="hero-bg-overlay"></div>
+            <div class="hero-content-wrapper">
+                <div style="display: flex; align-items: center; gap: 20px; width: 100%;">
+                    <div style="flex: 2;">
+                        <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/de467deafaddee37c8ed8fb255d2631da0d6753a/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png" 
+                             style="width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                    </div>
+                    <div style="flex: 1; text-align: center;">
+                        <div class="glass-box">
+                            <h2 style="color:#FFB300; margin:0; font-size: 28px;">VỆ SĨ SILVER</h2>
+                            <p style="font-size:16px; color: white; margin-top: 10px;">Hệ thống trí tuệ nhân tạo<br>bảo vệ người cao tuổi</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            """, unsafe_allow_html=True)
-            
-            # Nút bấm được bọc trong class riêng để CSS kéo lên
-            st.markdown('<div class="btn-check-now">', unsafe_allow_html=True)
-            if st.button("KIỂM TRA NGAY", key="hero_btn", use_container_width=True):
-                st.session_state['page'] = 'VỆ SĨ AI'
-                st.rerun()
-            st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True) 
+        </div>
+    """, unsafe_allow_html=True)
+
+    # Nút bấm đặt ngay dưới để CSS kéo lên đè lên Banner
+    st.markdown('<div class="btn-check-now">', unsafe_allow_html=True)
+    if st.button("KIỂM TRA NGAY", key="hero_btn"):
+        st.session_state['page'] = 'VỆ SĨ AI'
+        st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # --- KHỐI: VỀ ỨNG DỤNG & HƯỚNG DẪN ---
     st.markdown("<br>", unsafe_allow_html=True)
@@ -114,3 +114,4 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
+
