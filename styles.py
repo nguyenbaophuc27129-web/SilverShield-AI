@@ -3,38 +3,206 @@ import streamlit as st
 def apply_styles():
     st.markdown("""
         <style>
-        /* IMPORT FONT ROBOTO */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
-        /* 1. CẤU HÌNH CHUNG */
+        /* --- 1. IMPORT FONTS & GLOBAL RESET --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@400;600&display=swap');
+        
         html, body, [class*="css"] {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f0f2f5; /* Màu nền xám nhạt hiện đại */
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            background-color: #f5f7fa; /* Nền xám nhạt hiện đại */
         }
+        
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+
+        /* Căn giữa trang web chuẩn 1200px */
         .block-container {
             max-width: 1200px !important;
             padding-top: 0rem !important;
-            padding-bottom: 3rem !important;
+            padding-bottom: 4rem !important;
             margin: 0 auto !important;
         }
-        
-        /* ẨN GIAO DIỆN MẶC ĐỊNH */
+
+        /* Ẩn Header mặc định */
         [data-testid="stHeader"], [data-testid="stSidebar"] { display: none !important; }
 
-        /* 2. TOP BAR (Màu xanh Deep Blue #003366) */
-        .top-bar-container {
-            background-color: #003366;
+        /* --- 2. HEADER SYSTEM (Giống Olympic) --- */
+        
+        /* Tầng 1: Top Bar */
+        .top-bar {
+            background-color: #0c3c78; /* Dark Blue */
             color: white;
+            padding: 8px 0;
+            font-size: 13px;
             width: 100vw;
             position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-            padding: 8px 0;
-            border-bottom: 3px solid #ffcc00; /* Viền vàng Gold */
+            left: 50%; right: 50%;
+            margin-left: -50vw; margin-right: -50vw;
+            display: flex; justify-content: center;
         }
-        .top-bar-content {
+        
+        /* Tầng 2: Navbar */
+        .navbar-container {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-bottom: 0px;
+            border-bottom: 1px solid #eee;
+            position: sticky; top: 0; z-index: 100;
+        }
+
+        /* Styling cho các nút Menu (Streamlit Buttons) */
+        div.stButton > button {
+            background-color: transparent !important;
+            color: #0c3c78 !important;
+            border: none !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            font-size: 14px !important;
+            padding: 0px 15px !important;
+            height: auto !important;
+            border-bottom: 2px solid transparent !important;
+            border-radius: 0 !important;
+            transition: all 0.3s ease;
+        }
+        div.stButton > button:hover {
+            color: #1b5fa7 !important;
+            border-bottom: 2px solid #1b5fa7 !important;
+            background-color: transparent !important;
+        }
+        div.stButton > button:focus {
+            color: #1b5fa7 !important;
+            border-bottom: 2px solid #1b5fa7 !important;
+            box-shadow: none !important;
+        }
+
+        /* Nút Action (KIỂM TRA NGAY) nổi bật trên Menu */
+        .btn-cta button {
+            background: linear-gradient(90deg, #d32f2f, #b71c1c) !important;
+            color: white !important;
+            padding: 10px 25px !important;
+            border-radius: 50px !important;
+            border: none !important;
+            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3) !important;
+        }
+        .btn-cta button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(211, 47, 47, 0.4) !important;
+        }
+
+        /* --- 3. HERO SECTION (Gradient Blue) --- */
+        .hero-bg {
+            background: linear-gradient(135deg, #0c3c78 0%, #1b5fa7 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin-top: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(12, 60, 120, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-title {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero-desc {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        /* --- 4. CARDS & SECTIONS --- */
+        .section-wrapper {
+            margin-bottom: 60px;
+        }
+        .section-title {
+            color: #0c3c78;
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        /* Card trắng sạch sẽ */
+        .clean-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #eef2f6;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        .clean-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: #ffcc00; /* Viền vàng khi hover */
+        }
+
+        /* --- 5. AI TOOL INTERFACE --- */
+        .ai-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            padding: 40px;
+            border-top: 5px solid #0c3c78;
+        }
+        .result-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #0c3c78;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        /* --- 6. FOOTER --- */
+        .footer {
+            background-color: #0c3c78;
+            color: white;
+            padding: 60px 0;
+            margin-top: 80px;
+            width: 100vw;
+            position: relative;
+            left: 50%; right: 50%;
+            margin-left: -50vw; margin-right: -50vw;
+            border-top: 4px solid #d32f2f; /* Line đỏ giống Olympic */
+            text-align: center;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+def render_top_bar():
+    st.markdown("""
+        <div class="top-bar">
+            <div style="width: 1200px; display: flex; justify-content: space-between; padding: 0 15px;">
+                <span>🛠️ Phát triển bởi <b>DVT - Empire CBZ X</b></span>
+                <span style="font-weight: 600;">🛡️ SILVERSHIELD 2026</span>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+def render_footer():
+    st.markdown("""
+        <div class="footer">
+            <h2 style="margin: 0; color: white;">SILVERSHIELD</h2>
+            <p style="opacity: 0.8; margin-top: 10px;">"Vì một không gian mạng an toàn cho người cao tuổi"</p>
+            <div style="margin: 30px 0;">
+                <span style="margin: 0 10px; cursor: pointer;">Trang chủ</span> | 
+                <span style="margin: 0 10px; cursor: pointer;">Điều khoản</span> | 
+                <span style="margin: 0 10px; cursor: pointer;">Bảo mật</span>
+            </div>
+            <p style="font-size: 13px; opacity: 0.6;">© 2026 Bản quyền thuộc về Đội ngũ DVT - Empire CB2.X</p>
+        </div>
+    """, unsafe_allow_html=True)        .top-bar-content {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
