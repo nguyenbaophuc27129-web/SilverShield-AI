@@ -36,28 +36,23 @@ st.markdown('</div></div>', unsafe_allow_html=True)
 
 # ==================== TRANG CHỦ (CHÍNH) ====================
 if st.session_state['page'] == 'TRANG CHỦ':
-    # --- PHẦN 1, 2, 3: BANNER CHÍNH (XẾP LỚP) ---
-    st.markdown('<div class="hero-container"><div class="hero-bg-overlay"></div><div class="hero-content-wrapper">', unsafe_allow_html=True)
-    
-    col_hero_1, col_hero_2 = st.columns([2.5, 1])
-    
-    with col_hero_1:
-        st.image("https://olympicenglish.vn/upload/banner-olympic-2025.png", use_container_width=True)
-        
-    with col_hero_2:
-        st.markdown("""
-        <div class="glass-box">
-            <h2 style="color:#FFB300; margin-top:0;">VỆ SĨ SILVER</h2>
-            <p style="font-size:14px; margin-bottom:20px;">Hệ thống AI bảo vệ người cao tuổi</p>
+    # --- [ĐÃ SỬA] PHẦN BANNER CHÍNH (Sử dụng cấu trúc cho CSS Absolute) ---
+    # Ta bỏ st.columns ở đây để CSS trong styles.py tự căn chỉnh và xếp lớp
+    st.markdown("""
+        <div class="hero-container">
+            <div class="hero-bg-overlay"></div>
+            <div class="glass-box">
+                <h2 style="color:#FFB300; margin-top:0; font-size: 32px; font-weight: 900;">VỆ SĨ SILVER</h2>
+                <p style="font-size:16px; margin-bottom:20px; color: white;">Hệ thống AI bảo vệ người cao tuổi an toàn trên không gian mạng</p>
+            </div>
         </div>
-        """, unsafe_allow_html=True)
-        st.markdown('<div class="btn-check-now">', unsafe_allow_html=True)
-        if st.button("KIỂM TRA NGAY", use_container_width=True):
-            st.session_state['page'] = 'VỆ SĨ AI'
-            st.rerun()
-        st.markdown('</div>', unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
-    st.markdown('</div></div>', unsafe_allow_html=True) 
+    # Nút bấm nằm ngay dưới HTML block để CSS (margin-top âm) kéo nó bay lên
+    # Lưu ý: Không dùng use_container_width=True để nút giữ form tròn đẹp
+    if st.button("KIỂM TRA NGAY"): 
+        st.session_state['page'] = 'VỆ SĨ AI'
+        st.rerun()
 
     # --- KHỐI: VỀ ỨNG DỤNG & HƯỚNG DẪN ---
     st.markdown("<br>", unsafe_allow_html=True)
