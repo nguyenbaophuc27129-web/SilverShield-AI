@@ -127,8 +127,23 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
-
-
+st.markdown("""
+    <style>
+        /* CHỖ NÀY LÀ QUAN TRỌNG NHẤT: Triệt tiêu khoảng trống mặc định của Streamlit */
+        .main .block-container {
+            padding-bottom: 0px !important;
+        }
+        footer {
+            display: none !important;
+        }
+        #MainMenu {
+            display: none !important;
+        }
+    </style>
+    
+    <div style="background-color: #001529; width: 100%; padding: 40px 0; margin-bottom: -100px;">
+        </div>
+""", unsafe_allow_html=True)
 
 
 
