@@ -56,7 +56,7 @@ if st.session_state['page'] == 'TRANG CHỦ':
     """, unsafe_allow_html=True)
 
     # Nút bấm được kéo lên bằng CSS
-    st.markdown('<div style="margin-top: -100px; position: relative; z-index: 100; display: flex; justify-content: center; margin-left: 450px;">', unsafe_allow_html=True)
+    sst.markdown('<div style="margin-top: -120px; position: relative; z-index: 100; display: flex; justify-content: flex-end; width: 1200px; margin: 0 auto; padding-right: 120px;">', unsafe_allow_html=True)
     if st.button("KIỂM TRA NGAY", key="hero_btn"):
         st.session_state['page'] = 'VỆ SĨ AI'
         st.rerun()
@@ -115,6 +115,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
+
 
 
 
