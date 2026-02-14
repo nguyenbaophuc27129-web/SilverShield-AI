@@ -54,6 +54,9 @@ st.markdown('</div></div>', unsafe_allow_html=True)
 if st.session_state['page'] == 'TRANG CHỦ':
     # Khối nội dung Banner (Dính sát - 50/50 - Không bo tròn)
     banner_html = """
+    <div class="hero-container" style="position: relative; overflow: hidden;">
+            <div class="hero-bg-overlay"></div>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 50px; width: 1200px; margin: 0 auto; height: 100%; position: relative; z-index: 10;">
     <div style="display: flex; justify-content: center; align-items: center; padding: 40px 0; background: #001529;">
         <div style="display: flex; width: 1100px; height: 350px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
             <div style="flex: 1; height: 100%;">
@@ -71,13 +74,6 @@ if st.session_state['page'] == 'TRANG CHỦ':
     """
     st.markdown(banner_html, unsafe_allow_html=True)
 
-    # Khối nút bấm (Tách riêng hoàn toàn để không lỗi)
-    c1, c2, c3 = st.columns([1, 1, 1])
-    with c2:
-        st.write("") # Tạo khoảng trống
-        if st.button("KIỂM TRA NGAY", key="hero_btn", use_container_width=True):
-            st.session_state['page'] = 'VỆ SĨ AI'
-            st.rerun()
     # --- KHỐI: VỀ ỨNG DỤNG & HƯỚNG DẪN ---
     st.markdown("<br>", unsafe_allow_html=True)
     c_intro, c_guide = st.columns(2, gap="large")
@@ -132,6 +128,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
+
 
 
 
