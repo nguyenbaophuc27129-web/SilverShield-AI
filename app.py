@@ -35,26 +35,42 @@ st.markdown('</div></div>', unsafe_allow_html=True)
 
 # --- 3. ĐIỀU HƯỚNG TRANG CHỦ ---
 if st.session_state['page'] == 'TRANG CHỦ':
-    # --- PHẦN BANNER CHÍNH (ĐÃ ÉP NỀN VÀ NỘI DUNG VÀO 1 KHỐI) ---
     st.markdown("""
-        <div class="hero-container" style="position: relative; overflow: hidden;">
+        <div class="hero-container" style="position: relative; overflow: hidden; height: 420px; display: flex; justify-content: center; align-items: center; background: #001529;">
             <div class="hero-bg-overlay"></div>
-            <div style="display: flex; align-items: center; justify-content: center; gap: 50px; width: 1200px; margin: 0 auto; height: 100%; position: relative; z-index: 10;">
-                <div style="flex: 2; display: flex; justify-content: flex-end;">
+            
+            <div style="display: flex; width: 1100px; height: 350px; position: relative; z-index: 10; box-shadow: 0 25px 50px rgba(0,0,0,0.6);">
+                
+                <div style="flex: 2; height: 100%;">
                     <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png" 
-                         style="width: 100%; max-width: 700px; border-radius: 15px; box-shadow: 0 15px 50px rgba(0,0,0,0.5);">
+                         style="width: 100%; height: 100%; object-fit: cover; display: block; border: none; border-radius: 0;">
                 </div>
-                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                    <div class="glass-box" style="padding: 30px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); text-align: center;">
-                        <h2 style="font-family: 'Roboto', sans-serif; color:#FFB300; margin:0; font-size: 38px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase;">VỆ SĨ SILVER</h2>
-                        <div style="height: 4px; background: #d32f2f; width: 80px; margin: 15px auto;"></div>
-                        <p style="font-size:18px; color: white; font-weight: 500; line-height: 1.6; margin: 0;">Hệ thống trí tuệ nhân tạo<br>bảo vệ người cao tuổi</p>
-                    </div>
+
+                <div style="flex: 1.2; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(20px); 
+                            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+                            padding: 30px; text-align: center; border: none; border-radius: 0;">
+                    
+                    <h2 style="font-family: 'Roboto', sans-serif; color:#FFB300; margin:0; font-size: 45px; font-weight: 900; 
+                               line-height: 1; letter-spacing: 1px; text-transform: uppercase;">VỆ SĨ<br>SILVER</h2>
+                    
+                    <div style="height: 6px; background: #d32f2f; width: 85px; margin: 20px auto;"></div>
+                    
+                    <p style="font-family: 'Roboto', sans-serif; font-size: 18px; color: white; font-weight: 700; 
+                              line-height: 1.5; margin: 0; text-transform: uppercase; letter-spacing: 1px;">
+                        Hệ thống AI<br>Bảo vệ người cao tuổi
+                    </p>
                 </div>
             </div>
         </div>
     """, unsafe_allow_html=True)
 
+    # --- NÚT KIỂM TRA NGAY (ÉP LÊN TRÊN VÙNG QUẢNG CÁO) ---
+    # Chỉnh padding-left (hiện tại là 390px) để di chuyển nút sang trái/phải cho khớp khối chữ
+    st.markdown('<div style="margin-top: -85px; position: relative; z-index: 1000; display: flex; justify-content: center; width: 100%; padding-left: 390px;">', unsafe_allow_html=True)
+    if st.button("KIỂM TRA NGAY", key="hero_btn"):
+        st.session_state['page'] = 'VỆ SĨ AI'
+        st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
     # --- KHỐI: VỀ ỨNG DỤNG & HƯỚNG DẪN ---
     st.markdown("<br>", unsafe_allow_html=True)
     c_intro, c_guide = st.columns(2, gap="large")
@@ -109,6 +125,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
+
 
 
 
