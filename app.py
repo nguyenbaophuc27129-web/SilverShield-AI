@@ -31,20 +31,23 @@ with m4:
     if st.button("VỆ SĨ AI", use_container_width=True): st.session_state['page'] = 'VỆ SĨ AI'
 st.markdown('</div></div>', unsafe_allow_html=True)
 
-# --- PHẦN BANNER CHÍNH (ĐÃ SỬA LỖI VỊ TRÍ & ẢNH) ---
+if st.session_state['page'] == 'TRANG CHỦ':
+    # --- PHẦN BANNER CHÍNH (Đã sửa lỗi thụt lề & Vị trí ảnh) ---
     st.markdown('<div class="hero-container"><div class="hero-bg-overlay"></div>', unsafe_allow_html=True)
-    
-    # Dùng HTML thuần để nội dung KHÔNG bị Streamlit đẩy lệch
+
+    # Sử dụng HTML Flexbox trực tiếp để nội dung không bị nhảy ra ngoài hero-container
     st.markdown("""
-        <div class="hero-content-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 30px; width: 100%; max-width: 1200px; margin: 0 auto; height: 100%;">
-            <div style="flex: 2; display: flex; justify-content: flex-end;">
-                <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/de467deafaddee37c8ed8fb255d2631da0d6753a/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png" 
-                     style="width: 100%; max-width: 700px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-            </div>
-            <div style="flex: 1; text-align: left;">
-                <div class="glass-box" style="padding: 25px; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border-radius: 15px; border: 1px solid rgba(255,255,255,0.3); display: inline-block;">
-                    <h2 style="color:#FFB300; margin:0; font-size: 32px; font-weight: 900;">VỆ SĨ SILVER</h2>
-                    <p style="font-size:16px; color: white; margin-top: 5px;">Hệ thống trí tuệ nhân tạo<br>bảo vệ người cao tuổi</p>
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 400px; display: flex; align-items: center; justify-content: center; z-index: 10;">
+            <div style="width: 1200px; display: flex; align-items: center; gap: 40px; padding: 0 15px;">
+                <div style="flex: 2; display: flex; justify-content: center;">
+                    <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/de467deafaddee37c8ed8fb255d2631da0d6753a/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png" 
+                         style="width: 100%; max-width: 680px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
+                </div>
+                <div style="flex: 1;">
+                    <div class="glass-box">
+                        <h2 style="color:#FFB300; margin:0; font-size: 30px; font-weight: 900;">VỆ SĨ SILVER</h2>
+                        <p style="font-size:16px; color: white; margin-top: 10px; font-weight: 500;">Hệ thống trí tuệ nhân tạo<br>bảo vệ người cao tuổi</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,9 +55,9 @@ st.markdown('</div></div>', unsafe_allow_html=True)
     
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # Nút bấm (Dùng CSS kéo lên đè vào banner)
-    st.markdown('<div class="btn-check-now" style="margin-top: -100px; position: relative; z-index: 999; margin-left: 350px; text-align: center;">', unsafe_allow_html=True)
-    if st.button("KIỂM TRA NGAY", key="hero_btn"):
+    # Nút bấm (Giữ nguyên logic của bạn nhưng fix thụt lề)
+    st.markdown('<div class="btn-check-now">', unsafe_allow_html=True)
+    if st.button("KIỂM TRA NGAY", key="hero_btn", use_container_width=True):
         st.session_state['page'] = 'VỆ SĨ AI'
         st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
@@ -112,6 +115,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
+
 
 
 
