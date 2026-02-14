@@ -50,62 +50,34 @@ with m4:
 st.markdown('</div></div>', unsafe_allow_html=True)
 
 
-
-# --- 3. ĐIỀU HƯỚNG TRANG CHỦ ---
-
+    # --- 3. ĐIỀU HƯỚNG TRANG CHỦ ---
 if st.session_state['page'] == 'TRANG CHỦ':
-
-    # --- PHẦN BANNER CHÍNH (ĐÃ ÉP NỀN VÀ NỘI DUNG VÀO 1 KHỐI) ---
-
-    st.markdown("""
-
-        <div class="hero-container" style="position: relative; overflow: hidden;">
-
-            <div class="hero-bg-overlay"></div>
-
-            <div style="display: flex; align-items: center; justify-content: center; gap: 50px; width: 1200px; margin: 0 auto; height: 100%; position: relative; z-index: 10;">
-
-                <div style="flex: 2; display: flex; justify-content: flex-end;">
-
-                    <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png" 
-
-                         style="width: 100%; max-width: 700px; border-radius: 15px; box-shadow: 0 15px 50px rgba(0,0,0,0.5);">
-
-                </div>
-
-                <div style="flex: 1;">
-
-                    <div class="glass-box" style="padding: 30px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); text-align: center;">
-
-                        <h2 style="color:#FFB300; margin:0; font-size: 35px; font-weight: 900;">VỆ SĨ SILVER</h2>
-
-                        <div style="height: 4px; background: #d32f2f; width: 60px; margin: 15px auto;"></div>
-
-                        <p style="font-size:18px; color: white; font-weight: 500; line-height: 1.6;">Hệ thống trí tuệ nhân tạo<br>bảo vệ người cao tuổi</p>
-
-                    </div>
-
-                </div>
-
+    # Khối nội dung Banner (Dính sát - 50/50 - Không bo tròn)
+    banner_html = """
+    <div style="display: flex; justify-content: center; align-items: center; padding: 40px 0; background: #001529;">
+        <div style="display: flex; width: 1100px; height: 350px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+            <div style="flex: 1; height: 100%;">
+                <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png" 
+                     style="width: 100%; height: 100%; object-fit: cover; border-radius: 0;">
             </div>
-
+            <div style="flex: 1; background: rgba(255,255,255,0.1); backdrop-filter: blur(15px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-radius: 0; padding: 20px;">
+                <h2 style="font-family: 'Roboto', sans-serif; color:#FFB300; margin:0; font-size: 40px; font-weight: 900; text-transform: uppercase;">VỆ SĨ SILVER</h2>
+                <div style="height: 4px; background: #d32f2f; width: 80px; margin: 15px auto;"></div>
+                <p style="font-size:18px; color: white; font-weight: 700; text-transform: uppercase;">Hệ thống AI bảo vệ người già</p>
+                <div style="height: 50px;"></div>
+            </div>
         </div>
+    </div>
+    """
+    st.markdown(banner_html, unsafe_allow_html=True)
 
-    """, unsafe_allow_html=True)
-
-
-
-    # Nút bấm được kéo lên bằng CSS
-
-    st.markdown('<div style="margin-top: -100px; position: relative; z-index: 100; display: flex; justify-content: center; margin-left: 450px;">', unsafe_allow_html=True)
-
-    if st.button("KIỂM TRA NGAY", key="hero_btn"):
-
-        st.session_state['page'] = 'VỆ SĨ AI'
-
-        st.rerun()
-
-    st.markdown('</div>', unsafe_allow_html=True)
+    # Khối nút bấm (Tách riêng hoàn toàn để không lỗi)
+    c1, c2, c3 = st.columns([1, 1, 1])
+    with c2:
+        st.write("") # Tạo khoảng trống
+        if st.button("KIỂM TRA NGAY", key="hero_btn", use_container_width=True):
+            st.session_state['page'] = 'VỆ SĨ AI'
+            st.rerun()
     # --- KHỐI: VỀ ỨNG DỤNG & HƯỚNG DẪN ---
     st.markdown("<br>", unsafe_allow_html=True)
     c_intro, c_guide = st.columns(2, gap="large")
@@ -160,6 +132,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
+
 
 
 
