@@ -15,51 +15,58 @@ except:
 if 'page' not in st.session_state:
     st.session_state['page'] = 'TRANG CHỦ'
 
-# --- 2. NAVBAR CHUẨN (FIX LOGO) ---
+# --- 2. NAVBAR CHUẨN (FIX LOGO & THỤT LỀ) ---
 st.markdown('<div class="olympic-navbar"><div class="navbar-container" style="width:1200px; margin:0 auto; display:flex; align-items:center;">', unsafe_allow_html=True)
 c_logo, m1, m2, m3, m4 = st.columns([1.5, 2, 2, 2, 2])
 
 with c_logo:
-    # Đã sửa link RAW để logo hiện lên
+    # Sửa link RAW để logo hiện
     st.markdown('<img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/t%E1%BA%A3i%20xu%E1%BB%91ng%20(1).png" style="height:50px; margin-left:15px;">', unsafe_allow_html=True)
 
 with m1:
-    if st.button("🏠 TRANG CHỦ", use_container_width=True): st.session_state['page'] = 'TRANG CHỦ'; st.rerun()
+    if st.button("🏠 TRANG CHỦ", use_container_width=True, key="nav_home"): 
+        st.session_state['page'] = 'TRANG CHỦ'
+        st.rerun()
 with m2:
-    if st.button("👥 GIỚI THIỆU", use_container_width=True): pass
+    st.button("👥 GIỚI THIỆU", use_container_width=True, key="nav_intro")
 with m3:
-    if st.button("📰 TIN TỨC", use_container_width=True): pass
+    st.button("📰 TIN TỨC", use_container_width=True, key="nav_news")
 with m4:
-    if st.button("🛡️ VỆ SĨ AI", use_container_width=True): st.session_state['page'] = 'VỆ SĨ AI'; st.rerun()
+    if st.button("🛡️ VỆ SĨ AI", use_container_width=True, key="nav_ai"): 
+        st.session_state['page'] = 'VỆ SĨ AI'
+        st.rerun()
 st.markdown('</div></div>', unsafe_allow_html=True)
 
-# --- 3. ĐIỀU HƯỚNG TRANG CHỦ ---
+# --- 3. ĐIỀU HƯỚNG NỘI DUNG ---
 if st.session_state['page'] == 'TRANG CHỦ':
-    # --- PHẦN BANNER CHÍNH (ĐÃ ÉP NỀN VÀ NỘI DUNG VÀO 1 KHỐI) ---
+    # Mở Hero Container
+    st.markdown('<div class="hero-container"><div class="hero-bg-overlay"></div>', unsafe_allow_html=True)
+
+    # Khối nội dung (Ảnh + Chữ) - Dùng HTML để không bị nhảy
     st.markdown("""
-        <div class="hero-container" style="position: relative; overflow: hidden;">
-            <div class="hero-bg-overlay"></div>
-            <div style="display: flex; align-items: center; justify-content: center; gap: 50px; width: 1200px; margin: 0 auto; height: 100%; position: relative; z-index: 10;">
-                <div style="flex: 2; display: flex; justify-content: flex-end;">
-                    <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png" 
-                         style="width: 100%; max-width: 700px; border-radius: 15px; box-shadow: 0 15px 50px rgba(0,0,0,0.5);">
-                </div>
-                <div style="flex: 1;">
-                    <div class="glass-box" style="padding: 30px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); text-align: center;">
-                        <h2 style="color:#FFB300; margin:0; font-size: 35px; font-weight: 900;">VỆ SĨ SILVER</h2>
-                        <div style="height: 4px; background: #d32f2f; width: 60px; margin: 15px auto;"></div>
-                        <p style="font-size:18px; color: white; font-weight: 500; line-height: 1.6;">Hệ thống trí tuệ nhân tạo<br>bảo vệ người cao tuổi</p>
-                    </div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 40px; width: 1200px; margin: 0 auto; height: 400px; position: relative; z-index: 10;">
+            <div style="flex: 2; display: flex; justify-content: flex-end;">
+                <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png" 
+                     style="width: 100%; max-width: 650px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
+            </div>
+            <div style="flex: 1; text-align: center;">
+                <div class="glass-box" style="padding: 25px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; border: 1px solid rgba(255,255,255,0.2);">
+                    <h2 style="color:#FFB300; margin:0; font-size: 32px; font-weight: 900;">VỆ SĨ SILVER</h2>
+                    <div style="height: 3px; background: #d32f2f; width: 50px; margin: 15px auto;"></div>
+                    <p style="font-size:16px; color: white; font-weight: 500;">Hệ thống trí tuệ nhân tạo<br>bảo vệ người cao tuổi</p>
                 </div>
             </div>
         </div>
     """, unsafe_allow_html=True)
 
-    # Nút bấm được kéo lên bằng CSS
-    st.markdown('<div style="margin-top: -100px; position: relative; z-index: 100; display: flex; justify-content: center; margin-left: 450px;">', unsafe_allow_html=True)
+    # ĐÂY: Hốt cái nút vào trong vùng xanh bằng cách dùng margin-top âm cực mạnh
+    st.markdown('<div style="position: relative; top: -110px; z-index: 999; display: flex; justify-content: flex-end; width: 1020px;">', unsafe_allow_html=True)
     if st.button("KIỂM TRA NGAY", key="hero_btn"):
         st.session_state['page'] = 'VỆ SĨ AI'
         st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    # Đóng Hero Container
     st.markdown('</div>', unsafe_allow_html=True)
     # --- KHỐI: VỀ ỨNG DỤNG & HƯỚNG DẪN ---
     st.markdown("<br>", unsafe_allow_html=True)
@@ -115,6 +122,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
+
 
 
 
