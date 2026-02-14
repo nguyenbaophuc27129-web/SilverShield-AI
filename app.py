@@ -20,7 +20,7 @@ st.markdown('<div class="olympic-navbar"><div class="navbar-container" style="wi
 c_logo, m1, m2, m3, m4 = st.columns([1.5, 2, 2, 2, 2])
 
 with c_logo:
-    st.markdown('<img src="https://cdn-icons-png.flaticon.com/512/9664/9664268.png" style="height:50px; margin-left:15px;">', unsafe_allow_html=True)
+    st.markdown('<img src="https://github.com/nguyenbaophuc27129-web/SilverShield-AI/blob/f54e17f17f8a7155cc29b01be1ceae611281e81e/t%E1%BA%A3i%20xu%E1%BB%91ng%20(1).png" style="height:50px; margin-left:15px;">', unsafe_allow_html=True)
 with m1:
     if st.button("TRANG CHỦ", use_container_width=True): st.session_state['page'] = 'TRANG CHỦ'
 with m2:
@@ -120,6 +120,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
+
 
 
 
