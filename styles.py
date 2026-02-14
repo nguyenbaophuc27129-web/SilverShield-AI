@@ -150,21 +150,37 @@ def render_header_structure():
     st.markdown('<div class="olympic-topbar"><div style="width:1200px; display:flex; justify-content:space-between; padding:0 15px;"><span>🛠️ DVT - Empire CBZ X - THPT Dương Văn Thì</span><span>🛡️ SILVERSHIELD AI</span></div></div>', unsafe_allow_html=True)
     st.markdown('<div class="marquee-strip"><div class="marquee-text">📢 CHÀO MỪNG BẠN ĐẾN VỚI HỆ THỐNG SILVERSHIELD AI - PHÒNG CHỐNG LÀ ĐẢO TRỰC TUYẾN. HÃY CẨN THẬN VỚI CÁC YÊU CẦU CHUYỂN TIỀN LẠ!</div></div>', unsafe_allow_html=True)
 def render_footer_structure():
-    st.markdown('<div class="footer"><h2>SILVERSHIELD</h2><p>"Vì một không gian mạng an toàn"</p><p style="font-size:12px; opacity:0.6;">© 2026 Bản quyền thuộc về Đội ngũ DVT - Empire CBZ X</p></div>', unsafe_allow_html=True)
+    # 1. Phần CSS để diệt tận gốc khoảng trắng của Streamlit
     st.markdown("""
-    <style>
-        /* CHỖ NÀY LÀ QUAN TRỌNG NHẤT: Triệt tiêu khoảng trống mặc định của Streamlit */
-        .main .block-container {
-            padding-bottom: 0px !important;
-        }
-        footer {
-            display: none !important;
-        }
-        #MainMenu {
-            display: none !important;
-        }
-    </style>
-    
-    <div style="background-color: #001529; width: 100%; padding: 40px 0; margin-bottom: -100px;">
+        <style>
+            /* Ép toàn bộ container nội dung của Streamlit về sát đáy 0px */
+            .main .block-container {
+                padding-bottom: 0 !important;
+            }
+            
+            /* Xóa bỏ footer mặc định ẩn của Streamlit (nếu có) */
+            footer {
+                display: none !important;
+            }
+
+            /* Định dạng lại Footer của bạn */
+            .custom-footer {
+                background-color: #001529;
+                color: white;
+                text-align: center;
+                padding: 40px 0;
+                width: 100%;
+                margin-top: 50px;
+                border-top: 3px solid #d32f2f;
+                /* Thủ thuật ép sát đáy: */
+                position: relative;
+                bottom: 0;
+            }
+        </style>
+        
+        <div class="custom-footer">
+            <h2 style="font-family: 'Roboto', sans-serif; font-weight: 900; letter-spacing: 2px; margin: 0;">SILVERSHIELD</h2>
+            <p style="font-style: italic; opacity: 0.8; margin: 10px 0;">"Vì một không gian mạng an toàn"</p>
+            <p style="font-size: 12px; opacity: 0.6; margin: 0;">© 2026 Bản quyền thuộc về Đội ngũ DVT - Empire CBZ X</p>
         </div>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
