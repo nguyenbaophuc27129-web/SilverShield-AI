@@ -151,3 +151,20 @@ def render_header_structure():
     st.markdown('<div class="marquee-strip"><div class="marquee-text">📢 CHÀO MỪNG BẠN ĐẾN VỚI HỆ THỐNG SILVERSHIELD AI - PHÒNG CHỐNG LÀ ĐẢO TRỰC TUYẾN. HÃY CẨN THẬN VỚI CÁC YÊU CẦU CHUYỂN TIỀN LẠ!</div></div>', unsafe_allow_html=True)
 def render_footer_structure():
     st.markdown('<div class="footer"><h2>SILVERSHIELD</h2><p>"Vì một không gian mạng an toàn"</p><p style="font-size:12px; opacity:0.6;">© 2026 Bản quyền thuộc về Đội ngũ DVT - Empire CBZ X</p></div>', unsafe_allow_html=True)
+    st.markdown("""
+    <style>
+        /* CHỖ NÀY LÀ QUAN TRỌNG NHẤT: Triệt tiêu khoảng trống mặc định của Streamlit */
+        .main .block-container {
+            padding-bottom: 0px !important;
+        }
+        footer {
+            display: none !important;
+        }
+        #MainMenu {
+            display: none !important;
+        }
+    </style>
+    
+    <div style="background-color: #001529; width: 100%; padding: 40px 0; margin-bottom: -100px;">
+        </div>
+""", unsafe_allow_html=True)
