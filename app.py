@@ -35,7 +35,8 @@ st.markdown('</div></div>', unsafe_allow_html=True)
 
 # --- 3. ĐIỀU HƯỚNG TRANG CHỦ ---
 if st.session_state['page'] == 'TRANG CHỦ':
-   # --- PHẦN BANNER CHÍNH (ĐÃ SỬA: 50/50, DÍNH SÁT, VUÔNG GÓC) ---
+   # --- PHẦN BANNER CHÍNH (FIX HIỂN THỊ) ---
+    # Dòng này để vẽ cái khung Banner
     st.markdown("""
         <div class="hero-container" style="position: relative; overflow: hidden; height: 450px; display: flex; align-items: center; justify-content: center;">
             <div class="hero-bg-overlay"></div>
@@ -47,20 +48,18 @@ if st.session_state['page'] == 'TRANG CHỦ':
                 </div>
 
                 <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; 
-                            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.2); 
-                            text-align: center; border-radius: 0;">
-                    
+                            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); 
+                            text-align: center; border-radius: 0; padding: 20px;">
                     <h2 style="font-family: 'Roboto', sans-serif; color:#FFB300; margin:0; font-size: 40px; font-weight: 900; text-transform: uppercase;">VỆ SĨ SILVER</h2>
                     <div style="height: 4px; background: #d32f2f; width: 80px; margin: 15px auto;"></div>
                     <p style="font-size:18px; color: white; font-weight: 700; line-height: 1.6;">Hệ thống trí tuệ nhân tạo<br>bảo vệ người cao tuổi</p>
-                    
                     <div style="height: 60px;"></div>
                 </div>
             </div>
         </div>
     """, unsafe_allow_html=True)
 
-    # Nút bấm: Căn giữa theo chiều ngang toàn màn hình, nhưng nhích sang phải để vào khối chữ
+    # Dòng này để vẽ cái nút (Lệnh Python riêng biệt, không nằm trong dấu ngoặc kép trên)
     st.markdown('<div style="margin-top: -105px; position: relative; z-index: 1000; display: flex; justify-content: center; width: 100%; padding-left: 450px;">', unsafe_allow_html=True)
     if st.button("KIỂM TRA NGAY", key="hero_btn"):
         st.session_state['page'] = 'VỆ SĨ AI'
@@ -120,6 +119,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
+
 
 
 
