@@ -58,7 +58,7 @@ if st.session_state['page'] == 'TRANG CHỦ':
             <div class="hero-bg-overlay"></div>
             <div style="display: flex; align-items: center; justify-content: center; gap: 50px; width: 1200px; margin: 0 auto; height: 100%; position: relative; z-index: 10;">
         <div style="display: flex; width: 1100px; height: 350px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
-            <div style="flex: 1; height: 100%;">
+            <div style="flex: 3; height: 100%;">
                 <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png" 
                      style="width: 100%; height: 100%; object-fit: cover; border-radius: 0;">
             </div>
@@ -127,6 +127,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
+
 
 
 
