@@ -35,8 +35,6 @@ st.markdown('</div></div>', unsafe_allow_html=True)
 
 # --- 3. ĐIỀU HƯỚNG TRANG CHỦ ---
 if st.session_state['page'] == 'TRANG CHỦ':
-   # --- 3. ĐIỀU HƯỚNG TRANG CHỦ (FIX CỨNG: 50/50 - DÍNH SÁT - VUÔNG GÓC) ---
-if st.session_state['page'] == 'TRANG CHỦ':
     # Khối 1: Render HTML cho Banner (Ảnh và Chữ dính liền)
     st.markdown("""
         <div class="hero-container" style="position: relative; overflow: hidden; height: 450px; display: flex; align-items: center; justify-content: center; background: #001529;">
@@ -120,6 +118,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN</div>', unsafe_allow_html=True)
 
 styles.render_footer_structure()
+
 
 
 
