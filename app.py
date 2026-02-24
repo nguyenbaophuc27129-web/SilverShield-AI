@@ -7,10 +7,10 @@ import logic
 styles.apply_styles()
 styles.render_header_structure() 
 
-# CSS KHÓA FOOTER VÀ XỬ LÝ HIỂN THỊ
+# ĐOẠN CSS NÂNG CẤP GIAO DIỆN CHUYÊN NGHIỆP (GIỮ LẠI CƠ CHẾ CŨ)
 st.markdown("""
     <style>
-        /* Khóa Footer sát đáy tuyệt đối */
+        /* Reset & Layout */
         .main .block-container {
             padding-top: 0rem !important;
             padding-bottom: 0rem !important;
@@ -23,14 +23,33 @@ st.markdown("""
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            background-color: #ffffff;
         }
 
-        /* Tăng cỡ chữ cho người già dễ đọc */
-        p, li, div {
-            font-size: 18px !important;
+        /* Typography */
+        p, li, div { font-size: 16px; color: #444; }
+        
+        /* Hiệu ứng Card chuyên nghiệp */
+        .pro-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid #f0f0f0;
+            height: 100%;
         }
-        .banner-header {
-            font-size: 24px !important;
+        .pro-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        /* Hero Section Styling */
+        .hero-text-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
         }
 
         /* Xóa khoảng hở cuối trang */
@@ -49,7 +68,7 @@ except:
 if 'page' not in st.session_state:
     st.session_state['page'] = 'TRANG CHỦ'
 
-# --- 2. NAVBAR CHUẨN (GIỮ NGUYÊN) ---
+# --- 2. NAVBAR CHUẨN ---
 st.markdown('<div class="olympic-navbar"><div class="navbar-container" style="width:1200px; margin:0 auto; display:flex; align-items:center;">', unsafe_allow_html=True)
 c_logo, m1, m2, m3, m4 = st.columns([1.5, 2, 2, 2, 2])
 
@@ -80,34 +99,67 @@ main_body = st.container()
 
 with main_body:
     if st.session_state['page'] == 'TRANG CHỦ':
-        # BANNER ĐÃ BỎ KHUNG ĐEN - GIỮ ẢNH TO VÀ NỀN
-        banner_html = """
-        <div style="width: 100%; background: #f0f2f6; padding: 20px 0; display: flex; justify-content: center;">
-            <div style="width: 1100px; height: 400px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-radius: 10px;">
-                <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png" 
-                     style="width: 100%; height: 100%; object-fit: cover;">
+        # --- HERO SECTION PHONG CÁCH "FOCUSON" ---
+        hero_html = """
+        <div style="width: 100%; background: #ffffff; padding: 60px 0; border-bottom: 1px solid #eee;">
+            <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 40px;">
+                <div style="flex: 1.2;" class="hero-text-side">
+                    <h4 style="color: #8bc34a; font-weight: bold; letter-spacing: 2px; margin-bottom: 10px;">SILVERSHIELD AI</h4>
+                    <h1 style="font-size: 48px; font-weight: 800; color: #222; line-height: 1.2; margin-bottom: 20px;">
+                        HỆ THỐNG BẢO VỆ <br><span style="color: #8bc34a;">NGƯỜI CAO TUỔI</span>
+                    </h1>
+                    <p style="font-size: 18px; color: #666; line-height: 1.6; margin-bottom: 30px;">
+                        Sử dụng trí tuệ nhân tạo tiên phong để phân tích, phát hiện và ngăn chặn các hành vi lừa đảo trực tuyến, bảo vệ sự an toàn cho cha mẹ và người thân của bạn.
+                    </p>
+                </div>
+                <div style="flex: 1;">
+                    <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png" 
+                         style="width: 100%; border-radius: 15px; box-shadow: 20px 20px 60px #d9d9d9;">
+                </div>
             </div>
         </div>
         """
-        st.markdown(banner_html, unsafe_allow_html=True)
-        st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown(hero_html, unsafe_allow_html=True)
+        st.markdown("<br><br>", unsafe_allow_html=True)
         
+        # --- FEATURE SECTION ---
+        st.markdown('<div style="max-width:1200px; margin:0 auto;">', unsafe_allow_html=True)
         c_intro, c_guide = st.columns(2, gap="large")
         with c_intro:
-            st.markdown('<div class="banner-strip"><div class="banner-header">VỀ ỨNG DỤNG</div><p style="text-align:justify; color:#333; padding:15px;">SilverShield là giải pháp công nghệ tiên phong, sử dụng trí tuệ nhân tạo để phân tích và cảnh báo lừa đảo trực tuyến cho người cao tuổi.</p></div>', unsafe_allow_html=True)
+            st.markdown("""
+                <div class="pro-card">
+                    <h3 style="color: #222; border-bottom: 3px solid #8bc34a; display: inline-block; padding-bottom: 5px;">VỀ ỨNG DỤNG</h3>
+                    <p style="margin-top: 15px; text-align: justify;">SilverShield là giải pháp công nghệ tiên phong, sử dụng trí tuệ nhân tạo để phân tích và cảnh báo lừa đảo trực tuyến cho người cao tuổi.</p>
+                </div>
+            """, unsafe_allow_html=True)
         with c_guide:
-            st.markdown('<div class="banner-strip"><div class="banner-header">HƯỚNG DẪN</div><ul style="text-align:left; color:#333; padding:15px;"><li>Bước 1: Chọn "Vệ sĩ AI"</li><li>Bước 2: Nhập nội dung nghi ngờ</li><li>Bước 3: Xem kết quả cảnh báo</li></ul></div>', unsafe_allow_html=True)
+            st.markdown("""
+                <div class="pro-card">
+                    <h3 style="color: #222; border-bottom: 3px solid #0044cc; display: inline-block; padding-bottom: 5px;">HƯỚNG DẪN</h3>
+                    <ul style="margin-top: 15px; list-style-type: none; padding-left: 0;">
+                        <li style="margin-bottom: 10px;">🛡️ <b>Bước 1:</b> Chọn mục "Vệ sĩ AI"</li>
+                        <li style="margin-bottom: 10px;">🔍 <b>Bước 2:</b> Nhập nội dung nghi ngờ</li>
+                        <li>✅ <b>Bước 3:</b> Nhận kết quả từ AI</li>
+                    </ul>
+                </div>
+            """, unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-        st.markdown('<div class="rules-main-header">🛡️ QUY TẮC AN TOÀN KHÔNG GIAN MẠNG</div>', unsafe_allow_html=True)
+        # --- RULES SECTION ---
+        st.markdown('<br><br><div style="max-width:1200px; margin:0 auto;">', unsafe_allow_html=True)
+        st.markdown('<div class="rules-main-header" style="background: #222; color: white; padding: 15px; text-align: center; border-radius: 5px;">🛡️ QUY TẮC AN TOÀN KHÔNG GIAN MẠNG</div>', unsafe_allow_html=True)
         r1, r2, r3 = st.columns(3, gap="medium")
         with r1:
-            st.markdown('<div class="rule-card"><div class="rule-header bg-red">5 KHÔNG</div><div style="padding:15px; font-weight:bold;">1. Không chuyển tiền<br>2. Không bấm link lạ<br>3. Không đưa OTP<br>4. Không cài app lạ<br>5. Không sợ đe dọa</div></div>', unsafe_allow_html=True)
+            st.markdown('<div class="pro-card" style="border-top: 5px solid #d32f2f;"><h4 style="color:#d32f2f; text-align:center;">5 KHÔNG</h4><p style="font-weight:bold; line-height:1.8;">1. Không chuyển tiền<br>2. Không bấm link lạ<br>3. Không đưa OTP<br>4. Không cài app lạ<br>5. Không sợ đe dọa</p></div>', unsafe_allow_html=True)
         with r2:
-            st.markdown('<div class="rule-card"><div class="rule-header bg-green">3 NÊN</div><div style="padding:15px; font-weight:bold;">1. Nên gọi xác thực<br>2. Nên hỏi con cháu<br>3. Nên báo công an</div></div>', unsafe_allow_html=True)
+            st.markdown('<div class="pro-card" style="border-top: 5px solid #2e7d32;"><h4 style="color:#2e7d32; text-align:center;">3 NÊN</h4><p style="font-weight:bold; line-height:1.8;">1. Nên gọi xác thực<br>2. Nên hỏi con cháu<br>3. Nên báo công an</p></div>', unsafe_allow_html=True)
         with r3:
-            st.markdown('<div class="rule-card"><div class="rule-header bg-teal">LƯU Ý</div><div style="padding:15px; font-weight:bold;">1. Luôn bình tĩnh<br>2. Đọc tin an ninh<br>3. Dùng SilverShield</div></div>', unsafe_allow_html=True)
+            st.markdown('<div class="pro-card" style="border-top: 5px solid #0097a7;"><h4 style="color:#0097a7; text-align:center;">LƯU Ý</h4><p style="font-weight:bold; line-height:1.8;">1. Luôn bình tĩnh<br>2. Đọc tin an ninh<br>3. Dùng SilverShield</p></div>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-        st.markdown('<div class="news-header-bar" style="background:#0044cc; color:white; padding:15px; margin-top:30px; font-weight:bold;">📰 TIN TỨC AN NINH MẠNG</div>', unsafe_allow_html=True)
+        # --- NEWS SECTION ---
+        st.markdown('<br><br><div style="max-width:1200px; margin:0 auto;">', unsafe_allow_html=True)
+        st.markdown('<div class="news-header-bar" style="background:#0044cc; color:white; padding:15px; font-weight:bold; border-radius: 5px;">📰 TIN TỨC AN NINH MẠNG</div>', unsafe_allow_html=True)
         news_data = [
             {"title": "Cảnh báo lừa đảo mã QR", "img": "https://vnn-imgs-f.vgcloud.vn/2023/08/15/11/qr-code-lua-dao.jpg", "url": "https://vtv.vn/cong-nghe/canh-bao-hinh-thuc-lua-dao-moi-qua-ma-qr-20230814154506307.htm"},
             {"title": "Deepfake giả giọng nói", "img": "https://vnn-imgs-f.vgcloud.vn/2023/03/27/10/deepfake-lua-dao.jpg", "url": "https://tuoitre.vn/canh-bao-thu-doan-lua-dao-bang-cong-nghe-deepfake-2023032711054321.htm"},
@@ -116,8 +168,9 @@ with main_body:
         cols = st.columns(3)
         for idx, item in enumerate(news_data):
             with cols[idx]:
-                st.markdown(f'<div class="news-card" style="background:white; border:1px solid #eee;"><img src="{item["img"]}" style="width:100%; height:180px; object-fit:cover;"><div style="padding:10px; font-weight:bold;">{item["title"]}</div></div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="pro-card" style="padding:0; overflow:hidden;"><img src="{item["img"]}" style="width:100%; height:200px; object-fit:cover;"><div style="padding:15px;"><h5 style="font-weight:bold; min-height:50px;">{item["title"]}</h5></div></div>', unsafe_allow_html=True)
                 st.link_button("CHI TIẾT", item['url'], use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
     elif st.session_state['page'] == 'GIỚI THIỆU':
         st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN & SỨ MỆNH</div>', unsafe_allow_html=True)
