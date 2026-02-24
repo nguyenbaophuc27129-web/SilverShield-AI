@@ -11,7 +11,7 @@ styles.render_header_structure()
 # Đoạn CSS này sẽ triệt tiêu mọi khoảng trống lọt chỏm
 st.markdown("""
     <style>
-        /* CSS CHO MÀN HÌNH CHỜ (LOADING OVERLAY) */
+        /* CSS CHO MÀN HÌNH CHỜ (LOADING OVERLAY) VỚI HIỆU ỨNG MƯỢT */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -31,6 +31,25 @@ st.markdown("""
             color: #FF6600;
             font-family: Arial, sans-serif;
             letter-spacing: -2px;
+            overflow: hidden; 
+            white-space: nowrap;
+            margin: 0 auto;
+            border-right: .15em solid #FF6600; /* Hiệu ứng con trỏ */
+            animation: 
+                typing 0.8s steps(12, end),
+                blink-caret .75s step-end infinite;
+        }
+
+        /* Animation đánh máy hiện từng chữ */
+        @keyframes typing {
+          from { width: 0 }
+          to { width: 600px } /* Độ rộng đủ cho chữ SILVERSHIELD */
+        }
+
+        /* Animation con trỏ nhấp nháy */
+        @keyframes blink-caret {
+          from, to { border-color: transparent }
+          50% { border-color: #FF6600; }
         }
 
         /* 1. Xóa bỏ padding mặc định của Streamlit */
@@ -73,10 +92,10 @@ def trigger_loading(target_page):
     with placeholder.container():
         st.markdown("""
             <div class="loading-overlay">
-                <div class="loading-text">SILVERSHILED</div>
+                <div class="loading-text">SILVERSHIELD</div>
             </div>
         """, unsafe_allow_html=True)
-        time.sleep(1)  # Hiển thị màn hình chờ trong 1 giây
+        time.sleep(1.2)  # Thời gian chờ để thấy hiệu ứng đánh máy mượt
     st.session_state['page'] = target_page
     placeholder.empty()
     st.rerun()
@@ -213,4 +232,3 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
-
