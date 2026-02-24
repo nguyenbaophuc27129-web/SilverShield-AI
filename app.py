@@ -3,140 +3,97 @@ from PIL import Image
 import styles
 import logic
 
-# --- 1. KHỞI TẠO ---
+# --- 1. KHỞI TẠO & ÉP FOOTER SÁT ĐÁY TUYỆT ĐỐI ---
 styles.apply_styles()
-styles.render_top_bar() # Thanh xanh lá trên cùng
+styles.render_header_structure() 
+
+# CSS KHÓA FOOTER VÀ XỬ LÝ HIỂN THỊ
+st.markdown("""
+    <style>
+        /* Khóa Footer sát đáy tuyệt đối */
+        .main .block-container {
+            padding-top: 0rem !important;
+            padding-bottom: 0rem !important;
+            max-width: 100% !important;
+        }
+        footer {visibility: hidden !important; height: 0;}
+        header {visibility: hidden !important;}
+
+        .stApp {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Tăng cỡ chữ cho người già dễ đọc */
+        p, li, div {
+            font-size: 18px !important;
+        }
+        .banner-header {
+            font-size: 24px !important;
+        }
+
+        /* Xóa khoảng hở cuối trang */
+        div[data-testid="stVerticalBlock"] > div:last-child {
+            margin-bottom: 0px !important;
+            padding-bottom: 0px !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 try:
-    model = logic.init_ai()
+    model = logic.init_ai()
 except:
-    pass 
+    pass 
 
 if 'page' not in st.session_state:
-    st.session_state['page'] = 'TRANG CHỦ'
+    st.session_state['page'] = 'TRANG CHỦ'
 
-# --- 2. NAVBAR (MENU TRẮNG - LOGO XANH) ---
-st.markdown('<div class="focuson-navbar"><div style="width:1200px; margin:0 auto; padding:0 15px; display:flex; align-items:center;">', unsafe_allow_html=True)
-c_logo, c_menu = st.columns([2, 8])
+# --- 2. NAVBAR CHUẨN (GIỮ NGUYÊN) ---
+st.markdown('<div class="olympic-navbar"><div class="navbar-container" style="width:1200px; margin:0 auto; display:flex; align-items:center;">', unsafe_allow_html=True)
+c_logo, m1, m2, m3, m4 = st.columns([1.5, 2, 2, 2, 2])
 
 with c_logo:
-    # Logo chữ màu xanh lá giống mẫu Focuson
-    st.markdown('<h2 style="color:#82b440; margin:0; font-family:Raleway; font-weight:800;">SILVERSHIELD</h2>', unsafe_allow_html=True)
+    st.markdown('<img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/t%E1%BA%A3i%20xu%E1%BB%91ng%20(1).png" style="height:50px; margin-left:15px;">', unsafe_allow_html=True)
 
-with c_menu:
-    m1, m2, m3, m4, m5 = st.columns([1.5, 1.5, 1.5, 2, 2.5])
-    with m1:
-        if st.button("TRANG CHỦ"): st.session_state['page'] = 'TRANG CHỦ'
-    with m2:
-        if st.button("GIỚI THIỆU"): st.session_state['page'] = 'GIỚI THIỆU'
-    with m3:
-        if st.button("TIN TỨC"): st.session_state['page'] = 'TIN TỨC'
-    with m4:
-        if st.button("VỆ SĨ AI"): st.session_state['page'] = 'VỆ SĨ AI'
-    with m5:
-        # Nút xanh lá nổi bật
-        st.markdown('<div class="btn-quote">', unsafe_allow_html=True)
-        if st.button("KIỂM TRA NGAY", use_container_width=True):
-            st.session_state['page'] = 'VỆ SĨ AI'
-        st.markdown('</div>', unsafe_allow_html=True)
+with m1:
+    if st.button("🏠 TRANG CHỦ", use_container_width=True): 
+        st.session_state['page'] = 'TRANG CHỦ'
+        st.rerun()
+with m2:
+    if st.button("👥 GIỚI THIỆU", use_container_width=True): 
+        st.session_state['page'] = 'GIỚI THIỆU'
+        st.rerun()
+with m3:
+    if st.button("📰 TIN TỨC", use_container_width=True): 
+        st.session_state['page'] = 'TIN TỨC'
+        st.rerun()
+with m4:
+    if st.button("🛡️ VỆ SĨ AI", use_container_width=True): 
+        st.session_state['page'] = 'VỆ SĨ AI'
+        st.rerun()
 
 st.markdown('</div></div>', unsafe_allow_html=True)
 
+# --- 3. ĐIỀU HƯỚNG NỘI DUNG ---
+main_body = st.container()
 
-# --- 3. NỘI DUNG CHÍNH ---
-
-if st.session_state['page'] == 'TRANG CHỦ':
-    # === HERO SECTION (GIỐNG MẪU FOCUSON) ===
-    # Text nằm bên trái, Nền trắng đè lên ảnh
-    st.markdown("""
-    <div class="focuson-hero">
-        <div class="hero-overlay-gradient"></div>
-        <div class="hero-text-box">
-            <div class="green-script">We Are SilverShield AI</div>
-            <div class="big-title">POWERFUL & CLEAN<br>AI GUARDIAN</div>
-            <p class="hero-desc">
-                Hệ thống trí tuệ nhân tạo hàng đầu giúp nhận diện lừa đảo, bảo vệ người cao tuổi an tâm sử dụng mạng internet mỗi ngày.
-            </p>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Nút bấm trong Banner (Dùng columns để canh vị trí cho nút Streamlit)
-    # Hack vị trí để nút nằm đè lên banner
-    st.markdown('<div style="max-width:1200px; margin:-200px auto 0 auto; padding-left:20px; position:relative; z-index:5;">', unsafe_allow_html=True)
-    col_cta, col_empty = st.columns([2, 8])
-    with col_cta:
-        st.markdown('<div class="btn-quote">', unsafe_allow_html=True)
-        if st.button("BẮT ĐẦU NGAY"):
-            st.session_state['page'] = 'VỆ SĨ AI'
-        st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown('</div><div style="height:150px;"></div>', unsafe_allow_html=True)
-
-
-    # === CÁC KHỐI THÔNG TIN (VUÔNG VỨC) ===
-    st.markdown('<div class="section-wrapper">', unsafe_allow_html=True)
-    
-    # Tiêu đề section
-    st.markdown('<h3 style="text-align:center; color:#333; font-weight:800; text-transform:uppercase;">VỀ CHÚNG TÔI</h3><div style="width:50px; height:3px; background:#82b440; margin:15px auto 40px auto;"></div>', unsafe_allow_html=True)
-    
-    c1, c2, c3 = st.columns(3, gap="large")
-    with c1:
-        st.markdown("""
-        <div class="info-box">
-            <h4 style="color:#333; font-weight:700;">THÔNG MINH</h4>
-            <p style="color:#777; font-size:14px;">Phân tích tin nhắn lừa đảo chính xác bằng AI Google Gemini.</p>
-        </div>
-        """, unsafe_allow_html=True)
-    with c2:
-        st.markdown("""
-        <div class="info-box">
-            <h4 style="color:#333; font-weight:700;">ĐƠN GIẢN</h4>
-            <p style="color:#777; font-size:14px;">Giao diện tối giản, dễ sử dụng cho người lớn tuổi.</p>
-        </div>
-        """, unsafe_allow_html=True)
-    with c3:
-        st.markdown("""
-        <div class="info-box">
-            <h4 style="color:#333; font-weight:700;">TỐC ĐỘ</h4>
-            <p style="color:#777; font-size:14px;">Trả kết quả cảnh báo và giọng nói ngay lập tức.</p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-    st.markdown('</div>', unsafe_allow_html=True)
-
-
-# --- TRANG VỆ SĨ AI (GIỮ NGUYÊN LOGIC - CHỈNH LẠI BOX) ---
-elif st.session_state['page'] == 'VỆ SĨ AI':
-    st.markdown('<div class="section-wrapper">', unsafe_allow_html=True)
-    st.markdown('<h3 style="color:#333; font-weight:800;">TRUNG TÂM PHÂN TÍCH</h3><div style="width:50px; height:3px; background:#82b440; margin:10px 0 30px 0;"></div>', unsafe_allow_html=True)
-    
-    c1, c2 = st.columns([1, 1], gap="large")
-    with c1:
-        st.markdown('<div style="background:#f9f9f9; padding:20px; border:1px solid #eee;">', unsafe_allow_html=True)
-        st.markdown("#### 1. NHẬP THÔNG TIN")
-        txt = st.text_area("Nội dung tin nhắn:", height=150)
-        img = st.file_uploader("Tải ảnh chụp màn hình:", type=['png','jpg'])
-        
-        st.markdown('<div class="btn-quote" style="margin-top:10px;">', unsafe_allow_html=True)
-        if st.button("PHÂN TÍCH", use_container_width=True):
-            if txt or img:
-                with st.spinner("AI đang xử lý..."):
-                    i = Image.open(img) if img else None
-                    st.session_state['res'] = logic.analyze_content(model, txt, i)
-        st.markdown('</div></div>', unsafe_allow_html=True)
-        
-    with c2:
-        st.markdown('<div style="background:#fff; padding:20px; border:1px solid #eee; height:100%;">', unsafe_allow_html=True)
-        st.markdown("#### 2. KẾT QUẢ")
-        if 'res' in st.session_state:
-            st.success("ĐÃ CÓ KẾT QUẢ")
-            st.write(st.session_state['res'])
-            st.audio(logic.text_to_speech(st.session_state['res']))
-        else:
-            st.info("Kết quả sẽ hiện ở đây.")
-        st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-with c_intro:
+with main_body:
+    if st.session_state['page'] == 'TRANG CHỦ':
+        # BANNER ĐÃ BỎ KHUNG ĐEN - GIỮ ẢNH TO VÀ NỀN
+        banner_html = """
+        <div style="width: 100%; background: #f0f2f6; padding: 20px 0; display: flex; justify-content: center;">
+            <div style="width: 1100px; height: 400px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-radius: 10px;">
+                <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+        """
+        st.markdown(banner_html, unsafe_allow_html=True)
+        st.markdown("<br>", unsafe_allow_html=True)
+        
+        c_intro, c_guide = st.columns(2, gap="large")
+        with c_intro:
             st.markdown('<div class="banner-strip"><div class="banner-header">VỀ ỨNG DỤNG</div><p style="text-align:justify; color:#333; padding:15px;">SilverShield là giải pháp công nghệ tiên phong, sử dụng trí tuệ nhân tạo để phân tích và cảnh báo lừa đảo trực tuyến cho người cao tuổi.</p></div>', unsafe_allow_html=True)
         with c_guide:
             st.markdown('<div class="banner-strip"><div class="banner-header">HƯỚNG DẪN</div><ul style="text-align:left; color:#333; padding:15px;"><li>Bước 1: Chọn "Vệ sĩ AI"</li><li>Bước 2: Nhập nội dung nghi ngờ</li><li>Bước 3: Xem kết quả cảnh báo</li></ul></div>', unsafe_allow_html=True)
@@ -210,12 +167,5 @@ with c_intro:
                 st.audio(logic.text_to_speech(st.session_state['res']))
             else: st.info("Kết quả hiển thị tại đây.")
 
-
-# --- FOOTER ---
-st.markdown("""
-    <div class="footer">
-        <h3 style="color:white; margin:0;">SILVERSHIELD</h3>
-        <p>Thành viên của DVT - Empire CBZ X</p>
-        <div style="margin-top:20px; font-size:12px;">© 2026 All Rights Reserved.</div>
-    </div>
-""", unsafe_allow_html=True)
+# --- 4. FOOTER KHÓA CHẶT ĐÁY ---
+styles.render_footer_structure()
