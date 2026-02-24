@@ -73,8 +73,7 @@ def trigger_loading(target_page):
     with placeholder.container():
         st.markdown("""
             <div class="loading-overlay">
-                <div class="loading-text">TKPG</div>
-                <p style="color: #666; font-family: sans-serif;">Đang tải dữ liệu an toàn...</p>
+                <div class="loading-text">SILVERSHILED</div>
             </div>
         """, unsafe_allow_html=True)
         time.sleep(1)  # Hiển thị màn hình chờ trong 1 giây
@@ -214,3 +213,4 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
