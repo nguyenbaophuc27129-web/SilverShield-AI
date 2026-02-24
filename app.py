@@ -3,9 +3,29 @@ from PIL import Image
 import styles
 import logic
 
-# --- 1. KHỞI TẠO (GIỮ NGUYÊN) ---
+# --- 1. KHỞI TẠO & FIX CSS FOOTER SÁT ĐÁY ---
 styles.apply_styles()
 styles.render_header_structure() 
+
+# Ép Footer xuống đáy và xóa khoảng trắng thừa của Streamlit
+st.markdown("""
+    <style>
+        /* Xóa khoảng trống mặc định ở cuối trang của Streamlit */
+        .main .block-container {
+            padding-bottom: 0rem !important;
+        }
+        /* Ẩn footer mặc định của Streamlit */
+        footer {
+            visibility: hidden;
+            height: 0;
+        }
+        /* Đảm bảo nội dung chiếm toàn bộ chiều cao để đẩy footer xuống */
+        .stApp {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 try:
     model = logic.init_ai()
@@ -15,7 +35,7 @@ except:
 if 'page' not in st.session_state:
     st.session_state['page'] = 'TRANG CHỦ'
 
-# --- 2. NAVBAR (GIỮ NGUYÊN) ---
+# --- 2. NAVBAR CHUẨN (GIỮ NGUYÊN NỘI DUNG) ---
 st.markdown('<div class="olympic-navbar"><div class="navbar-container" style="width:1200px; margin:0 auto; display:flex; align-items:center;">', unsafe_allow_html=True)
 c_logo, m1, m2, m3, m4 = st.columns([1.5, 2, 2, 2, 2])
 
@@ -24,23 +44,29 @@ with c_logo:
 
 with m1:
     if st.button("🏠 TRANG CHỦ", use_container_width=True): 
-        st.session_state['page'] = 'TRANG CHỦ'; st.rerun()
+        st.session_state['page'] = 'TRANG CHỦ'
+        st.rerun()
+
 with m2:
     if st.button("👥 GIỚI THIỆU", use_container_width=True): 
-        st.session_state['page'] = 'GIỚI THIỆU'; st.rerun()
+        st.session_state['page'] = 'GIỚI THIỆU'
+        st.rerun()
+
 with m3:
     if st.button("📰 TIN TỨC", use_container_width=True): 
-        st.session_state['page'] = 'TIN TỨC'; st.rerun()
+        st.session_state['page'] = 'TIN TỨC'
+        st.rerun()
+
 with m4:
     if st.button("🛡️ VỆ SĨ AI", use_container_width=True): 
-        st.session_state['page'] = 'VỆ SĨ AI'; st.rerun()
+        st.session_state['page'] = 'VỆ SĨ AI'
+        st.rerun()
 
 st.markdown('</div></div>', unsafe_allow_html=True)
 
 # --- 3. ĐIỀU HƯỚNG NỘI DUNG ---
 
 if st.session_state['page'] == 'TRANG CHỦ':
-    # --- GIỮ NGUYÊN BANNER ---
     banner_html = """
     <div class="hero-container" style="position: relative; overflow: hidden;">
             <div class="hero-bg-overlay"></div>
@@ -61,6 +87,7 @@ if st.session_state['page'] == 'TRANG CHỦ':
     """
     st.markdown(banner_html, unsafe_allow_html=True)
     st.markdown("<br>", unsafe_allow_html=True)
+    
     c_intro, c_guide = st.columns(2, gap="large")
     with c_intro:
         st.markdown('<div class="banner-strip"><div class="banner-header">VỀ ỨNG DỤNG</div><p style="text-align:justify; color:#555; font-size:14px; padding:15px;">SilverShield là giải pháp công nghệ tiên phong, sử dụng trí tuệ nhân tạo để phân tích và cảnh báo lừa đảo trực tuyến cho người cao tuổi.</p></div>', unsafe_allow_html=True)
@@ -76,18 +103,17 @@ if st.session_state['page'] == 'TRANG CHỦ':
     with r3:
         st.markdown('<div class="rule-card"><div class="rule-header bg-teal">LƯU Ý</div><div style="padding:15px; font-size:13px;">1. Luôn bình tĩnh<br>2. Đọc tin an ninh<br>3. Dùng SilverShield</div></div>', unsafe_allow_html=True)
 
-    # Tin tức ở trang chủ (Đã bỏ tham số key để tránh lỗi)
     st.markdown('<div class="news-header-bar" style="background:#0044cc; color:white; padding:10px; margin-top:30px; font-weight:bold;">📰 TIN TỨC AN NINH MẠNG</div>', unsafe_allow_html=True)
     news_data = [
-        {"title": "Cảnh báo lừa đảo mã QR", "img": "https://vnn-imgs-f.vgcloud.vn/2023/08/15/11/qr-code-lua-dao.jpg", "url": "https://vtv.vn"},
-        {"title": "Deepfake giả giọng nói", "img": "https://vnn-imgs-f.vgcloud.vn/2023/03/27/10/deepfake-lua-dao.jpg", "url": "https://tuoitre.vn"},
-        {"title": "Bẫy việc làm trên mạng", "img": "https://vnn-imgs-f.vgcloud.vn/2022/06/20/16/lua-dao-viec-lam.jpg", "url": "https://vnexpress.net"}
+        {"title": "Cảnh báo lừa đảo mã QR", "img": "https://vnn-imgs-f.vgcloud.vn/2023/08/15/11/qr-code-lua-dao.jpg", "url": "https://vtv.vn/cong-nghe/canh-bao-hinh-thuc-lua-dao-moi-qua-ma-qr-20230814154506307.htm"},
+        {"title": "Deepfake giả giọng nói", "img": "https://vnn-imgs-f.vgcloud.vn/2023/03/27/10/deepfake-lua-dao.jpg", "url": "https://tuoitre.vn/canh-bao-thu-doan-lua-dao-bang-cong-nghe-deepfake-2023032711054321.htm"},
+        {"title": "Bẫy việc làm trên mạng", "img": "https://vnn-imgs-f.vgcloud.vn/2022/06/20/16/lua-dao-viec-lam.jpg", "url": "https://vnexpress.net/bay-viec-nhe-luong-cao-tren-mang-4478144.html"}
     ]
     cols = st.columns(3)
     for idx, item in enumerate(news_data):
         with cols[idx]:
             st.markdown(f'<div class="news-card" style="background:white; border:1px solid #eee;"><img src="{item["img"]}" style="width:100%; height:150px; object-fit:cover;"><div style="padding:10px; font-weight:bold; font-size:13px;">{item["title"]}</div></div>', unsafe_allow_html=True)
-            # FIX: Bỏ tham số key tại đây
+            # ĐÃ FIX: Loại bỏ tham số 'key' để tránh lỗi TypeError
             st.link_button("CHI TIẾT", item['url'], use_container_width=True)
 
 elif st.session_state['page'] == 'GIỚI THIỆU':
@@ -104,22 +130,22 @@ elif st.session_state['page'] == 'TIN TỨC':
     full_news = [
         {"title": "Lừa đảo qua video call Deepfake", "desc": "Đối tượng dùng AI giả khuôn mặt người thân để vay tiền gấp.", "tag": "CẢNH BÁO", "img": "https://vnn-imgs-f.vgcloud.vn/2023/03/27/10/deepfake-lua-dao.jpg", "url": "https://vnexpress.net/thu-doan-lua-dao-video-call-deepfake-4586231.html"},
         {"title": "Tin nhắn giả danh ngân hàng", "desc": "Yêu cầu cập nhật thông tin qua link lạ để chiếm đoạt mã OTP.", "tag": "NGUY HIỂM", "img": "https://vnn-imgs-f.vgcloud.vn/2023/08/15/11/qr-code-lua-dao.jpg", "url": "https://vtv.vn/cong-nghe/canh-bao-hinh-thuc-lua-dao-moi-qua-ma-qr-20230814154506307.htm"},
-        {"title": "Cẩm nang phòng chống tội phạm", "desc": "Sổ tay hướng dẫn của Bộ Công An dành cho người dân.", "tag": "KIẾN THỨC", "img": "https://vnn-imgs-f.vgcloud.vn/2022/06/20/16/lua-dao-viec-lam.jpg", "url": "https://chinhphu.vn/canh-bao-24-hinh-thuc-lua-dao-tren-khong-gian-mang-103230713145455645.htm"}
+        {"title": "Cẩm nang phòng chống tội phạm", "desc": "Sổ tay hướng dẫn của Bộ Công An dành cho người dân và người cao tuổi.", "tag": "KIẾN THỨC", "img": "https://vnn-imgs-f.vgcloud.vn/2022/06/20/16/lua-dao-viec-lam.jpg", "url": "https://chinhphu.vn/canh-bao-24-hinh-thuc-lua-dao-tren-khong-gian-mang-103230713145455645.htm"}
     ]
-
+    
     for idx, n in enumerate(full_news):
-        col_img, col_txt = st.columns([1, 2.5])
-        with col_img:
-            st.image(n['img'], use_container_width=True)
-        with col_txt:
+        c_img, c_txt = st.columns([1, 2.5])
+        with c_img:
+            st.image(n["img"], use_container_width=True)
+        with c_txt:
             st.markdown(f"""
-                <div style="background:white; padding:15px; border-left:5px solid #d32f2f; margin-bottom:10px;">
+                <div style="background:white; padding:10px; border-left:5px solid #d32f2f; margin-bottom:5px;">
                     <span style="background:#d32f2f; color:white; padding:2px 8px; font-size:10px; font-weight:bold;">{n['tag']}</span>
-                    <h3 style="margin:10px 0;">{n['title']}</h3>
-                    <p style="color:#666;">{n['desc']}</p>
+                    <h3 style="margin:10px 0; font-size:18px;">{n['title']}</h3>
+                    <p style="color:#666; font-size:14px;">{n['desc']}</p>
                 </div>
             """, unsafe_allow_html=True)
-            # SỬA LỖI TRIỆT ĐỂ: Bỏ hoàn toàn tham số 'key' trong link_button
+            # ĐÃ FIX: Loại bỏ tham số 'key' để tránh lỗi TypeError
             st.link_button("XEM BÁO CHÍNH THỐNG", n['url'])
         st.markdown("<hr>", unsafe_allow_html=True)
 
@@ -141,4 +167,7 @@ elif st.session_state['page'] == 'VỆ SĨ AI':
             st.audio(logic.text_to_speech(st.session_state['res']))
         else: st.info("Kết quả hiển thị tại đây.")
 
+# --- 4. FOOTER ---
+# Thêm một thẻ div trống để chiếm không gian nếu nội dung quá ngắn, đảm bảo footer luôn ở đáy
+st.markdown('<div style="flex-grow: 1;"></div>', unsafe_allow_html=True)
 styles.render_footer_structure()
