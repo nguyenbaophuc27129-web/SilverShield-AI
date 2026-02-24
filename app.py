@@ -2,6 +2,7 @@ import streamlit as st
 from PIL import Image
 import styles
 import logic
+import time  # Thêm thư viện để xử lý thời gian chờ
 
 # --- 1. KHỞI TẠO & ÉP FOOTER SÁT ĐÁY TUYỆT ĐỐI ---
 styles.apply_styles()
@@ -10,6 +11,28 @@ styles.render_header_structure()
 # Đoạn CSS này sẽ triệt tiêu mọi khoảng trống lọt chỏm
 st.markdown("""
     <style>
+        /* CSS CHO MÀN HÌNH CHỜ (LOADING OVERLAY) */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            flex-direction: column;
+        }
+        .loading-text {
+            font-size: 80px;
+            font-weight: bold;
+            color: #FF6600;
+            font-family: Arial, sans-serif;
+            letter-spacing: -2px;
+        }
+
         /* 1. Xóa bỏ padding mặc định của Streamlit */
         .main .block-container {
             padding-top: 0rem !important;
@@ -44,6 +67,21 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# HÀM XỬ LÝ HIỆU ỨNG CHỜ KHI CHUYỂN TRANG
+def trigger_loading(target_page):
+    placeholder = st.empty()
+    with placeholder.container():
+        st.markdown("""
+            <div class="loading-overlay">
+                <div class="loading-text">TKPG</div>
+                <p style="color: #666; font-family: sans-serif;">Đang tải dữ liệu an toàn...</p>
+            </div>
+        """, unsafe_allow_html=True)
+        time.sleep(1)  # Hiển thị màn hình chờ trong 1 giây
+    st.session_state['page'] = target_page
+    placeholder.empty()
+    st.rerun()
+
 try:
     model = logic.init_ai()
 except:
@@ -61,23 +99,19 @@ with c_logo:
 
 with m1:
     if st.button("TRANG CHỦ", use_container_width=True): 
-        st.session_state['page'] = 'TRANG CHỦ'
-        st.rerun()
+        trigger_loading('TRANG CHỦ')
 
 with m2:
     if st.button("GIỚI THIỆU", use_container_width=True): 
-        st.session_state['page'] = 'GIỚI THIỆU'
-        st.rerun()
+        trigger_loading('GIỚI THIỆU')
 
 with m3:
     if st.button("TIN TỨC", use_container_width=True): 
-        st.session_state['page'] = 'TIN TỨC'
-        st.rerun()
+        trigger_loading('TIN TỨC')
 
 with m4:
     if st.button("VỆ SĨ SILVER", use_container_width=True): 
-        st.session_state['page'] = 'VỆ SĨ SILVER'
-        st.rerun()
+        trigger_loading('VỆ SĨ SILVER')
 
 st.markdown('</div></div>', unsafe_allow_html=True)
 
