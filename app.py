@@ -3,7 +3,7 @@ from PIL import Image
 import styles
 import logic
 
-# --- 1. KHỞI TẠO ---
+# --- 1. KHỞI TẠO (GIỮ NGUYÊN) ---
 styles.apply_styles()
 styles.render_header_structure() 
 
@@ -15,7 +15,7 @@ except:
 if 'page' not in st.session_state:
     st.session_state['page'] = 'TRANG CHỦ'
 
-# --- 2. NAVBAR CHUẨN (FIX LOGO & NAVIGATION) ---
+# --- 2. NAVBAR CHUẨN (GIỮ NGUYÊN) ---
 st.markdown('<div class="olympic-navbar"><div class="navbar-container" style="width:1200px; margin:0 auto; display:flex; align-items:center;">', unsafe_allow_html=True)
 c_logo, m1, m2, m3, m4 = st.columns([1.5, 2, 2, 2, 2])
 
@@ -48,7 +48,7 @@ st.markdown('</div></div>', unsafe_allow_html=True)
 # --- 3. ĐIỀU HƯỚNG NỘI DUNG ---
 
 if st.session_state['page'] == 'TRANG CHỦ':
-    # --- GIỮ NGUYÊN BANNER CỦA BẠN ---
+    # --- GIỮ NGUYÊN BANNER ---
     banner_html = """
     <div class="hero-container" style="position: relative; overflow: hidden;">
             <div class="hero-bg-overlay"></div>
@@ -95,8 +95,9 @@ if st.session_state['page'] == 'TRANG CHỦ':
     for idx, item in enumerate(news_data):
         with cols[idx]:
             st.markdown(f'<div class="news-card" style="background:white; border:1px solid #eee;"><img src="{item["img"]}" style="width:100%; height:150px; object-fit:cover;"><div style="padding:10px; font-weight:bold; font-size:13px;">{item["title"]}</div></div>', unsafe_allow_html=True)
-            # Thêm key duy nhất để tránh lỗi
-            st.link_button("CHI TIẾT", item['url'], key=f"btn_home_news_{idx}", use_container_width=True)
+            # Dùng .get() để an toàn và kiểm tra link
+            final_url = item.get('url', 'https://chinhphu.vn')
+            st.link_button("CHI TIẾT", final_url, key=f"btn_home_news_{idx}", use_container_width=True)
 
 elif st.session_state['page'] == 'GIỚI THIỆU':
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN & SỨ MỆNH</div>', unsafe_allow_html=True)
@@ -109,7 +110,6 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
 elif st.session_state['page'] == 'TIN TỨC':
     st.markdown('<div class="rules-main-header">📰 BẢN TIN AN NINH TOÀN CẢNH</div>', unsafe_allow_html=True)
     
-    # Cập nhật danh sách tin có URL nhảy trang
     full_news = [
         {"title": "Lừa đảo qua video call Deepfake", "desc": "Đối tượng dùng AI giả khuôn mặt người thân để vay tiền gấp.", "tag": "CẢNH BÁO", "img": "https://vnn-imgs-f.vgcloud.vn/2023/03/27/10/deepfake-lua-dao.jpg", "url": "https://vnexpress.net/thu-doan-lua-dao-video-call-deepfake-4586231.html"},
         {"title": "Tin nhắn giả danh ngân hàng", "desc": "Yêu cầu cập nhật thông tin qua link lạ để chiếm đoạt mã OTP.", "tag": "NGUY HIỂM", "img": "https://vnn-imgs-f.vgcloud.vn/2023/08/15/11/qr-code-lua-dao.jpg", "url": "https://vtv.vn/cong-nghe/canh-bao-hinh-thuc-lua-dao-moi-qua-ma-qr-20230814154506307.htm"},
@@ -117,7 +117,6 @@ elif st.session_state['page'] == 'TIN TỨC':
     ]
     
     for idx, n in enumerate(full_news):
-        # Chia cột: Ảnh bên trái, nội dung bên phải cho đúng layout chuyên nghiệp
         c_img, c_txt = st.columns([1, 2.5])
         with c_img:
             st.image(n["img"], use_container_width=True)
@@ -129,11 +128,14 @@ elif st.session_state['page'] == 'TIN TỨC':
                     <p style="color:#666; font-size:14px;">{n['desc']}</p>
                 </div>
             """, unsafe_allow_html=True)
-            # Nút bấm nhảy trang chính thống - Đã fix Key để không bị lỗi
-            st.link_button("XEM BÁO CHÍNH THỐNG", n['url'], key=f"btn_full_news_{idx}")
+            # SỬA LỖI QUAN TRỌNG: Kiểm tra xem n['url'] có tồn tại không trước khi render nút
+            news_link = n.get('url')
+            if news_link:
+                st.link_button("XEM BÁO CHÍNH THỐNG", news_link, key=f"btn_full_news_{idx}")
         st.markdown("<hr>", unsafe_allow_html=True)
 
 elif st.session_state['page'] == 'VỆ SĨ AI':
+    # --- GIỮ NGUYÊN PHẦN LOGIC VỆ SĨ AI ---
     st.markdown('<div class="rules-main-header">🛡️ TRUNG TÂM PHÂN TÍCH AI</div>', unsafe_allow_html=True)
     c1, c2 = st.columns([1, 1], gap="large")
     with c1:
