@@ -3,7 +3,7 @@ from PIL import Image
 import styles
 import logic
 
-# --- 1. KHỞI TẠO (GIỮ NGUYÊN) ---
+# --- 1. KHỞI TẠO ---
 styles.apply_styles()
 styles.render_header_structure() 
 
@@ -15,24 +15,40 @@ except:
 if 'page' not in st.session_state:
     st.session_state['page'] = 'TRANG CHỦ'
 
-# --- 2. NAVBAR CHUẨN (GIỮ NGUYÊN) ---
+# --- 2. NAVBAR CHUẨN (FIX LOGO & NAVIGATION) ---
 st.markdown('<div class="olympic-navbar"><div class="navbar-container" style="width:1200px; margin:0 auto; display:flex; align-items:center;">', unsafe_allow_html=True)
 c_logo, m1, m2, m3, m4 = st.columns([1.5, 2, 2, 2, 2])
+
 with c_logo:
     st.markdown('<img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/t%E1%BA%A3i%20xu%E1%BB%91ng%20(1).png" style="height:50px; margin-left:15px;">', unsafe_allow_html=True)
+
 with m1:
-    if st.button("🏠 TRANG CHỦ", key="btn_home", use_container_width=True): st.session_state['page'] = 'TRANG CHỦ'; st.rerun()
+    if st.button("🏠 TRANG CHỦ", use_container_width=True): 
+        st.session_state['page'] = 'TRANG CHỦ'
+        st.rerun()
+
 with m2:
-    if st.button("👥 GIỚI THIỆU", key="btn_intro", use_container_width=True): st.session_state['page'] = 'GIỚI THIỆU'; st.rerun()
+    if st.button("👥 GIỚI THIỆU", use_container_width=True): 
+        st.session_state['page'] = 'GIỚI THIỆU'
+        st.rerun()
+
 with m3:
-    if st.button("📰 TIN TỨC", key="btn_news", use_container_width=True): st.session_state['page'] = 'TIN TỨC'; st.rerun()
+    if st.button("📰 TIN TỨC", use_container_width=True): 
+        st.session_state['page'] = 'TIN TỨC'
+        st.rerun()
+
 with m4:
-    if st.button("🛡️ VỆ SĨ AI", key="btn_ai", use_container_width=True): st.session_state['page'] = 'VỆ SĨ AI'; st.rerun()
+    if st.button("🛡️ VỆ SĨ AI", use_container_width=True): 
+        st.session_state['page'] = 'VỆ SĨ AI'
+        st.rerun()
+
 st.markdown('</div></div>', unsafe_allow_html=True)
 
+
 # --- 3. ĐIỀU HƯỚNG NỘI DUNG ---
+
 if st.session_state['page'] == 'TRANG CHỦ':
-    # --- TOÀN BỘ CODE TRANG CHỦ GIỮ NGUYÊN TUYỆT ĐỐI ---
+    # --- GIỮ NGUYÊN BANNER CỦA BẠN ---
     banner_html = """
     <div class="hero-container" style="position: relative; overflow: hidden;">
             <div class="hero-bg-overlay"></div>
@@ -52,12 +68,14 @@ if st.session_state['page'] == 'TRANG CHỦ':
     </div>
     """
     st.markdown(banner_html, unsafe_allow_html=True)
+
     st.markdown("<br>", unsafe_allow_html=True)
     c_intro, c_guide = st.columns(2, gap="large")
     with c_intro:
         st.markdown('<div class="banner-strip"><div class="banner-header">VỀ ỨNG DỤNG</div><p style="text-align:justify; color:#555; font-size:14px; padding:15px;">SilverShield là giải pháp công nghệ tiên phong, sử dụng trí tuệ nhân tạo để phân tích và cảnh báo lừa đảo trực tuyến cho người cao tuổi.</p></div>', unsafe_allow_html=True)
     with c_guide:
         st.markdown('<div class="banner-strip"><div class="banner-header">HƯỚNG DẪN</div><ul style="text-align:left; color:#555; font-size:14px; padding:15px;"><li>Bước 1: Chọn "Vệ sĩ AI"</li><li>Bước 2: Nhập nội dung nghi ngờ</li><li>Bước 3: Xem kết quả cảnh báo</li></ul></div>', unsafe_allow_html=True)
+
     st.markdown('<div class="rules-main-header">🛡️ QUY TẮC AN TOÀN KHÔNG GIAN MẠNG</div>', unsafe_allow_html=True)
     r1, r2, r3 = st.columns(3, gap="medium")
     with r1:
@@ -66,20 +84,21 @@ if st.session_state['page'] == 'TRANG CHỦ':
         st.markdown('<div class="rule-card"><div class="rule-header bg-green">3 NÊN</div><div style="padding:15px; font-size:13px;">1. Nên gọi xác thực<br>2. Nên hỏi con cháu<br>3. Nên báo công an</div></div>', unsafe_allow_html=True)
     with r3:
         st.markdown('<div class="rule-card"><div class="rule-header bg-teal">LƯU Ý</div><div style="padding:15px; font-size:13px;">1. Luôn bình tĩnh<br>2. Đọc tin an ninh<br>3. Dùng SilverShield</div></div>', unsafe_allow_html=True)
+
     st.markdown('<div class="news-header-bar" style="background:#0044cc; color:white; padding:10px; margin-top:30px; font-weight:bold;">📰 TIN TỨC AN NINH MẠNG</div>', unsafe_allow_html=True)
     news_data = [
-        {"title": "Cảnh báo lừa đảo mã QR", "img": "https://vnn-imgs-f.vgcloud.vn/2023/08/15/11/qr-code-lua-dao.jpg", "url": "https://chinhphu.vn/"},
-        {"title": "Deepfake giả giọng nói", "img": "https://vnn-imgs-f.vgcloud.vn/2023/03/27/10/deepfake-lua-dao.jpg", "url": "https://tuoitre.vn/"},
-        {"title": "Bẫy việc làm trên mạng", "img": "https://vnn-imgs-f.vgcloud.vn/2022/06/20/16/lua-dao-viec-lam.jpg", "url": "https://vnexpress.net/"}
+        {"title": "Cảnh báo lừa đảo mã QR", "img": "https://vnn-imgs-f.vgcloud.vn/2023/08/15/11/qr-code-lua-dao.jpg", "url": "https://vtv.vn/cong-nghe/canh-bao-hinh-thuc-lua-dao-moi-qua-ma-qr-20230814154506307.htm"},
+        {"title": "Deepfake giả giọng nói", "img": "https://vnn-imgs-f.vgcloud.vn/2023/03/27/10/deepfake-lua-dao.jpg", "url": "https://tuoitre.vn/canh-bao-thu-doan-lua-dao-bang-cong-nghe-deepfake-2023032711054321.htm"},
+        {"title": "Bẫy việc làm trên mạng", "img": "https://vnn-imgs-f.vgcloud.vn/2022/06/20/16/lua-dao-viec-lam.jpg", "url": "https://vnexpress.net/bay-viec-nhe-luong-cao-tren-mang-4478144.html"}
     ]
     cols = st.columns(3)
     for idx, item in enumerate(news_data):
         with cols[idx]:
             st.markdown(f'<div class="news-card" style="background:white; border:1px solid #eee;"><img src="{item["img"]}" style="width:100%; height:150px; object-fit:cover;"><div style="padding:10px; font-weight:bold; font-size:13px;">{item["title"]}</div></div>', unsafe_allow_html=True)
-            st.link_button("CHI TIẾT", item['url'], key=f"home_news_{idx}", use_container_width=True)
+            # Thêm key duy nhất để tránh lỗi
+            st.link_button("CHI TIẾT", item['url'], key=f"btn_home_news_{idx}", use_container_width=True)
 
 elif st.session_state['page'] == 'GIỚI THIỆU':
-    # --- GIỮ NGUYÊN GIỚI THIỆU ---
     st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN & SỨ MỆNH</div>', unsafe_allow_html=True)
     col_a, col_b = st.columns(2, gap="large")
     with col_a:
@@ -88,55 +107,33 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
         st.markdown('<div class="banner-strip"><div class="banner-header">ĐỘI NGŨ DVT</div><p style="padding:20px; text-align:justify; color:#555;">Đội ngũ Empire CBZ X hội tụ các cá nhân đam mê công nghệ tại THPT Dương Văn Thì, hướng tới những giải pháp vì cộng đồng.</p></div>', unsafe_allow_html=True)
 
 elif st.session_state['page'] == 'TIN TỨC':
-    # --- PHẦN CHỈNH SỬA THEO Ý BẠN: TIN TỨC CHUYÊN NGHIỆP CÓ NÚT BẤM ---
     st.markdown('<div class="rules-main-header">📰 BẢN TIN AN NINH TOÀN CẢNH</div>', unsafe_allow_html=True)
     
+    # Cập nhật danh sách tin có URL nhảy trang
     full_news = [
-        {
-            "title": "Cảnh báo chiêu trò lừa đảo quét mã QR chiếm đoạt tiền",
-            "desc": "Lợi dụng sơ hở, kẻ gian dán đè mã QR cá nhân lên mã cửa hàng hoặc gửi mã lạ qua tin nhắn để chiếm quyền điều khiển tài khoản...",
-            "tag": "CẢNH BÁO",
-            "img": "https://vnn-imgs-f.vgcloud.vn/2023/08/15/11/qr-code-lua-dao.jpg",
-            "url": "https://vtv.vn/cong-nghe/canh-bao-hinh-thuc-lua-dao-moi-qua-ma-qr-20230814154506307.htm"
-        },
-        {
-            "title": "Lừa đảo qua video call Deepfake: Giả giọng nói người thân",
-            "desc": "Đối tượng dùng AI giả khuôn mặt và giọng nói của con cháu đang ở xa để vay tiền gấp trong tình huống cấp bách giả tạo...",
-            "tag": "NGUY HIỂM",
-            "img": "https://vnn-imgs-f.vgcloud.vn/2023/03/27/10/deepfake-lua-dao.jpg",
-            "url": "https://vnexpress.net/thu-doan-lua-dao-video-call-deepfake-4586231.html"
-        },
-        {
-            "title": "Cẩm nang phòng chống tội phạm mạng của Bộ Công An",
-            "desc": "Sổ tay hướng dẫn chi tiết các kỹ năng nhận diện lừa đảo trực tuyến dành riêng cho người cao tuổi và người dân...",
-            "tag": "KIẾN THỨC",
-            "img": "https://vnn-imgs-f.vgcloud.vn/2022/06/20/16/lua-dao-viec-lam.jpg",
-            "url": "https://chinhphu.vn/canh-bao-24-hinh-thuc-lua-dao-tren-khong-gian-mang-103230713145455645.htm"
-        }
+        {"title": "Lừa đảo qua video call Deepfake", "desc": "Đối tượng dùng AI giả khuôn mặt người thân để vay tiền gấp.", "tag": "CẢNH BÁO", "img": "https://vnn-imgs-f.vgcloud.vn/2023/03/27/10/deepfake-lua-dao.jpg", "url": "https://vnexpress.net/thu-doan-lua-dao-video-call-deepfake-4586231.html"},
+        {"title": "Tin nhắn giả danh ngân hàng", "desc": "Yêu cầu cập nhật thông tin qua link lạ để chiếm đoạt mã OTP.", "tag": "NGUY HIỂM", "img": "https://vnn-imgs-f.vgcloud.vn/2023/08/15/11/qr-code-lua-dao.jpg", "url": "https://vtv.vn/cong-nghe/canh-bao-hinh-thuc-lua-dao-moi-qua-ma-qr-20230814154506307.htm"},
+        {"title": "Cẩm nang phòng chống tội phạm", "desc": "Sổ tay hướng dẫn của Bộ Công An dành cho người dân và người cao tuổi.", "tag": "KIẾN THỨC", "img": "https://vnn-imgs-f.vgcloud.vn/2022/06/20/16/lua-dao-viec-lam.jpg", "url": "https://chinhphu.vn/canh-bao-24-hinh-thuc-lua-dao-tren-khong-gian-mang-103230713145455645.htm"}
     ]
-
+    
     for idx, n in enumerate(full_news):
-        # Chia cột: Ảnh trái (1 phần), Chữ phải (2.5 phần)
-        col_img, col_txt = st.columns([1, 2.5])
-        
-        with col_img:
+        # Chia cột: Ảnh bên trái, nội dung bên phải cho đúng layout chuyên nghiệp
+        c_img, c_txt = st.columns([1, 2.5])
+        with c_img:
             st.image(n["img"], use_container_width=True)
-            
-        with col_txt:
+        with c_txt:
             st.markdown(f"""
-                <div style="margin-bottom: 5px;">
-                    <span style="background:#d32f2f; color:white; padding:3px 10px; font-size:11px; font-weight:bold; border-radius:3px;">{n['tag']}</span>
+                <div style="background:white; padding:10px; border-left:5px solid #d32f2f; margin-bottom:5px;">
+                    <span style="background:#d32f2f; color:white; padding:2px 8px; font-size:10px; font-weight:bold;">{n['tag']}</span>
+                    <h3 style="margin:10px 0; font-size:18px;">{n['title']}</h3>
+                    <p style="color:#666; font-size:14px;">{n['desc']}</p>
                 </div>
-                <h3 style="margin:5px 0; color:#1a1a1a; font-size:20px;">{n['title']}</h3>
-                <p style="color:#555; font-size:15px; text-align:justify; line-height:1.5;">{n['desc']}</p>
             """, unsafe_allow_html=True)
-            # Nút bấm nhảy trang chính thống - Đã thêm key để không lỗi Streamlit
-            st.link_button("XEM BÁO CHÍNH THỐNG", n['url'], key=f"news_link_{idx}")
-            
-        st.markdown('<hr style="border:0.5px solid #eee; margin:20px 0;">', unsafe_allow_html=True)
+            # Nút bấm nhảy trang chính thống - Đã fix Key để không bị lỗi
+            st.link_button("XEM BÁO CHÍNH THỐNG", n['url'], key=f"btn_full_news_{idx}")
+        st.markdown("<hr>", unsafe_allow_html=True)
 
 elif st.session_state['page'] == 'VỆ SĨ AI':
-    # --- GIỮ NGUYÊN VỆ SĨ AI ---
     st.markdown('<div class="rules-main-header">🛡️ TRUNG TÂM PHÂN TÍCH AI</div>', unsafe_allow_html=True)
     c1, c2 = st.columns([1, 1], gap="large")
     with c1:
@@ -154,5 +151,5 @@ elif st.session_state['page'] == 'VỆ SĨ AI':
             st.audio(logic.text_to_speech(st.session_state['res']))
         else: st.info("Kết quả hiển thị tại đây.")
 
-# --- 4. FOOTER (GIỮ NGUYÊN) ---
+# --- 4. FOOTER ---
 styles.render_footer_structure()
