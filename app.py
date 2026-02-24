@@ -3,60 +3,84 @@ from PIL import Image
 import styles
 import logic
 
-# --- 1. KHỞI TẠO & ÉP FOOTER SÁT ĐÁY TUYỆT ĐỐI ---
+# --- 1. KHỞI TẠO & CẤU HÌNH GIAO DIỆN ---
 styles.apply_styles()
 styles.render_header_structure() 
 
-# ĐOẠN CSS NÂNG CẤP GIAO DIỆN CHUYÊN NGHIỆP (GIỮ LẠI CƠ CHẾ CŨ)
+# NÂNG CẤP CSS ĐỂ GIỐNG MẪU "FOCUSON" VÀ FIX FOOTER
 st.markdown("""
     <style>
-        /* Reset & Layout */
+        /* Reset Layout */
         .main .block-container {
-            padding-top: 0rem !important;
-            padding-bottom: 0rem !important;
+            padding: 0rem !important;
             max-width: 100% !important;
         }
-        footer {visibility: hidden !important; height: 0;}
+        footer {visibility: hidden !important;}
         header {visibility: hidden !important;}
 
-        .stApp {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        /* Navbar Gọn Đẹp */
+        .stButton > button {
+            border: none !important;
+            background: transparent !important;
+            color: #555 !important;
+            font-weight: 600 !important;
+            font-size: 14px !important;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .stButton > button:hover {
+            color: #8bc34a !important; /* Màu xanh lá Focuson */
+        }
+
+        /* Banner Hero Section (Giống mẫu Focuson) */
+        .hero-container {
             background-color: #ffffff;
-        }
-
-        /* Typography */
-        p, li, div { font-size: 16px; color: #444; }
-        
-        /* Hiệu ứng Card chuyên nghiệp */
-        .pro-card {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            border: 1px solid #f0f0f0;
-            height: 100%;
-        }
-        .pro-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-
-        /* Hero Section Styling */
-        .hero-text-side {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 40px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 10%;
+            min-height: 500px;
+        }
+        .hero-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+        .hero-text h4 {
+            color: #8bc34a;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .hero-text h1 {
+            font-size: 45px;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #222;
+        }
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
         }
 
-        /* Xóa khoảng hở cuối trang */
-        div[data-testid="stVerticalBlock"] > div:last-child {
-            margin-bottom: 0px !important;
-            padding-bottom: 0px !important;
+        /* Footer Cam (Giống mẫu Tuyệt Kỹ Powerpoint) */
+        .custom-footer {
+            background-color: #e65100;
+            color: white;
+            padding: 40px 10%;
+            margin-top: 50px;
         }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 30px;
+        }
+        .footer-col h5 { font-weight: bold; margin-bottom: 20px; }
+        .footer-col p, .footer-col li { font-size: 14px !important; list-style: none; padding: 0; }
     </style>
 """, unsafe_allow_html=True)
 
@@ -68,98 +92,64 @@ except:
 if 'page' not in st.session_state:
     st.session_state['page'] = 'TRANG CHỦ'
 
-# --- 2. NAVBAR CHUẨN ---
-st.markdown('<div class="olympic-navbar"><div class="navbar-container" style="width:1200px; margin:0 auto; display:flex; align-items:center;">', unsafe_allow_html=True)
-c_logo, m1, m2, m3, m4 = st.columns([1.5, 2, 2, 2, 2])
+# --- 2. NAVBAR CHUẨN (GỌN VÀ ĐẸP) ---
+st.markdown('<div style="background: white; border-bottom: 1px solid #eee; padding: 10px 0;">', unsafe_allow_html=True)
+nav_col_logo, nav_col_menu = st.columns([1, 4])
 
-with c_logo:
-    st.markdown('<img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/t%E1%BA%A3i%20xu%E1%BB%91ng%20(1).png" style="height:50px; margin-left:15px;">', unsafe_allow_html=True)
+with nav_col_logo:
+    st.image("https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/t%E1%BA%A3i%20xu%E1%BB%91ng%20(1).png", width=150)
 
-with m1:
-    if st.button("🏠 TRANG CHỦ", use_container_width=True): 
-        st.session_state['page'] = 'TRANG CHỦ'
-        st.rerun()
-with m2:
-    if st.button("👥 GIỚI THIỆU", use_container_width=True): 
-        st.session_state['page'] = 'GIỚI THIỆU'
-        st.rerun()
-with m3:
-    if st.button("📰 TIN TỨC", use_container_width=True): 
-        st.session_state['page'] = 'TIN TỨC'
-        st.rerun()
-with m4:
-    if st.button("🛡️ VỆ SĨ AI", use_container_width=True): 
-        st.session_state['page'] = 'VỆ SĨ AI'
-        st.rerun()
-
-st.markdown('</div></div>', unsafe_allow_html=True)
+with nav_col_menu:
+    m1, m2, m3, m4 = st.columns(4)
+    with m1:
+        if st.button("HOME", use_container_width=True): 
+            st.session_state['page'] = 'TRANG CHỦ'
+            st.rerun()
+    with m2:
+        if st.button("ABOUT", use_container_width=True): 
+            st.session_state['page'] = 'GIỚI THIỆU'
+            st.rerun()
+    with m3:
+        if st.button("NEWS", use_container_width=True): 
+            st.session_state['page'] = 'TIN TỨC'
+            st.rerun()
+    with m4:
+        if st.button("AI SHIELD", use_container_width=True): 
+            st.session_state['page'] = 'VỆ SĨ AI'
+            st.rerun()
+st.markdown('</div>', unsafe_allow_html=True)
 
 # --- 3. ĐIỀU HƯỚNG NỘI DUNG ---
 main_body = st.container()
 
 with main_body:
     if st.session_state['page'] == 'TRANG CHỦ':
-        # --- HERO SECTION PHONG CÁCH "FOCUSON" ---
-        hero_html = """
-        <div style="width: 100%; background: #ffffff; padding: 60px 0; border-bottom: 1px solid #eee;">
-            <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 40px;">
-                <div style="flex: 1.2;" class="hero-text-side">
-                    <h4 style="color: #8bc34a; font-weight: bold; letter-spacing: 2px; margin-bottom: 10px;">SILVERSHIELD AI</h4>
-                    <h1 style="font-size: 48px; font-weight: 800; color: #222; line-height: 1.2; margin-bottom: 20px;">
-                        HỆ THỐNG BẢO VỆ <br><span style="color: #8bc34a;">NGƯỜI CAO TUỔI</span>
-                    </h1>
-                    <p style="font-size: 18px; color: #666; line-height: 1.6; margin-bottom: 30px;">
-                        Sử dụng trí tuệ nhân tạo tiên phong để phân tích, phát hiện và ngăn chặn các hành vi lừa đảo trực tuyến, bảo vệ sự an toàn cho cha mẹ và người thân của bạn.
-                    </p>
+        # --- NEW BANNER: CƠ CHẾ Y CHANG MẪU FOCUSON ---
+        st.markdown(f"""
+            <div class="hero-container">
+                <div class="hero-text">
+                    <h4>SILVERSHIELD PROTECT</h4>
+                    <h1>POWERFUL & SMART <br><span style="color:#8bc34a">AI GUARDIAN</span> FOR ELDERS</h1>
+                    <p style="color:#666; margin: 20px 0;">Hệ thống trí tuệ nhân tạo hàng đầu giúp nhận diện lừa đảo, bảo vệ người cao tuổi an tâm sử dụng mạng internet mỗi ngày.</p>
                 </div>
-                <div style="flex: 1;">
-                    <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png" 
-                         style="width: 100%; border-radius: 15px; box-shadow: 20px 20px 60px #d9d9d9;">
+                <div class="hero-image">
+                    <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/%E1%BA%A8M%20TH%E1%BB%B0C%20A4%20(1).png">
                 </div>
             </div>
-        </div>
-        """
-        st.markdown(hero_html, unsafe_allow_html=True)
-        st.markdown("<br><br>", unsafe_allow_html=True)
-        
-        # --- FEATURE SECTION ---
-        st.markdown('<div style="max-width:1200px; margin:0 auto;">', unsafe_allow_html=True)
-        c_intro, c_guide = st.columns(2, gap="large")
-        with c_intro:
-            st.markdown("""
-                <div class="pro-card">
-                    <h3 style="color: #222; border-bottom: 3px solid #8bc34a; display: inline-block; padding-bottom: 5px;">VỀ ỨNG DỤNG</h3>
-                    <p style="margin-top: 15px; text-align: justify;">SilverShield là giải pháp công nghệ tiên phong, sử dụng trí tuệ nhân tạo để phân tích và cảnh báo lừa đảo trực tuyến cho người cao tuổi.</p>
-                </div>
-            """, unsafe_allow_html=True)
-        with c_guide:
-            st.markdown("""
-                <div class="pro-card">
-                    <h3 style="color: #222; border-bottom: 3px solid #0044cc; display: inline-block; padding-bottom: 5px;">HƯỚNG DẪN</h3>
-                    <ul style="margin-top: 15px; list-style-type: none; padding-left: 0;">
-                        <li style="margin-bottom: 10px;">🛡️ <b>Bước 1:</b> Chọn mục "Vệ sĩ AI"</li>
-                        <li style="margin-bottom: 10px;">🔍 <b>Bước 2:</b> Nhập nội dung nghi ngờ</li>
-                        <li>✅ <b>Bước 3:</b> Nhận kết quả từ AI</li>
-                    </ul>
-                </div>
-            """, unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
-        # --- RULES SECTION ---
-        st.markdown('<br><br><div style="max-width:1200px; margin:0 auto;">', unsafe_allow_html=True)
-        st.markdown('<div class="rules-main-header" style="background: #222; color: white; padding: 15px; text-align: center; border-radius: 5px;">🛡️ QUY TẮC AN TOÀN KHÔNG GIAN MẠNG</div>', unsafe_allow_html=True)
+        # PHẦN QUY TẮC AN TOÀN (GIỮ NGUYÊN NHƯNG TINH CHỈNH CSS)
+        st.markdown('<div class="rules-main-header" style="text-align:center; padding: 30px 0;">🛡️ QUY TẮC AN TOÀN KHÔNG GIAN MẠNG</div>', unsafe_allow_html=True)
         r1, r2, r3 = st.columns(3, gap="medium")
         with r1:
-            st.markdown('<div class="pro-card" style="border-top: 5px solid #d32f2f;"><h4 style="color:#d32f2f; text-align:center;">5 KHÔNG</h4><p style="font-weight:bold; line-height:1.8;">1. Không chuyển tiền<br>2. Không bấm link lạ<br>3. Không đưa OTP<br>4. Không cài app lạ<br>5. Không sợ đe dọa</p></div>', unsafe_allow_html=True)
+            st.markdown('<div class="rule-card"><div class="rule-header bg-red">5 KHÔNG</div><div style="padding:15px; font-weight:bold;">1. Không chuyển tiền<br>2. Không bấm link lạ<br>3. Không đưa OTP<br>4. Không cài app lạ<br>5. Không sợ đe dọa</div></div>', unsafe_allow_html=True)
         with r2:
-            st.markdown('<div class="pro-card" style="border-top: 5px solid #2e7d32;"><h4 style="color:#2e7d32; text-align:center;">3 NÊN</h4><p style="font-weight:bold; line-height:1.8;">1. Nên gọi xác thực<br>2. Nên hỏi con cháu<br>3. Nên báo công an</p></div>', unsafe_allow_html=True)
+            st.markdown('<div class="rule-card"><div class="rule-header bg-green">3 NÊN</div><div style="padding:15px; font-weight:bold;">1. Nên gọi xác thực<br>2. Nên hỏi con cháu<br>3. Nên báo công an</div></div>', unsafe_allow_html=True)
         with r3:
-            st.markdown('<div class="pro-card" style="border-top: 5px solid #0097a7;"><h4 style="color:#0097a7; text-align:center;">LƯU Ý</h4><p style="font-weight:bold; line-height:1.8;">1. Luôn bình tĩnh<br>2. Đọc tin an ninh<br>3. Dùng SilverShield</p></div>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+            st.markdown('<div class="rule-card"><div class="rule-header bg-teal">LƯU Ý</div><div style="padding:15px; font-weight:bold;">1. Luôn bình tĩnh<br>2. Đọc tin an ninh<br>3. Dùng SilverShield</div></div>', unsafe_allow_html=True)
 
-        # --- NEWS SECTION ---
-        st.markdown('<br><br><div style="max-width:1200px; margin:0 auto;">', unsafe_allow_html=True)
-        st.markdown('<div class="news-header-bar" style="background:#0044cc; color:white; padding:15px; font-weight:bold; border-radius: 5px;">📰 TIN TỨC AN NINH MẠNG</div>', unsafe_allow_html=True)
+        # TIN TỨC (FIX LỖI LINK_BUTTON)
+        st.markdown('<div class="news-header-bar" style="background:#0044cc; color:white; padding:15px; margin-top:30px; font-weight:bold; border-radius:5px;">📰 TIN TỨC AN NINH MẠNG</div>', unsafe_allow_html=True)
         news_data = [
             {"title": "Cảnh báo lừa đảo mã QR", "img": "https://vnn-imgs-f.vgcloud.vn/2023/08/15/11/qr-code-lua-dao.jpg", "url": "https://vtv.vn/cong-nghe/canh-bao-hinh-thuc-lua-dao-moi-qua-ma-qr-20230814154506307.htm"},
             {"title": "Deepfake giả giọng nói", "img": "https://vnn-imgs-f.vgcloud.vn/2023/03/27/10/deepfake-lua-dao.jpg", "url": "https://tuoitre.vn/canh-bao-thu-doan-lua-dao-bang-cong-nghe-deepfake-2023032711054321.htm"},
@@ -168,9 +158,9 @@ with main_body:
         cols = st.columns(3)
         for idx, item in enumerate(news_data):
             with cols[idx]:
-                st.markdown(f'<div class="pro-card" style="padding:0; overflow:hidden;"><img src="{item["img"]}" style="width:100%; height:200px; object-fit:cover;"><div style="padding:15px;"><h5 style="font-weight:bold; min-height:50px;">{item["title"]}</h5></div></div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="news-card" style="background:white; border:1px solid #eee; border-radius:8px; overflow:hidden;"><img src="{item["img"]}" style="width:100%; height:180px; object-fit:cover;"><div style="padding:10px; font-weight:bold; height:60px;">{item["title"]}</div></div>', unsafe_allow_html=True)
+                # FIX: Bỏ tham số 'key' vì link_button không hỗ trợ key trong phiên bản của bạn
                 st.link_button("CHI TIẾT", item['url'], use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
 
     elif st.session_state['page'] == 'GIỚI THIỆU':
         st.markdown('<div class="rules-main-header">ĐỘI NGŨ PHÁT TRIỂN & SỨ MỆNH</div>', unsafe_allow_html=True)
@@ -199,6 +189,7 @@ with main_body:
                         <p style="color:#333;">{n['desc']}</p>
                     </div>
                 """, unsafe_allow_html=True)
+                # FIX: Bỏ tham số key
                 st.link_button("XEM BÁO CHÍNH THỐNG", n['url'])
             st.markdown("<hr>", unsafe_allow_html=True)
 
@@ -220,5 +211,34 @@ with main_body:
                 st.audio(logic.text_to_speech(st.session_state['res']))
             else: st.info("Kết quả hiển thị tại đây.")
 
-# --- 4. FOOTER KHÓA CHẶT ĐÁY ---
-styles.render_footer_structure()
+# --- 4. NEW FOOTER: MÀU CAM HOÀN CHỈNH ---
+st.markdown("""
+    <div class="custom-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/t%E1%BA%A3i%20xu%E1%BB%91ng%20(1).png" width="120" style="filter: brightness(0) invert(1);">
+                <p style="margin-top:20px;">SilverShield - Lá chắn thép bảo vệ người cao tuổi trên không gian mạng.</p>
+            </div>
+            <div class="footer-col">
+                <h5>CHĂM SÓC KHÁCH HÀNG</h5>
+                <li>Hướng dẫn sử dụng</li>
+                <li>Câu hỏi thường gặp</li>
+                <li>Liên hệ hỗ trợ</li>
+            </div>
+            <div class="footer-col">
+                <h5>VỀ SILVERSHIELD</h5>
+                <li>Điều khoản dịch vụ</li>
+                <li>Chính sách bảo mật</li>
+                <li>Đội ngũ phát triển</li>
+            </div>
+            <div class="footer-col">
+                <h5>LIÊN HỆ</h5>
+                <p>📍 THPT Dương Văn Thì</p>
+                <p>📧 support@silvershield.vn</p>
+                <p>📞 1900 xxxx</p>
+            </div>
+        </div>
+        <hr style="border-color: rgba(255,255,255,0.1); margin: 30px 0;">
+        <p style="text-align:center; font-size: 12px !important;">© 2026 Bản quyền thuộc về Đội ngũ DVT - Empire CBZ X</p>
+    </div>
+""", unsafe_allow_html=True)
