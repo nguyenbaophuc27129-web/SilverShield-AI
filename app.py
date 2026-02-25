@@ -247,7 +247,7 @@ with main_body:
             """, unsafe_allow_html=True)
         st.markdown('<div class="news-header-bar" style="background:#0044cc; color:white; padding:10px; margin-top:30px; font-weight:bold; border-radius:10px;">📰 TIN TỨC AN NINH MẠNG</div>', unsafe_allow_html=True)
         news_data = [
-            {"title": "Chiến dịch 'Không một mình': 'Lá chắn đầu tiên' trong bảo vệ trẻ em khỏi hiểm họa mạng", "img": "https://vnn-imgs-f.vgcloud.vn/2023/08/15/11/qr-code-lua-dao.jpg", "url": "https://baochinhphu.vn/chien-dich-khong-mot-minh-la-chan-dau-tien-trong-bao-ve-tre-em-khoi-hiem-hoa-mang-102251010160323597.htm"},
+            {"title": "Chiến dịch 'Không một mình': 'Lá chắn đầu tiên' trong bảo vệ trẻ em khỏi hiểm họa mạng", "img": "https://bcp.cdnchinhphu.vn/thumb_w/777/334894974524682240/2025/10/10/image-2-1760086745327252696292.jpg", "url": "https://baochinhphu.vn/chien-dich-khong-mot-minh-la-chan-dau-tien-trong-bao-ve-tre-em-khoi-hiem-hoa-mang-102251010160323597.htm"},
             {"title": "Deepfake giả giọng nói", "img": "https://vnn-imgs-f.vgcloud.vn/2023/03/27/10/deepfake-lua-dao.jpg", "url": "https://tuoitre.vn/canh-bao-thu-doan-lua-dao-bang-cong-nghe-deepfake-2023032711054321.htm"},
             {"title": "Bẫy việc làm trên mạng", "img": "https://vnn-imgs-f.vgcloud.vn/2022/06/20/16/lua-dao-viec-lam.jpg", "url": "https://vnexpress.net/bay-viec-nhe-luong-cao-tren-mang-4478144.html"}
         ]
@@ -326,6 +326,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
