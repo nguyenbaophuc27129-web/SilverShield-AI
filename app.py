@@ -177,50 +177,47 @@ with main_body:
             with cols[idx]:
                 st.markdown(f'<div class="news-card" style="background:white; border:1px solid #eee;"><img src="{item["img"]}" style="width:100%; height:150px; object-fit:cover;"><div style="padding:10px; font-weight:bold;">{item["title"]}</div></div>', unsafe_allow_html=True)
                 st.link_button("CHI TIẾT", item['url'], use_container_width=True)
-
-   elif st.session_state['page'] == 'GIỚI THIỆU':
+elif st.session_state['page'] == 'GIỚI THIỆU':
         # --- CSS BỔ SUNG CHO TRANG GIỚI THIỆU (GIAO DIỆN DOANH NGHIỆP) ---
         st.markdown("""
             <style>
-                /* Style cho thẻ Đội ngũ giống FPT */
                 .team-card {
                     background: white;
                     border-radius: 20px;
-                    padding: 20px;
+                    padding: 25px;
                     text-align: center;
                     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
                     transition: transform 0.3s ease;
                     height: 100%;
+                    border-bottom: 5px solid #FF6600;
                 }
                 .team-card:hover { transform: translateY(-10px); }
                 .team-img {
-                    width: 150px; height: 150px;
+                    width: 140px; height: 140px;
                     border-radius: 50%;
                     object-fit: cover;
-                    border: 5px solid #f0f2f6;
                     margin-bottom: 15px;
+                    border: 4px solid #f0f2f6;
                 }
                 .team-name { color: #0044cc; font-weight: bold; font-size: 22px; margin-bottom: 5px; }
-                .team-role { color: #FF6600; font-weight: 600; font-size: 16px; margin-bottom: 15px; }
+                .team-role { color: #FF6600; font-weight: 600; font-size: 16px; margin-bottom: 15px; text-transform: uppercase; }
                 
-                /* Style cho Câu chuyện & Sứ mệnh (Dạng Card chuyên nghiệp) */
                 .info-box {
                     background: #ffffff;
-                    border-left: 10px solid #0044cc;
+                    border-top: 5px solid #0044cc;
                     padding: 30px;
-                    border-radius: 0 20px 20px 0;
+                    border-radius: 15px;
                     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
                     height: 100%;
                 }
-                .info-title { color: #0044cc; font-size: 26px; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; }
+                .info-title { color: #0044cc; font-size: 26px; font-weight: 800; margin-bottom: 15px; }
                 .info-text { color: #333; line-height: 1.8; text-align: justify; font-size: 18px; }
-                .section-divider { margin: 50px 0; border-bottom: 2px dashed #ccc; }
             </style>
         """, unsafe_allow_html=True)
 
         # --- 1. PHẦN ĐỘI NGŨ (PHONG CÁCH FPT) ---
         st.markdown('<div class="rules-main-header">🌟 GƯƠNG MẶT PHÁT TRIỂN SILVERSHIELD</div>', unsafe_allow_html=True)
-        col_t1, col_t2, col_t3 = st.columns(3)
+        col_t1, col_t2, col_t3 = st.columns(3, gap="large")
         
         with col_t1:
             st.markdown("""
@@ -228,7 +225,7 @@ with main_body:
                     <img src="https://via.placeholder.com/150" class="team-img">
                     <div class="team-name">Nguyễn Bảo Phúc</div>
                     <div class="team-role">Trưởng nhóm & Kỹ thuật AI</div>
-                    <p style="font-size:15px; color:#666;">Chịu trách nhiệm chính về kiến trúc mô hình AI và tích hợp hệ thống.</p>
+                    <p style="font-size:16px; color:#444;">Phụ trách kiến trúc hệ thống và huấn luyện mô hình ngôn ngữ cho Vệ sĩ Silver.</p>
                 </div>
             """, unsafe_allow_html=True)
             
@@ -236,9 +233,9 @@ with main_body:
             st.markdown("""
                 <div class="team-card">
                     <img src="https://via.placeholder.com/150" class="team-img">
-                    <div class="team-name">Thành viên 02</div>
-                    <div class="team-role">Thiết kế UI/UX</div>
-                    <p style="font-size:15px; color:#666;">Tối ưu hóa trải nghiệm người dùng, đặc biệt là giao diện cho người cao tuổi.</p>
+                    <div class="team-name">Empire CBZ X</div>
+                    <div class="team-role">Phát triển Nội dung</div>
+                    <p style="font-size:16px; color:#444;">Xây dựng cơ sở dữ liệu các kịch bản lừa đảo và tối ưu trải nghiệm người dùng.</p>
                 </div>
             """, unsafe_allow_html=True)
 
@@ -246,42 +243,40 @@ with main_body:
             st.markdown("""
                 <div class="team-card">
                     <img src="https://via.placeholder.com/150" class="team-img">
-                    <div class="team-name">Thành viên 03</div>
-                    <div class="team-role">Phân tích Dữ liệu</div>
-                    <p style="font-size:15px; color:#666;">Thu thập và xử lý các kịch bản lừa đảo thực tế để huấn luyện AI.</p>
+                    <div class="team-name">DVT Team</div>
+                    <div class="team-role">Thiết kế & Truyền thông</div>
+                    <p style="font-size:16px; color:#444;">Đảm bảo giao diện trực quan, dễ tiếp cận nhất cho người cao tuổi Việt Nam.</p>
                 </div>
             """, unsafe_allow_html=True)
 
-        st.markdown('<div class="section-divider"></div>', unsafe_allow_html=True)
+        st.markdown("<br><br>", unsafe_allow_html=True)
 
-        # --- 2. CÂU CHUYỆN & 3. SỨ MỆNH (SẮP XẾP ĐỒNG BỘ) ---
-        col_story, col_mission = st.columns(2, gap="large")
+        # --- 2. CÂU CHUYỆN & 3. SỨ MỆNH (SẮP XẾP CHUYÊN NGHIỆP) ---
+        col_left, col_right = st.columns(2, gap="large")
 
-        with col_story:
+        with col_left:
             st.markdown("""
                 <div class="info-box">
-                    <div class="info-title">📜 CÂU CHUYỆN RA ĐỜI</div>
+                    <div class="info-title">📜 CÂU CHUYỆN CỦA CHÚNG TÔI</div>
                     <div class="info-text">
-                        Chứng kiến những người thân yêu xung quanh, đặc biệt là ông bà, cha mẹ thường xuyên trở thành mục tiêu của các cuộc gọi lừa đảo, 
-                        đội ngũ <b>Empire CBZ X</b> tại trường <b>THPT Dương Văn Thì</b> đã trăn trở tìm kiếm một giải pháp bảo vệ. 
-                        SilverShield không chỉ là một phần mềm, đó là kết quả của những đêm thức trắng nghiên cứu với mong muốn dùng công nghệ 
-                        để bù đắp khoảng trống kỹ thuật số cho thế hệ đi trước.
+                        Xuất phát từ thực trạng nhức nhối khi người cao tuổi thường xuyên bị kẻ xấu lợi dụng trên không gian mạng, 
+                        chúng tôi - những học sinh từ trường <b>THPT Dương Văn Thì</b> - đã quyết tâm tạo ra một giải pháp bảo vệ. 
+                        SilverShield ra đời như một người bạn đồng hành, giúp cha mẹ chúng ta an tâm hơn mỗi khi cầm điện thoại.
                     </div>
                 </div>
             """, unsafe_allow_html=True)
 
-        with col_mission:
+        with col_right:
             st.markdown("""
-                <div class="info-box" style="border-left-color: #FF6600;">
-                    <div class="info-title" style="color: #FF6600;">🚀 SỨ MỆNH CAO CẢ</div>
+                <div class="info-box" style="border-top-color: #FF6600;">
+                    <div class="info-title" style="color: #FF6600;">🚀 SỨ MỆNH SILVERSHIELD</div>
                     <div class="info-text">
-                        Sứ mệnh của SilverShield là xây dựng một <b>"Lá chắn số"</b> vững chắc cho mọi gia đình Việt Nam. 
-                        Chúng tôi hướng tới việc phổ cập kiến thức an ninh mạng thông qua trí tuệ nhân tạo, giúp người cao tuổi 
-                        tự tin sử dụng công nghệ mà không còn nỗi lo bị lừa đảo. Mục tiêu của chúng tôi là "Không ai bị bỏ lại phía sau" trong kỷ nguyên số.
+                        Chúng tôi không chỉ xây dựng một ứng dụng, chúng tôi xây dựng niềm tin. 
+                        Sứ mệnh của SilverShield là phổ cập AI để làm "lá chắn thép" cho người dân, 
+                        giảm thiểu thiệt hại do lừa đảo trực tuyến và xây dựng một cộng đồng số an toàn, văn minh cho mọi lứa tuổi.
                     </div>
                 </div>
             """, unsafe_allow_html=True)
-
     elif st.session_state['page'] == 'TIN TỨC':
         st.markdown('<div class="rules-main-header">📰 BẢN TIN AN NINH TOÀN CẢNH</div>', unsafe_allow_html=True)
         full_news = [
@@ -323,6 +318,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
