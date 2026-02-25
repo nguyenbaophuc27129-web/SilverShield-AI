@@ -188,6 +188,7 @@ with main_body:
                         <li><b>Bước 1:</b> Chọn MỤC "VỆ SĨ SILVER" để được hỗ trợ nhanh nhất</li>
                         <li><b>Bước 2:</b> Nhập nội dung nghi ngờ vào khung tin nhắn hoặc nhấn gửi hình ảnh</li>
                         <li><b>Bước 3:</b> Hết sức bình tĩnh và làm theo chỉ dẫn </li>
+                        <li><b>Hai hình thức nhận chỉ dẫn chi tiết:</b> Văn bản được viết trên hệ thống hoặc chờ 2-3 phút để có audio nghe một cách tức thì tiện lợi ! </li>
                     </ul>
                 </div>
             """, unsafe_allow_html=True)
@@ -350,9 +351,9 @@ with main_body:
             
         col_left, col_right = st.columns(2, gap="large")
         with col_left:
-            st.markdown('<div class="info-box"><div class="info-title">📜 CÂU CHUYỆN CỦA CHÚNG TÔI</div><div class="info-text">Xuất phát từ thực trạng nhức nhối khi người cao tuổi thường xuyên bị kẻ xấu lợi dụng trên không gian mạng, chúng tôi - những học sinh từ trường <b>THPT Dương Văn Thì</b> - đã quyết tâm tạo ra một giải pháp bảo vệ. SilverShield ra đời như một người bạn đồng hành.</div></div>', unsafe_allow_html=True)
+            st.markdown('<div class="info-box"><div class="info-title">📜 CÂU CHUYỆN CỦA CHÚNG TÔI</div><div class="info-text">Xuất phát từ thực trạng nhức nhối khi người cao tuổi thường xuyên bị kẻ xấu lợi dụng trên không gian mạng, một trong chúng tôi đã từng có người thân bị nhứng thông tin giả mạo lừa đảo khiến để lại những hậu quả về mặt tinh thần và vật chất rất lớn. Vì thế mà đội thi DVT - Empire CBZ X là các học sinh đến từ trường <b>THPT Dương Văn Thì</b> - đã quyết tâm tạo ra một giải pháp bảo vệ người lớn tuổi khỏi những mối nguy hiểm trên không gian mạng. SilverShield ra đời như một người bạn đồng hành cùng chúng ta đưa ra các giải pháp thực sự hữu ích.</div></div>', unsafe_allow_html=True)
         with col_right:
-            st.markdown('<div class="info-box" style="border-top-color: #FF6600;"><div class="info-title" style="color: #FF6600;">🚀 SỨ MỆNH SILVERSHIELD</div><div class="info-text">Sứ mệnh của SilverShield là phổ cập AI để làm "lá chắn thép" cho người dân, giảm thiểu thiệt hại do lừa đảo trực tuyến và xây dựng một cộng đồng số an toàn, văn minh cho mọi lứa tuổi.</div></div>', unsafe_allow_html=True)
+            st.markdown('<div class="info-box" style="border-top-color: #FF6600;"><div class="info-title" style="color: #FF6600;">🚀 SỨ MỆNH CỦA SILVERSHIELD</div><div class="info-text">Sứ mệnh của SilverShield là làm "lá chắn thép" cho người dân an toàn trên không gian mạng, giảm thiểu thiệt hại do lừa đảo trực tuyến và xây dựng một cộng đồng số an toàn, văn minh cho mọi lứa tuổi.</div></div>', unsafe_allow_html=True)
      
     elif st.session_state['page'] == 'TIN TỨC':
         st.markdown('<div class="rules-main-header">📰 BẢN TIN AN NINH TOÀN CẢNH</div>', unsafe_allow_html=True)
@@ -389,6 +390,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
