@@ -49,7 +49,7 @@ st.markdown("""
         /* CHỖ ĐỂ BẠN CHỈNH MÀU CHỮ FOOTER (MỚI THÊM)              */
         /* ======================================================= */
         .footer-container, .footer-container p, .footer-container div, .footer-container span {
-            color: white !important; /* Đang để màu trắng, thay 'white' bằng màu khác nếu muốn */
+            color: w#FFFF00 !important; /* Đang để màu trắng, thay 'white' bằng màu khác nếu muốn */
             opacity: 1 !important;
         }
         /* ======================================================= */
@@ -227,3 +227,4 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
