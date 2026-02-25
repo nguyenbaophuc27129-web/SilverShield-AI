@@ -275,29 +275,87 @@ with main_body:
             </style>
         """, unsafe_allow_html=True)
 
+        elif st.session_state['page'] == 'GIỚI THIỆU':
+        # --- CSS PHẢI NẰM TRONG st.markdown ĐỂ KHÔNG BỊ LỖI SYNTAX ---
+        st.markdown("""
+            <style>
+                .team-card {
+                    background: white; 
+                    border-radius: 0px !important; 
+                    padding: 25px;
+                    text-align: center; 
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                    transition: transform 0.3s ease; 
+                    height: 100%; 
+                    border-bottom: 5px solid #FF6600;
+                }
+                .team-card:hover { transform: translateY(-10px); }
+                
+                .team-img-container {
+                    width: 160px;
+                    height: 160px;
+                    margin: 0 auto 20px auto;
+                    border-radius: 50%;
+                    border: 4px solid #f0f2f6;
+                    overflow: hidden; /* Giúp ảnh không tràn ra ngoài ô tròn */
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                
+                .team-img { 
+                    width: 100%; 
+                    height: 100%; 
+                    object-fit: cover !important; /* GIÚP ẢNH KHỚP VÀO Ô TRÒN */
+                }
+                
+                .team-name { color: #0044cc; font-weight: bold; font-size: 22px; margin-bottom: 2px; }
+                .team-role { color: #FF6600; font-weight: bold; text-transform: uppercase; font-size: 14px; margin-bottom: 5px; }
+                .team-school { color: #FF6600; font-size: 13px; font-weight: bold; margin-bottom: 15px; line-height: 1.4; }
+                .team-desc { font-size: 15px; color: #444; line-height: 1.6; border-top: 1px solid #eee; padding-top: 10px; }
+            </style>
+        """, unsafe_allow_html=True)
+
         st.markdown('<div class="rules-main-header">🌟 GƯƠNG MẶT PHÁT TRIỂN SILVERSHIELD</div>', unsafe_allow_html=True)
         col_t1, col_t2, col_t3 = st.columns(3, gap="large")
-        <style>
-    .team-img {
-        width: 150px;           /* Chiều rộng cố định */
-        height: 150px;          /* Chiều cao phải bằng chiều rộng */
-        border-radius: 50% !important;   /* Tạo hình tròn tuyệt đối */
-        object-fit: cover;      /* QUAN TRỌNG: Giúp ảnh tự cắt cúp để vừa khít ô tròn mà không bị méo */
-        object-position: center; /* Giữ trung tâm ảnh ở giữa ô tròn */
-        border: 4px solid #f0f2f6; /* Viền ngoài cho đẹp */
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>
-        with col_t1:
-            st.markdown('<div class="team-card"><img src="https://via.placeholder.com/150" class="team-img"><div class="team-name">Nguyễn Bảo Phúc</div><div class="team-role">Trưởng nhóm & Kỹ thuật AI</div><div class="team-role">Học sinh lớp 11A4 - THPT Dương Văn Thì</div><p style="font-size:16px; color:#444;">Phụ trách kiến trúc hệ thống và huấn luyện mô hình ngôn ngữ cho Vệ sĩ Silver.</p></div>', unsafe_allow_html=True)
-        with col_t2:
-            st.markdown('<div class="team-card"><img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/3aa4b8e7f862938bc021370127f4dcfa4ee7576c/z7524565127548_f77940e4b6b5fba831e583a3ad31c18c.jpg" class="team-img"><div class="team-name">Nguyễn Diệp Hải Đăng</div><div class="team-role">Phát triển Nội dung</div><div class="team-role">Học sinh lớp 11A4 - THPT Dương Văn Thì</div><p style="font-size:16px; color:#444;">Xây dựng cơ sở dữ liệu các kịch bản lừa đảo và tối ưu trải nghiệm người dùng.</p></div>', unsafe_allow_html=True)
-        with col_t3:
-            st.markdown('<div class="team-card"><img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/3aa4b8e7f862938bc021370127f4dcfa4ee7576c/z7524568784906_fc748391183d938b93dade9e0c498c73.jpg" class="team-img"><div class="team-name">Hồ Ngọc Thanh Vân</div><div class="team-role">Thiết kế & Truyền thông</div><div class="team-role">Học sinh lớp 11A4 - THPT Dương Văn Thì</div><p style="font-size:16px; color:#444;">Đảm bảo giao diện trực quan, dễ tiếp cận nhất cho người cao tuổi Việt Nam.</p></div>', unsafe_allow_html=True)
+        
+        # LINK ẢNH RAW (ĐÃ FIX)
+        img_phuc = "https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/z7524565127548_f77940e4b6b5fba831e583a3ad31c18c.jpg"
+        img_dang = "https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/3aa4b8e7f862938bc021370127f4dcfa4ee7576c/z7524568784906_fc748391183d938b93dade9e0c498c73.jpg"
+        img_van = "https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/z7524568784906_fc748391183d938b93dade9e0c498c73.jpg" # Thay link ảnh của Vân vào đây
 
-        st.markdown("<br><br>", unsafe_allow_html=True)
+        with col_t1:
+            st.markdown(f'''
+                <div class="team-card">
+                    <div class="team-img-container"><img src="{img_phuc}" class="team-img"></div>
+                    <div class="team-name">Nguyễn Bảo Phúc</div>
+                    <div class="team-role">TRƯỞNG NHÓM & KỸ THUẬT AI</div>
+                    <div class="team-school">HỌC SINH LỚP 11A4 - THPT DƯƠNG VĂN THÌ</div>
+                    <p class="team-desc">Phụ trách kiến trúc hệ thống và huấn luyện mô hình ngôn ngữ cho Vệ sĩ Silver.</p>
+                </div>
+            ''', unsafe_allow_html=True)
+
+        with col_t2:
+            st.markdown(f'''
+                <div class="team-card">
+                    <div class="team-img-container"><img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/3aa4b8e7f862938bc021370127f4dcfa4ee7576c/z7524565127548_f77940e4b6b5fba831e583a3ad31c18c.jpg" class="team-img"></div>
+                    <div class="team-name">Nguyễn Diệp Hải Đăng</div>
+                    <div class="team-role">PHÁT TRIỂN NỘI DUNG</div>
+                    <div class="team-school">HỌC SINH LỚP 11A4 - THPT DƯƠNG VĂN THÌ</div>
+                    <p class="team-desc">Xây dựng cơ sở dữ liệu các kịch bản lừa đảo và tối ưu trải nghiệm người dùng.</p>
+                </div>
+            ''', unsafe_allow_html=True)
+
+        with col_t3:
+            st.markdown(f'''
+                <div class="team-card">
+                    <div class="team-img-container"><img src="https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/3aa4b8e7f862938bc021370127f4dcfa4ee7576c/z7524568784906_fc748391183d938b93dade9e0c498c73.jpg" class="team-img"></div>
+                    <div class="team-name">Hồ Ngọc Thanh Vân</div>
+                    <div class="team-role">THIẾT KẾ & TRUYỀN THÔNG</div>
+                    <div class="team-school">HỌC SINH LỚP 11A4 - THPT DƯƠNG VĂN THÌ</div>
+                    <p class="team-desc">Đảm bảo giao diện trực quan, dễ tiếp cận nhất cho người cao tuổi Việt Nam.</p>
+                </div>
+            ''', unsafe_allow_html=True)
         col_left, col_right = st.columns(2, gap="large")
         with col_left:
             st.markdown('<div class="info-box"><div class="info-title">📜 CÂU CHUYỆN CỦA CHÚNG TÔI</div><div class="info-text">Xuất phát từ thực trạng nhức nhối khi người cao tuổi thường xuyên bị kẻ xấu lợi dụng trên không gian mạng, chúng tôi - những học sinh từ trường <b>THPT Dương Văn Thì</b> - đã quyết tâm tạo ra một giải pháp bảo vệ. SilverShield ra đời như một người bạn đồng hành.</div></div>', unsafe_allow_html=True)
@@ -339,6 +397,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
