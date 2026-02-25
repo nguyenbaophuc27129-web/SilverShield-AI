@@ -138,8 +138,29 @@ main_body = st.container()
 
 with main_body:
     if st.session_state['page'] == 'TRANG CHỦ':
+        # --- THÊM CSS ĐỂ ĐỒNG BỘ HÌNH KHỐI (KHÔNG CHẠM VÀO LOGIC) ---
+        st.markdown("""
+            <style>
+                .home-info-card {
+                    background: white; border-radius: 20px; padding: 25px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                    transition: transform 0.3s ease; height: 100%;
+                    border-top: 6px solid #0044cc;
+                }
+                .home-info-card:hover { transform: translateY(-5px); }
+                .rule-card-modern {
+                    background: white; border-radius: 20px; overflow: hidden;
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.08); height: 100%;
+                }
+                .rule-header-modern {
+                    padding: 15px; color: white; font-weight: bold;
+                    font-size: 22px; text-align: center; text-transform: uppercase;
+                }
+            </style>
+        """, unsafe_allow_html=True)
+
         banner_html = """
-        <div class="hero-container" style="position: relative; overflow: hidden;">
+        <div class="hero-container" style="position: relative; overflow: hidden; border-radius: 20px;">
                 <div class="hero-bg-overlay"></div>
                 <div style="display: flex; align-items: center; justify-content: center; gap: 50px; width: 1200px; margin: 0 auto; height: 100%; position: relative; z-index: 10;">
             <div style="display: flex; width: 1100px; height: 350px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
@@ -153,20 +174,49 @@ with main_body:
         
         c_intro, c_guide = st.columns(2, gap="large")
         with c_intro:
-            st.markdown('<div class="banner-strip"><div class="banner-header">VỀ ỨNG DỤNG</div><p style="text-align:justify; padding:15px;">SilverShield là giải pháp công nghệ tiên phong, sử dụng trí tuệ nhân tạo để phân tích và cảnh báo lừa đảo trực tuyến cho người cao tuổi.</p></div>', unsafe_allow_html=True)
+            st.markdown("""
+                <div class="home-info-card">
+                    <div class="banner-header" style="color:#0044cc; border-bottom: 2px solid #eee; padding-bottom:10px;">🛡️ VỀ ỨNG DỤNG</div>
+                    <p style="text-align:justify; margin-top:15px;">SilverShield là giải pháp công nghệ tiên phong, sử dụng trí tuệ nhân tạo để phân tích và cảnh báo lừa đảo trực tuyến cho người cao tuổi.</p>
+                </div>
+            """, unsafe_allow_html=True)
         with c_guide:
-            st.markdown('<div class="banner-strip"><div class="banner-header">HƯỚNG DẪN</div><ul style="text-align:left; padding:15px;"><li>Bước 1: Chọn "Vệ sĩ AI"</li><li>Bước 2: Nhập nội dung nghi ngờ</li><li>Bước 3: Xem kết quả cảnh báo</li></ul></div>', unsafe_allow_html=True)
+            st.markdown("""
+                <div class="home-info-card" style="border-top-color: #FF6600;">
+                    <div class="banner-header" style="color:#FF6600; border-bottom: 2px solid #eee; padding-bottom:10px;">📖 HƯỚNG DẪN</div>
+                    <ul style="text-align:left; margin-top:15px;">
+                        <li><b>Bước 1:</b> Chọn "Vệ sĩ AI"</li>
+                        <li><b>Bước 2:</b> Nhập nội dung nghi ngờ</li>
+                        <li><b>Bước 3:</b> Xem kết quả cảnh báo</li>
+                    </ul>
+                </div>
+            """, unsafe_allow_html=True)
 
         st.markdown('<div class="rules-main-header">🛡️ QUY TẮC AN TOÀN KHÔNG GIAN MẠNG</div>', unsafe_allow_html=True)
         r1, r2, r3 = st.columns(3, gap="medium")
         with r1:
-            st.markdown('<div class="rule-card"><div class="rule-header bg-red">5 KHÔNG</div><div style="padding:15px;">1. Không chuyển tiền<br>2. Không bấm link lạ<br>3. Không đưa OTP<br>4. Không cài app lạ<br>5. Không sợ đe dọa</div></div>', unsafe_allow_html=True)
+            st.markdown("""
+                <div class="rule-card-modern">
+                    <div class="rule-header-modern" style="background:#d32f2f;">5 KHÔNG</div>
+                    <div style="padding:20px; font-size:18px;">1. Không chuyển tiền<br>2. Không bấm link lạ<br>3. Không đưa OTP<br>4. Không cài app lạ<br>5. Không sợ đe dọa</div>
+                </div>
+            """, unsafe_allow_html=True)
         with r2:
-            st.markdown('<div class="rule-card"><div class="rule-header bg-green">3 NÊN</div><div style="padding:15px;">1. Nên gọi xác thực<br>2. Nên hỏi con cháu<br>3. Nên báo công an</div></div>', unsafe_allow_html=True)
+            st.markdown("""
+                <div class="rule-card-modern">
+                    <div class="rule-header-modern" style="background:#2e7d32;">3 NÊN</div>
+                    <div style="padding:20px; font-size:18px;">1. Nên gọi xác thực<br>2. Nên hỏi con cháu<br>3. Nên báo công an</div>
+                </div>
+            """, unsafe_allow_html=True)
         with r3:
-            st.markdown('<div class="rule-card"><div class="rule-header bg-teal">LƯU Ý</div><div style="padding:15px;">1. Luôn bình tĩnh<br>2. Đọc tin an ninh<br>3. Dùng SilverShield</div></div>', unsafe_allow_html=True)
+            st.markdown("""
+                <div class="rule-card-modern">
+                    <div class="rule-header-modern" style="background:#008080;">LƯU Ý</div>
+                    <div style="padding:20px; font-size:18px;">1. Luôn bình tĩnh<br>2. Đọc tin an ninh<br>3. Dùng SilverShield</div>
+                </div>
+            """, unsafe_allow_html=True)
 
-        st.markdown('<div class="news-header-bar" style="background:#0044cc; color:white; padding:10px; margin-top:30px; font-weight:bold;">📰 TIN TỨC AN NINH MẠNG</div>', unsafe_allow_html=True)
+        st.markdown('<div class="news-header-bar" style="background:#0044cc; color:white; padding:10px; margin-top:30px; font-weight:bold; border-radius:10px;">📰 TIN TỨC AN NINH MẠNG</div>', unsafe_allow_html=True)
         news_data = [
             {"title": "Cảnh báo lừa đảo mã QR", "img": "https://vnn-imgs-f.vgcloud.vn/2023/08/15/11/qr-code-lua-dao.jpg", "url": "https://vtv.vn/cong-nghe/canh-bao-hinh-thuc-lua-dao-moi-qua-ma-qr-20230814154506307.htm"},
             {"title": "Deepfake giả giọng nói", "img": "https://vnn-imgs-f.vgcloud.vn/2023/03/27/10/deepfake-lua-dao.jpg", "url": "https://tuoitre.vn/canh-bao-thu-doan-lua-dao-bang-cong-nghe-deepfake-2023032711054321.htm"},
@@ -175,7 +225,7 @@ with main_body:
         cols = st.columns(3)
         for idx, item in enumerate(news_data):
             with cols[idx]:
-                st.markdown(f'<div class="news-card" style="background:white; border:1px solid #eee;"><img src="{item["img"]}" style="width:100%; height:150px; object-fit:cover;"><div style="padding:10px; font-weight:bold;">{item["title"]}</div></div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="news-card" style="background:white; border:1px solid #eee; border-radius:15px; overflow:hidden;"><img src="{item["img"]}" style="width:100%; height:150px; object-fit:cover;"><div style="padding:10px; font-weight:bold;">{item["title"]}</div></div>', unsafe_allow_html=True)
                 st.link_button("CHI TIẾT", item['url'], use_container_width=True)
 
     elif st.session_state['page'] == 'GIỚI THIỆU':
@@ -247,3 +297,4 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
