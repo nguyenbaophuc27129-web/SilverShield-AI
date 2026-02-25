@@ -45,6 +45,15 @@ st.markdown("""
             font-weight: bold !important;
         }
 
+        /* ======================================================= */
+        /* CHỖ ĐỂ BẠN CHỈNH MÀU CHỮ FOOTER (MỚI THÊM)              */
+        /* ======================================================= */
+        .footer-container, .footer-container p, .footer-container div, .footer-container span {
+            color: white !important; /* Đang để màu trắng, thay 'white' bằng màu khác nếu muốn */
+            opacity: 1 !important;
+        }
+        /* ======================================================= */
+
         /* --- GIỮ NGUYÊN CÁC CSS CŨ CỦA BẠN --- */
         .loading-overlay {
             position: fixed;
@@ -81,10 +90,6 @@ st.markdown("""
         #root > div:nth-child(1) > div.withScreencast > div > div > div > section { display: flex; flex-direction: column; }
         .stVerticalBlock { flex-grow: 1; }
         div[data-testid="stVerticalBlock"] > div:last-child { margin-bottom: 0px !important; padding-bottom: 0px !important; }
-        .footer-container, .footer-container p, .footer-container div, .footer-container span {
-            color: #FFFFFF !important;
-            opacity: 1 !important;
-        }
     </style>
 """, unsafe_allow_html=True)
 
@@ -222,6 +227,3 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
-
-
-
