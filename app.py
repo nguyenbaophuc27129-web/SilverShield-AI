@@ -193,45 +193,53 @@ with main_body:
             """, unsafe_allow_html=True)
 
         # --- KHỐI QUY TẮC AN TOÀN (ĐÃ ĐỒNG BỘ CẤU HÌNH Y CHANG 2 Ô TRÊN) ---
+        # --- PHẦN 3 Ô QUY TẮC AN TOÀN HOÀN CHỈNH ---
         st.markdown('<div class="rules-main-header">🛡️ QUY TẮC AN TOÀN KHÔNG GIAN MẠNG</div>', unsafe_allow_html=True)
+        
         r1, r2, r3 = st.columns(3, gap="medium")
         
         with r1:
             st.markdown("""
-                <div class="home-info-card" style="border-top-color: #d32f2f;">
-                    <div class="banner-header" style="color:#d32f2f;">🚫 5 KHÔNG</div>
-                    <div style="font-size:18px; line-height:1.7;">
-                        1. <b>Không</b> chuyển tiền<br>
-                        2. <b>Không</b> bấm link lạ<br>
-                        3. <b>Không</b> đưa OTP<br>
-                        4. <b>Không</b> cài app lạ<br>
-                        5. <b>Không</b> sợ đe dọa
+                <div class="home-info-card" style="border-top-color: #d32f2f; border-radius: 0px !important;">
+                    <div class="banner-header" style="color:#d32f2f; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">
+                        🚫 5 KHÔNG
+                    </div>
+                    <div style="font-size:18px; line-height:1.8; color: #222;">
+                        1. <b>Không</b> chuyển tiền cho người lạ<br>
+                        2. <b>Không</b> bấm vào các đường link lạ<br>
+                        3. <b>Không</b> cung cấp mã OTP cá nhân<br>
+                        4. <b>Không</b> cài ứng dụng lạ (.apk)<br>
+                        5. <b>Không</b> hoảng sợ khi bị đe dọa
                     </div>
                 </div>
             """, unsafe_allow_html=True)
             
         with r2:
             st.markdown("""
-                <div class="home-info-card" style="border-top-color: #2e7d32;">
-                    <div class="banner-header" style="color:#2e7d32;">✅ 3 NÊN</div>
-                    <div style="font-size:18px; line-height:1.7;">
-                        1. <b>Nên</b> gọi xác thực<br>
-                        2. <b>Nên</b> hỏi con cháu<br>
-                        3. <b>Nên</b> báo công an<br>
-                        4. <b>Nên</b> dùng SilverShield
+                <div class="home-info-card" style="border-top-color: #2e7d32; border-radius: 0px !important;">
+                    <div class="banner-header" style="color:#2e7d32; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">
+                        ✅ 3 NÊN
+                    </div>
+                    <div style="font-size:18px; line-height:1.8; color: #222;">
+                        1. <b>Nên</b> gọi điện xác thực lại thông tin<br>
+                        2. <b>Nên</b> hỏi ý kiến con cháu, người thân<br>
+                        3. <b>Nên</b> báo ngay cho cơ quan Công an<br>
+                        4. <b>Nên</b> sử dụng công cụ SilverShield
                     </div>
                 </div>
             """, unsafe_allow_html=True)
             
         with r3:
             st.markdown("""
-                <div class="home-info-card" style="border-top-color: #008080;">
-                    <div class="banner-header" style="color:#008080;">💡 LƯU Ý</div>
-                    <div style="font-size:18px; line-height:1.7;">
-                        1. <b>Luôn</b> giữ bình tĩnh<br>
-                        2. <b>Đọc</b> tin an ninh mạng<br>
-                        3. <b>Kiểm tra</b> kỹ người gửi<br>
-                        4. <b>Chia sẻ</b> cho người thân
+                <div class="home-info-card" style="border-top-color: #008080; border-radius: 0px !important;">
+                    <div class="banner-header" style="color:#008080; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">
+                        💡 LƯU Ý
+                    </div>
+                    <div style="font-size:18px; line-height:1.8; color: #222;">
+                        1. <b>Luôn luôn</b> giữ bình tĩnh tối đa<br>
+                        2. <b>Thường xuyên</b> đọc tin tức an ninh<br>
+                        3. <b>Kiểm tra</b> kỹ danh tính người gửi<br>
+                        4. <b>Chia sẻ</b> kiến thức cho mọi người
                     </div>
                 </div>
             """, unsafe_allow_html=True)
@@ -316,6 +324,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
