@@ -185,9 +185,9 @@ with main_body:
                 <div class="home-info-card" style="border-top-color: #FF6600;">
                     <div class="banner-header" style="color:#FF6600; border-bottom: 2px solid #eee; padding-bottom:10px;">📖 HƯỚNG DẪN</div>
                     <ul style="text-align:left; margin-top:15px;">
-                        <li><b>Bước 1:</b> Chọn "Vệ sĩ AI"</li>
-                        <li><b>Bước 2:</b> Nhập nội dung nghi ngờ</li>
-                        <li><b>Bước 3:</b> Xem kết quả cảnh báo</li>
+                        <li><b>Bước 1:</b> Chọn MỤC "VỆ SĨ SILVER" để được hỗ trợ nhanh nhất</li>
+                        <li><b>Bước 2:</b> Nhập nội dung nghi ngờ vào khung tin nhắn hoặc nhấn gửi hình ảnh</li>
+                        <li><b>Bước 3:</b> Hết sức bình tĩnh và làm theo chỉ dẫn </li>
                     </ul>
                 </div>
             """, unsafe_allow_html=True)
@@ -202,14 +202,14 @@ with main_body:
             st.markdown("""
                 <div class="home-info-card" style="border-top-color: #d32f2f; border-radius: 0px !important;">
                     <div class="banner-header" style="color:#d32f2f; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">
-                        🚫 5 KHÔNG
+                        🚫 5 "KHÔNG"
                     </div>
                     <div style="font-size:18px; line-height:1.8; color: #222;">
-                        1. <b>Không</b> chuyển tiền cho người lạ<br>
-                        2. <b>Không</b> bấm vào các đường link lạ<br>
-                        3. <b>Không</b> cung cấp mã OTP cá nhân<br>
-                        4. <b>Không</b> cài ứng dụng lạ (.apk)<br>
-                        5. <b>Không</b> hoảng sợ khi bị đe dọa
+                        1. <b>Không</b> chia sẻ dữ liệu cá nhân<br>
+                        2. <b>Không</b> tiết lộ mã OTP cá nhân<br>
+                        3. <b>Không</b> bấm vào đường link, quảng cáo lạ<br>
+                        4. <b>Không</b> mở tệp tin lạ gửi qua email và tin nhắn<br>
+                        5. <b>Không</b> làm theo yêu cầu chuyển tiền của người lạ
                     </div>
                 </div>
             """, unsafe_allow_html=True)
@@ -218,13 +218,14 @@ with main_body:
             st.markdown("""
                 <div class="home-info-card" style="border-top-color: #2e7d32; border-radius: 0px !important;">
                     <div class="banner-header" style="color:#2e7d32; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">
-                        ✅ 3 NÊN
+                        ✅ 5 "LUÔN"
                     </div>
                     <div style="font-size:18px; line-height:1.8; color: #222;">
-                        1. <b>Nên</b> gọi điện xác thực lại thông tin<br>
-                        2. <b>Nên</b> hỏi ý kiến con cháu, người thân<br>
-                        3. <b>Nên</b> báo ngay cho cơ quan Công an<br>
-                        4. <b>Nên</b> sử dụng công cụ SilverShield
+                        1. <b>Luôn</b> ý thức bảo mật thông tin cá nhân<br>
+                        2. <b>Luôn</b> đặt mật khẩu mạnh và thay đổi thường xuyên<br>
+                        3. <b>Luôn</b> dùng phần mềm uy tín có nguồn gốc rõ ràng<br>
+                        4. <b>Luôn</b> cập nhật kiến thức an toàn mạng qua các kênh chính thống<br>
+                        5. <b>Luôn</b> cảnh giác khi có yêu cầu chuyển tiền lạ
                     </div>
                 </div>
             """, unsafe_allow_html=True)
@@ -236,10 +237,11 @@ with main_body:
                         💡 LƯU Ý
                     </div>
                     <div style="font-size:18px; line-height:1.8; color: #222;">
-                        1. <b>Luôn luôn</b> giữ bình tĩnh tối đa<br>
+                        1. <b>Luôn luôn</b> giữ bình tĩnh tuyệt đối, không hoảng loạn<br>
                         2. <b>Thường xuyên</b> đọc tin tức an ninh<br>
-                        3. <b>Kiểm tra</b> kỹ danh tính người gửi<br>
-                        4. <b>Chia sẻ</b> kiến thức cho mọi người
+                        3. <b>Kiểm tra</b> kỹ danh tính người yêu cầu hành động<br>
+                        4. <b>Chia sẻ</b> kiến thức an toàn mạng cho mọi người<br>
+                        5. <b>Lặp tức</b> tắt máy đối với các đối tượng giả danh chính quyền hành động ONLINE
                     </div>
                 </div>
             """, unsafe_allow_html=True)
@@ -324,6 +326,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
