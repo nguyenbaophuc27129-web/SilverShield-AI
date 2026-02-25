@@ -46,10 +46,10 @@ st.markdown("""
         }
 
         /* ======================================================= */
-        /* CHỖ ĐỂ BẠN CHỈNH MÀU CHỮ FOOTER (MỚI THÊM)              */
+        /* CHỖ ĐỂ BẠN CHỈNH MÀU CHỮ FOOTER                         */
         /* ======================================================= */
         .footer-container, .footer-container p, .footer-container div, .footer-container span {
-            color: w#FFFF00 !important; /* Đang để màu trắng, thay 'white' bằng màu khác nếu muốn */
+            color: #FFFF00 !important; /* Đã sửa lỗi chữ 'w' dư thừa cho bạn */
             opacity: 1 !important;
         }
         /* ======================================================= */
@@ -133,7 +133,7 @@ with m4:
 
 st.markdown('</div></div>', unsafe_allow_html=True)
 
-# --- 3. ĐIỀU HƯỚNG NỘI DUNG (GIỮ NGUYÊN CODE CỦA BẠN) ---
+# --- 3. ĐIỀU HƯỚNG NỘI DUNG ---
 main_body = st.container()
 
 with main_body:
@@ -177,106 +177,41 @@ with main_body:
             with cols[idx]:
                 st.markdown(f'<div class="news-card" style="background:white; border:1px solid #eee;"><img src="{item["img"]}" style="width:100%; height:150px; object-fit:cover;"><div style="padding:10px; font-weight:bold;">{item["title"]}</div></div>', unsafe_allow_html=True)
                 st.link_button("CHI TIẾT", item['url'], use_container_width=True)
-elif st.session_state['page'] == 'GIỚI THIỆU':
-        # --- CSS BỔ SUNG CHO TRANG GIỚI THIỆU (GIAO DIỆN DOANH NGHIỆP) ---
+
+    elif st.session_state['page'] == 'GIỚI THIỆU':
         st.markdown("""
             <style>
                 .team-card {
-                    background: white;
-                    border-radius: 20px;
-                    padding: 25px;
-                    text-align: center;
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                    transition: transform 0.3s ease;
-                    height: 100%;
-                    border-bottom: 5px solid #FF6600;
+                    background: white; border-radius: 20px; padding: 25px;
+                    text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                    transition: transform 0.3s ease; height: 100%; border-bottom: 5px solid #FF6600;
                 }
                 .team-card:hover { transform: translateY(-10px); }
-                .team-img {
-                    width: 140px; height: 140px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                    margin-bottom: 15px;
-                    border: 4px solid #f0f2f6;
-                }
+                .team-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid #f0f2f6; }
                 .team-name { color: #0044cc; font-weight: bold; font-size: 22px; margin-bottom: 5px; }
                 .team-role { color: #FF6600; font-weight: 600; font-size: 16px; margin-bottom: 15px; text-transform: uppercase; }
-                
-                .info-box {
-                    background: #ffffff;
-                    border-top: 5px solid #0044cc;
-                    padding: 30px;
-                    border-radius: 15px;
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-                    height: 100%;
-                }
+                .info-box { background: #ffffff; border-top: 5px solid #0044cc; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); height: 100%; }
                 .info-title { color: #0044cc; font-size: 26px; font-weight: 800; margin-bottom: 15px; }
                 .info-text { color: #333; line-height: 1.8; text-align: justify; font-size: 18px; }
             </style>
         """, unsafe_allow_html=True)
 
-        # --- 1. PHẦN ĐỘI NGŨ (PHONG CÁCH FPT) ---
         st.markdown('<div class="rules-main-header">🌟 GƯƠNG MẶT PHÁT TRIỂN SILVERSHIELD</div>', unsafe_allow_html=True)
         col_t1, col_t2, col_t3 = st.columns(3, gap="large")
-        
         with col_t1:
-            st.markdown("""
-                <div class="team-card">
-                    <img src="https://via.placeholder.com/150" class="team-img">
-                    <div class="team-name">Nguyễn Bảo Phúc</div>
-                    <div class="team-role">Trưởng nhóm & Kỹ thuật AI</div>
-                    <p style="font-size:16px; color:#444;">Phụ trách kiến trúc hệ thống và huấn luyện mô hình ngôn ngữ cho Vệ sĩ Silver.</p>
-                </div>
-            """, unsafe_allow_html=True)
-            
+            st.markdown('<div class="team-card"><img src="https://via.placeholder.com/150" class="team-img"><div class="team-name">Nguyễn Bảo Phúc</div><div class="team-role">Trưởng nhóm & Kỹ thuật AI</div><p style="font-size:16px; color:#444;">Phụ trách kiến trúc hệ thống và huấn luyện mô hình ngôn ngữ cho Vệ sĩ Silver.</p></div>', unsafe_allow_html=True)
         with col_t2:
-            st.markdown("""
-                <div class="team-card">
-                    <img src="https://via.placeholder.com/150" class="team-img">
-                    <div class="team-name">Empire CBZ X</div>
-                    <div class="team-role">Phát triển Nội dung</div>
-                    <p style="font-size:16px; color:#444;">Xây dựng cơ sở dữ liệu các kịch bản lừa đảo và tối ưu trải nghiệm người dùng.</p>
-                </div>
-            """, unsafe_allow_html=True)
-
+            st.markdown('<div class="team-card"><img src="https://via.placeholder.com/150" class="team-img"><div class="team-name">Empire CBZ X</div><div class="team-role">Phát triển Nội dung</div><p style="font-size:16px; color:#444;">Xây dựng cơ sở dữ liệu các kịch bản lừa đảo và tối ưu trải nghiệm người dùng.</p></div>', unsafe_allow_html=True)
         with col_t3:
-            st.markdown("""
-                <div class="team-card">
-                    <img src="https://via.placeholder.com/150" class="team-img">
-                    <div class="team-name">DVT Team</div>
-                    <div class="team-role">Thiết kế & Truyền thông</div>
-                    <p style="font-size:16px; color:#444;">Đảm bảo giao diện trực quan, dễ tiếp cận nhất cho người cao tuổi Việt Nam.</p>
-                </div>
-            """, unsafe_allow_html=True)
+            st.markdown('<div class="team-card"><img src="https://via.placeholder.com/150" class="team-img"><div class="team-name">DVT Team</div><div class="team-role">Thiết kế & Truyền thông</div><p style="font-size:16px; color:#444;">Đảm bảo giao diện trực quan, dễ tiếp cận nhất cho người cao tuổi Việt Nam.</p></div>', unsafe_allow_html=True)
 
         st.markdown("<br><br>", unsafe_allow_html=True)
-
-        # --- 2. CÂU CHUYỆN & 3. SỨ MỆNH (SẮP XẾP CHUYÊN NGHIỆP) ---
         col_left, col_right = st.columns(2, gap="large")
-
         with col_left:
-            st.markdown("""
-                <div class="info-box">
-                    <div class="info-title">📜 CÂU CHUYỆN CỦA CHÚNG TÔI</div>
-                    <div class="info-text">
-                        Xuất phát từ thực trạng nhức nhối khi người cao tuổi thường xuyên bị kẻ xấu lợi dụng trên không gian mạng, 
-                        chúng tôi - những học sinh từ trường <b>THPT Dương Văn Thì</b> - đã quyết tâm tạo ra một giải pháp bảo vệ. 
-                        SilverShield ra đời như một người bạn đồng hành, giúp cha mẹ chúng ta an tâm hơn mỗi khi cầm điện thoại.
-                    </div>
-                </div>
-            """, unsafe_allow_html=True)
-
+            st.markdown('<div class="info-box"><div class="info-title">📜 CÂU CHUYỆN CỦA CHÚNG TÔI</div><div class="info-text">Xuất phát từ thực trạng nhức nhối khi người cao tuổi thường xuyên bị kẻ xấu lợi dụng trên không gian mạng, chúng tôi - những học sinh từ trường <b>THPT Dương Văn Thì</b> - đã quyết tâm tạo ra một giải pháp bảo vệ. SilverShield ra đời như một người bạn đồng hành.</div></div>', unsafe_allow_html=True)
         with col_right:
-            st.markdown("""
-                <div class="info-box" style="border-top-color: #FF6600;">
-                    <div class="info-title" style="color: #FF6600;">🚀 SỨ MỆNH SILVERSHIELD</div>
-                    <div class="info-text">
-                        Chúng tôi không chỉ xây dựng một ứng dụng, chúng tôi xây dựng niềm tin. 
-                        Sứ mệnh của SilverShield là phổ cập AI để làm "lá chắn thép" cho người dân, 
-                        giảm thiểu thiệt hại do lừa đảo trực tuyến và xây dựng một cộng đồng số an toàn, văn minh cho mọi lứa tuổi.
-                    </div>
-                </div>
-            """, unsafe_allow_html=True)
+            st.markdown('<div class="info-box" style="border-top-color: #FF6600;"><div class="info-title" style="color: #FF6600;">🚀 SỨ MỆNH SILVERSHIELD</div><div class="info-text">Sứ mệnh của SilverShield là phổ cập AI để làm "lá chắn thép" cho người dân, giảm thiểu thiệt hại do lừa đảo trực tuyến và xây dựng một cộng đồng số an toàn, văn minh cho mọi lứa tuổi.</div></div>', unsafe_allow_html=True)
+
     elif st.session_state['page'] == 'TIN TỨC':
         st.markdown('<div class="rules-main-header">📰 BẢN TIN AN NINH TOÀN CẢNH</div>', unsafe_allow_html=True)
         full_news = [
@@ -288,13 +223,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
             c_img, c_txt = st.columns([1, 2.5])
             with c_img: st.image(n["img"], use_container_width=True)
             with c_txt:
-                st.markdown(f"""
-                    <div style="background:white; padding:15px; border-left:8px solid #d32f2f; margin-bottom:5px;">
-                        <span style="background:#d32f2f; color:white; padding:4px 12px; font-size:14px; font-weight:bold;">{n['tag']}</span>
-                        <h3 style="margin:15px 0;">{n['title']}</h3>
-                        <p style="color:#222;">{n['desc']}</p>
-                    </div>
-                """, unsafe_allow_html=True)
+                st.markdown(f'<div style="background:white; padding:15px; border-left:8px solid #d32f2f; margin-bottom:5px;"><span style="background:#d32f2f; color:white; padding:4px 12px; font-size:14px; font-weight:bold;">{n["tag"]}</span><h3 style="margin:15px 0;">{n["title"]}</h3><p style="color:#222;">{n["desc"]}</p></div>', unsafe_allow_html=True)
                 st.link_button("XEM BÁO CHÍNH THỐNG", n['url'])
             st.markdown("<hr>", unsafe_allow_html=True)
 
@@ -302,7 +231,7 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
         st.markdown('<div class="rules-main-header">🛡️ TRUNG TÂM PHÂN TÍCH AI</div>', unsafe_allow_html=True)
         c1, c2 = st.columns([1, 1], gap="large")
         with c1:
-            txt = st.text_area("Nhập nội dung cần kiểm tra:", height=250) # Tăng chiều cao box nhập liệu
+            txt = st.text_area("Nhập nội dung cần kiểm tra:", height=250)
             img = st.file_uploader("Tải ảnh chụp màn hình:", type=['png','jpg','jpeg'])
             if st.button("PHÂN TÍCH NGAY", type="primary", use_container_width=True):
                 if txt or img:
@@ -318,7 +247,3 @@ elif st.session_state['page'] == 'GIỚI THIỆU':
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
-
-
-
-
