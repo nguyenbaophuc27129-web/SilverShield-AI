@@ -280,9 +280,9 @@ with main_body:
         with col_t1:
             st.markdown('<div class="team-card"><img src="https://via.placeholder.com/150" class="team-img"><div class="team-name">Nguyễn Bảo Phúc</div><div class="team-role">Trưởng nhóm & Kỹ thuật AI</div><div class="team-role">Học sinh lớp 11A4 - THPT Dương Văn Thì</div><p style="font-size:16px; color:#444;">Phụ trách kiến trúc hệ thống và huấn luyện mô hình ngôn ngữ cho Vệ sĩ Silver.</p></div>', unsafe_allow_html=True)
         with col_t2:
-            st.markdown('<div class="team-card"><img src="https://via.placeholder.com/150" class="team-img"><div class="team-name">Nguyễn Diệp Hải Đăng</div><div class="team-role">Phát triển Nội dung</div><div class="team-role">Học sinh lớp 11A4 - THPT Dương Văn Thì</div><p style="font-size:16px; color:#444;">Xây dựng cơ sở dữ liệu các kịch bản lừa đảo và tối ưu trải nghiệm người dùng.</p></div>', unsafe_allow_html=True)
+            st.markdown('<div class="team-card"><img src="https://github.com/nguyenbaophuc27129-web/SilverShield-AI/blob/3aa4b8e7f862938bc021370127f4dcfa4ee7576c/z7524565127548_f77940e4b6b5fba831e583a3ad31c18c.jpg" class="team-img"><div class="team-name">Nguyễn Diệp Hải Đăng</div><div class="team-role">Phát triển Nội dung</div><div class="team-role">Học sinh lớp 11A4 - THPT Dương Văn Thì</div><p style="font-size:16px; color:#444;">Xây dựng cơ sở dữ liệu các kịch bản lừa đảo và tối ưu trải nghiệm người dùng.</p></div>', unsafe_allow_html=True)
         with col_t3:
-            st.markdown('<div class="team-card"><img src="https://via.placeholder.com/150" class="team-img"><div class="team-name">DVT Team</div><div class="team-role">Thiết kế & Truyền thông</div><div class="team-role">Học sinh lớp 11A4 - THPT Dương Văn Thì</div><p style="font-size:16px; color:#444;">Đảm bảo giao diện trực quan, dễ tiếp cận nhất cho người cao tuổi Việt Nam.</p></div>', unsafe_allow_html=True)
+            st.markdown('<div class="team-card"><img src="https://github.com/nguyenbaophuc27129-web/SilverShield-AI/blob/3aa4b8e7f862938bc021370127f4dcfa4ee7576c/z7524568784906_fc748391183d938b93dade9e0c498c73.jpg" class="team-img"><div class="team-name">Hồ Ngọc Thanh Vân</div><div class="team-role">Thiết kế & Truyền thông</div><div class="team-role">Học sinh lớp 11A4 - THPT Dương Văn Thì</div><p style="font-size:16px; color:#444;">Đảm bảo giao diện trực quan, dễ tiếp cận nhất cho người cao tuổi Việt Nam.</p></div>', unsafe_allow_html=True)
 
         st.markdown("<br><br>", unsafe_allow_html=True)
         col_left, col_right = st.columns(2, gap="large")
@@ -326,6 +326,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
