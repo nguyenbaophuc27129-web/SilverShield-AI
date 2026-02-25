@@ -21,7 +21,7 @@ st.markdown("""
         p, li {
             font-size: 20px !important; 
             line-height: 1.6 !important;
-            color: #222 !important; /* Độ tương phản cao */
+            color: white !important; /* Độ tương phản cao */
             font-weight: 450 !important;
         }
 
@@ -218,3 +218,4 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
