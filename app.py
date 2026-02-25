@@ -192,8 +192,6 @@ with main_body:
                 </div>
             """, unsafe_allow_html=True)
 
-        # --- KHỐI QUY TẮC AN TOÀN (ĐÃ ĐỒNG BỘ CẤU HÌNH Y CHANG 2 Ô TRÊN) ---
-        # --- PHẦN 3 Ô QUY TẮC AN TOÀN HOÀN CHỈNH ---
         st.markdown('<div class="rules-main-header">🛡️ QUY TẮC AN TOÀN KHÔNG GIAN MẠNG</div>', unsafe_allow_html=True)
         
         r1, r2, r3 = st.columns(3, gap="medium")
@@ -241,7 +239,7 @@ with main_body:
                         2. <b>Thường xuyên</b> đọc tin tức an ninh<br>
                         3. <b>Kiểm tra</b> kỹ danh tính người yêu cầu hành động<br>
                         4. <b>Chia sẻ</b> kiến thức an toàn mạng cho mọi người<br>
-                        5. <b>Lặp tức</b> tắt máy đối với các đối tượng giả danh chính quyền hành động ONLINE
+                        5. <b>Lập tức</b> tắt máy đối với các đối tượng giả danh chính quyền hành động ONLINE
                     </div>
                 </div>
             """, unsafe_allow_html=True)
@@ -258,25 +256,6 @@ with main_body:
                 st.link_button("CHI TIẾT", item['url'], use_container_width=True)
 
     elif st.session_state['page'] == 'GIỚI THIỆU':
-        st.markdown("""
-            <style>
-                .team-card {
-                    background: white; border-radius: 20px; padding: 25px;
-                    text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                    transition: transform 0.3s ease; height: 100%; border-bottom: 5px solid #FF6600;
-                }
-                .team-card:hover { transform: translateY(-10px); }
-                .team-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid #f0f2f6; }
-                .team-name { color: #0044cc; font-weight: bold; font-size: 22px; margin-bottom: 5px; }
-                .team-role { color: #FF6600; font-weight: 600; font-size: 16px; margin-bottom: 15px; text-transform: uppercase; }
-                .info-box { background: #ffffff; border-top: 5px solid #0044cc; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); height: 100%; }
-                .info-title { color: #0044cc; font-size: 26px; font-weight: 800; margin-bottom: 15px; }
-                .info-text { color: #333; line-height: 1.8; text-align: justify; font-size: 18px; }
-            </style>
-        """, unsafe_allow_html=True)
-
-    elif st.session_state['page'] == 'GIỚI THIỆU':
-        # --- CSS PHẢI NẰM TRONG st.markdown ĐỂ KHÔNG BỊ LỖI SYNTAX ---
         st.markdown("""
             <style>
                 .team-card {
@@ -297,7 +276,7 @@ with main_body:
                     margin: 0 auto 20px auto;
                     border-radius: 50%;
                     border: 4px solid #f0f2f6;
-                    overflow: hidden; /* Giúp ảnh không tràn ra ngoài ô tròn */
+                    overflow: hidden; 
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -306,23 +285,26 @@ with main_body:
                 .team-img { 
                     width: 100%; 
                     height: 100%; 
-                    object-fit: cover !important; /* GIÚP ẢNH KHỚP VÀO Ô TRÒN */
+                    object-fit: cover !important; 
                 }
                 
                 .team-name { color: #0044cc; font-weight: bold; font-size: 22px; margin-bottom: 2px; }
                 .team-role { color: #FF6600; font-weight: bold; text-transform: uppercase; font-size: 14px; margin-bottom: 5px; }
                 .team-school { color: #FF6600; font-size: 13px; font-weight: bold; margin-bottom: 15px; line-height: 1.4; }
                 .team-desc { font-size: 15px; color: #444; line-height: 1.6; border-top: 1px solid #eee; padding-top: 10px; }
+                .info-box { background: #ffffff; border-top: 5px solid #0044cc; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); height: 100%; }
+                .info-title { color: #0044cc; font-size: 26px; font-weight: 800; margin-bottom: 15px; }
+                .info-text { color: #333; line-height: 1.8; text-align: justify; font-size: 18px; }
             </style>
         """, unsafe_allow_html=True)
 
         st.markdown('<div class="rules-main-header">🌟 GƯƠNG MẶT PHÁT TRIỂN SILVERSHIELD</div>', unsafe_allow_html=True)
         col_t1, col_t2, col_t3 = st.columns(3, gap="large")
         
-        # LINK ẢNH RAW (ĐÃ FIX)
+        # LINK ẢNH RAW
         img_phuc = "https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/z7524565127548_f77940e4b6b5fba831e583a3ad31c18c.jpg"
         img_dang = "https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/3aa4b8e7f862938bc021370127f4dcfa4ee7576c/z7524568784906_fc748391183d938b93dade9e0c498c73.jpg"
-        img_van = "https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/z7524568784906_fc748391183d938b93dade9e0c498c73.jpg" # Thay link ảnh của Vân vào đây
+        img_van = "https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/z7524568784906_fc748391183d938b93dade9e0c498c73.jpg"
 
         with col_t1:
             st.markdown(f'''
@@ -397,17 +379,3 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
