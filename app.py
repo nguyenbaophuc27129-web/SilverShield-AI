@@ -192,27 +192,47 @@ with main_body:
                 </div>
             """, unsafe_allow_html=True)
 
+        # --- KHỐI QUY TẮC AN TOÀN (ĐÃ ĐỒNG BỘ CẤU HÌNH Y CHANG 2 Ô TRÊN) ---
         st.markdown('<div class="rules-main-header">🛡️ QUY TẮC AN TOÀN KHÔNG GIAN MẠNG</div>', unsafe_allow_html=True)
         r1, r2, r3 = st.columns(3, gap="medium")
+        
         with r1:
             st.markdown("""
-                <div class="rule-card-modern">
-                    <div class="rule-header-modern" style="background:#d32f2f;">5 KHÔNG</div>
-                    <div style="padding:20px; font-size:18px;">1. Không chuyển tiền<br>2. Không bấm link lạ<br>3. Không đưa OTP<br>4. Không cài app lạ<br>5. Không sợ đe dọa</div>
+                <div class="home-info-card" style="border-top-color: #d32f2f;">
+                    <div class="banner-header" style="color:#d32f2f; border-bottom: 2px solid #eee; padding-bottom:10px;">🚫 5 KHÔNG</div>
+                    <div style="padding-top:15px; font-size:18px; line-height:1.7;">
+                        1. <b>Không</b> chuyển tiền<br>
+                        2. <b>Không</b> bấm link lạ<br>
+                        3. <b>Không</b> đưa OTP<br>
+                        4. <b>Không</b> cài app lạ<br>
+                        5. <b>Không</b> sợ đe dọa
+                    </div>
                 </div>
             """, unsafe_allow_html=True)
+            
         with r2:
             st.markdown("""
-                <div class="rule-card-modern">
-                    <div class="rule-header-modern" style="background:#2e7d32;">3 NÊN</div>
-                    <div style="padding:20px; font-size:18px;">1. Nên gọi xác thực<br>2. Nên hỏi con cháu<br>3. Nên báo công an</div>
+                <div class="home-info-card" style="border-top-color: #2e7d32;">
+                    <div class="banner-header" style="color:#2e7d32; border-bottom: 2px solid #eee; padding-bottom:10px;">✅ 3 NÊN</div>
+                    <div style="padding-top:15px; font-size:18px; line-height:1.7;">
+                        1. <b>Nên</b> gọi xác thực<br>
+                        2. <b>Nên</b> hỏi con cháu<br>
+                        3. <b>Nên</b> báo công an<br>
+                        4. <b>Nên</b> dùng SilverShield
+                    </div>
                 </div>
             """, unsafe_allow_html=True)
+            
         with r3:
             st.markdown("""
-                <div class="rule-card-modern">
-                    <div class="rule-header-modern" style="background:#008080;">LƯU Ý</div>
-                    <div style="padding:20px; font-size:18px;">1. Luôn bình tĩnh<br>2. Đọc tin an ninh<br>3. Dùng SilverShield</div>
+                <div class="home-info-card" style="border-top-color: #008080;">
+                    <div class="banner-header" style="color:#008080; border-bottom: 2px solid #eee; padding-bottom:10px;">💡 LƯU Ý</div>
+                    <div style="padding-top:15px; font-size:18px; line-height:1.7;">
+                        1. <b>Luôn</b> giữ bình tĩnh<br>
+                        2. <b>Đọc</b> tin an ninh mạng<br>
+                        3. <b>Kiểm tra</b> kỹ người gửi<br>
+                        4. <b>Chia sẻ</b> cho người thân
+                    </div>
                 </div>
             """, unsafe_allow_html=True)
 
@@ -297,4 +317,5 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
