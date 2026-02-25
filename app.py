@@ -322,7 +322,7 @@ with main_body:
                     <div class="team-name">Nguyễn Bảo Phúc</div>
                     <div class="team-role">TRƯỞNG NHÓM & KỸ THUẬT AI</div>
                     <div class="team-school">HỌC SINH LỚP 11A4 - THPT DƯƠNG VĂN THÌ</div>
-                    <p class="team-desc">Phụ trách kiến trúc hệ thống và huấn luyện mô hình ngôn ngữ cho Vệ sĩ Silver.</p>
+                    <p class="team-desc">Phụ trách kiến trúc hệ thống và lập trình mô hình ngôn ngữ cho VỆ SĨ SILVER.</p>
                 </div>
             ''', unsafe_allow_html=True)
 
@@ -333,7 +333,7 @@ with main_body:
                     <div class="team-name">Nguyễn Diệp Hải Đăng</div>
                     <div class="team-role">PHÁT TRIỂN NỘI DUNG</div>
                     <div class="team-school">HỌC SINH LỚP 11A4 - THPT DƯƠNG VĂN THÌ</div>
-                    <p class="team-desc">Xây dựng cơ sở dữ liệu các kịch bản lừa đảo và tối ưu trải nghiệm người dùng.</p>
+                    <p class="team-desc">Xây dựng content cho hệ thống và thiết kế tối ưu trải nghiệm người dùng.</p>
                 </div>
             ''', unsafe_allow_html=True)
 
@@ -344,7 +344,7 @@ with main_body:
                     <div class="team-name">Hồ Ngọc Thanh Vân</div>
                     <div class="team-role">THIẾT KẾ & TRUYỀN THÔNG</div>
                     <div class="team-school">HỌC SINH LỚP 11A4 - THPT DƯƠNG VĂN THÌ</div>
-                    <p class="team-desc">Đảm bảo giao diện trực quan, dễ tiếp cận nhất cho người cao tuổi Việt Nam.</p>
+                    <p class="team-desc">Thiết kế giao diện trực quan, dễ tiếp cận nhất cho người cao tuổi tại Việt Nam.</p>
                 </div>
             ''', unsafe_allow_html=True)
             
@@ -389,6 +389,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
