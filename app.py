@@ -177,7 +177,7 @@ with main_body:
             st.markdown("""
                 <div class="home-info-card">
                     <div class="banner-header" style="color:#0044cc; border-bottom: 2px solid #eee; padding-bottom:10px;">🛡️ VỀ ỨNG DỤNG</div>
-                    <p style="text-align:justify; margin-top:15px;">SilverShield là giải pháp công nghệ tiên phong, sử dụng trí tuệ nhân tạo để phân tích và cảnh báo lừa đảo trực tuyến cho người cao tuổi.</p>
+                    <p style="text-align:justify; margin-top:15px;">SilverShield là giải pháp công nghệ sử dụng trí tuệ nhân tạo để phân tích và cảnh báo lừa đảo trực tuyến cho người cao tuổi. Ngoài ra, còn cung cấp những thông tin chuẩn xác về "Quy tắc an toàn trên không gian mạng", cập nhật các bài báo về an ninh từ nguồn chính thống nhằm phổ cập kiến thức bảo vệ bản thân trên không gian mạng một cách chủ động cho người dùng.</p>
                 </div>
             """, unsafe_allow_html=True)
         with c_guide:
@@ -390,6 +390,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
