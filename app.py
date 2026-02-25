@@ -199,8 +199,8 @@ with main_body:
         with r1:
             st.markdown("""
                 <div class="home-info-card" style="border-top-color: #d32f2f;">
-                    <div class="banner-header" style="color:#d32f2f; border-bottom: 2px solid #eee; padding-bottom:10px;">🚫 5 KHÔNG</div>
-                    <div style="padding-top:15px; font-size:18px; line-height:1.7;">
+                    <div class="banner-header" style="color:#d32f2f;">🚫 5 KHÔNG</div>
+                    <div style="font-size:18px; line-height:1.7;">
                         1. <b>Không</b> chuyển tiền<br>
                         2. <b>Không</b> bấm link lạ<br>
                         3. <b>Không</b> đưa OTP<br>
@@ -213,8 +213,8 @@ with main_body:
         with r2:
             st.markdown("""
                 <div class="home-info-card" style="border-top-color: #2e7d32;">
-                    <div class="banner-header" style="color:#2e7d32; border-bottom: 2px solid #eee; padding-bottom:10px;">✅ 3 NÊN</div>
-                    <div style="padding-top:15px; font-size:18px; line-height:1.7;">
+                    <div class="banner-header" style="color:#2e7d32;">✅ 3 NÊN</div>
+                    <div style="font-size:18px; line-height:1.7;">
                         1. <b>Nên</b> gọi xác thực<br>
                         2. <b>Nên</b> hỏi con cháu<br>
                         3. <b>Nên</b> báo công an<br>
@@ -226,8 +226,8 @@ with main_body:
         with r3:
             st.markdown("""
                 <div class="home-info-card" style="border-top-color: #008080;">
-                    <div class="banner-header" style="color:#008080; border-bottom: 2px solid #eee; padding-bottom:10px;">💡 LƯU Ý</div>
-                    <div style="padding-top:15px; font-size:18px; line-height:1.7;">
+                    <div class="banner-header" style="color:#008080;">💡 LƯU Ý</div>
+                    <div style="font-size:18px; line-height:1.7;">
                         1. <b>Luôn</b> giữ bình tĩnh<br>
                         2. <b>Đọc</b> tin an ninh mạng<br>
                         3. <b>Kiểm tra</b> kỹ người gửi<br>
@@ -317,5 +317,6 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
