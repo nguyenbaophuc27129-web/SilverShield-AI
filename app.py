@@ -311,9 +311,9 @@ with main_body:
         col_t1, col_t2, col_t3 = st.columns(3, gap="large")
         
         # LINK ẢNH RAW
-        img_phuc = "https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/z7524565127548_f77940e4b6b5fba831e583a3ad31c18c.jpg"
+        img_phuc = "https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/771d1bbdd281d4bde77c2dad071e2d1754269053/z7436465624865_baee2e3eb9b1449ef3174403551500d3.jpg"
         img_dang = "https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/3aa4b8e7f862938bc021370127f4dcfa4ee7576c/z7524568784906_fc748391183d938b93dade9e0c498c73.jpg"
-        img_van = "https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/z7524568784906_fc748391183d938b93dade9e0c498c73.jpg"
+        img_van = "https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/771d1bbdd281d4bde77c2dad071e2d1754269053/z7564429125397_2eefea0067d5c272904cc88364de34a8.jpg"
 
         with col_t1:
             st.markdown(f'''
@@ -389,6 +389,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
