@@ -247,9 +247,9 @@ with main_body:
             """, unsafe_allow_html=True)
         st.markdown('<div class="news-header-bar" style="background:#0044cc; color:white; padding:10px; margin-top:30px; font-weight:bold; border-radius:10px;">📰 TIN TỨC AN NINH MẠNG</div>', unsafe_allow_html=True)
         news_data = [
-            {"title": "Chiến dịch 'Không một mình': 'Lá chắn đầu tiên' trong bảo vệ trẻ em khỏi hiểm họa mạng", "img": "https://bcp.cdnchinhphu.vn/thumb_w/777/334894974524682240/2025/10/10/image-2-1760086745327252696292.jpg", "url": "https://baochinhphu.vn/chien-dich-khong-mot-minh-la-chan-dau-tien-trong-bao-ve-tre-em-khoi-hiem-hoa-mang-102251010160323597.htm"},
-            {"title": "Deepfake giả giọng nói", "img": "https://vnn-imgs-f.vgcloud.vn/2023/03/27/10/deepfake-lua-dao.jpg", "url": "https://tuoitre.vn/canh-bao-thu-doan-lua-dao-bang-cong-nghe-deepfake-2023032711054321.htm"},
-            {"title": "Bẫy việc làm trên mạng", "img": "https://vnn-imgs-f.vgcloud.vn/2022/06/20/16/lua-dao-viec-lam.jpg", "url": "https://vnexpress.net/bay-viec-nhe-luong-cao-tren-mang-4478144.html"}
+            {"title": "Chiến dịch 'Không một mình': 'Lá chắn đầu tiên' trong bảo vệ trẻ em khỏi hiểm họa mạng (BÁO CHÍNH PHỦ)", "img": "https://bcp.cdnchinhphu.vn/thumb_w/777/334894974524682240/2025/10/10/image-2-1760086745327252696292.jpg", "url": "https://baochinhphu.vn/chien-dich-khong-mot-minh-la-chan-dau-tien-trong-bao-ve-tre-em-khoi-hiem-hoa-mang-102251010160323597.htm"},
+            {"title": "'Quy tắc 5 không' để thoát bẫy lừa đảo mạng (VNEXPRESS)", "img": "https://i1-vnexpress.vnecdn.net/2025/10/14/Lua-dao-mang-2-JPG-7092-1760432621.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=Zfs3uKN4B70LYK6Md0tc2Q", "url": "https://vnexpress.net/quy-tac-5-khong-de-thoat-bay-lua-dao-mang-4951295.html"},
+            {"title": "Chiến dịch 'Không một mình' chống dụ dỗ, 'bắt cóc online' (Tuổi trẻ ONLINE)", "img": "https://cdn2.tuoitre.vn/thumb_w/730/471584752817336320/2025/10/10/minh-2-1760074501792519937849.jpeg", "url": "https://tuoitre.vn/chien-dich-khong-mot-minh-chong-du-do-bat-coc-online-20251010124548071.htm"}
         ]
         cols = st.columns(3)
         for idx, item in enumerate(news_data):
@@ -278,11 +278,11 @@ with main_body:
         st.markdown('<div class="rules-main-header">🌟 GƯƠNG MẶT PHÁT TRIỂN SILVERSHIELD</div>', unsafe_allow_html=True)
         col_t1, col_t2, col_t3 = st.columns(3, gap="large")
         with col_t1:
-            st.markdown('<div class="team-card"><img src="https://via.placeholder.com/150" class="team-img"><div class="team-name">Nguyễn Bảo Phúc</div><div class="team-role">Trưởng nhóm & Kỹ thuật AI</div><p style="font-size:16px; color:#444;">Phụ trách kiến trúc hệ thống và huấn luyện mô hình ngôn ngữ cho Vệ sĩ Silver.</p></div>', unsafe_allow_html=True)
+            st.markdown('<div class="team-card"><img src="https://via.placeholder.com/150" class="team-img"><div class="team-name">Nguyễn Bảo Phúc</div><div class="team-role">Trưởng nhóm & Kỹ thuật AI</div><div class="team-role">Học sinh lớp 11A4 - THPT Dương Văn Thì</div><p style="font-size:16px; color:#444;">Phụ trách kiến trúc hệ thống và huấn luyện mô hình ngôn ngữ cho Vệ sĩ Silver.</p></div>', unsafe_allow_html=True)
         with col_t2:
-            st.markdown('<div class="team-card"><img src="https://via.placeholder.com/150" class="team-img"><div class="team-name">Empire CBZ X</div><div class="team-role">Phát triển Nội dung</div><p style="font-size:16px; color:#444;">Xây dựng cơ sở dữ liệu các kịch bản lừa đảo và tối ưu trải nghiệm người dùng.</p></div>', unsafe_allow_html=True)
+            st.markdown('<div class="team-card"><img src="https://via.placeholder.com/150" class="team-img"><div class="team-name">Nguyễn Diệp Hải Đăng</div><div class="team-role">Phát triển Nội dung</div><div class="team-role">Học sinh lớp 11A4 - THPT Dương Văn Thì</div><p style="font-size:16px; color:#444;">Xây dựng cơ sở dữ liệu các kịch bản lừa đảo và tối ưu trải nghiệm người dùng.</p></div>', unsafe_allow_html=True)
         with col_t3:
-            st.markdown('<div class="team-card"><img src="https://via.placeholder.com/150" class="team-img"><div class="team-name">DVT Team</div><div class="team-role">Thiết kế & Truyền thông</div><p style="font-size:16px; color:#444;">Đảm bảo giao diện trực quan, dễ tiếp cận nhất cho người cao tuổi Việt Nam.</p></div>', unsafe_allow_html=True)
+            st.markdown('<div class="team-card"><img src="https://via.placeholder.com/150" class="team-img"><div class="team-name">DVT Team</div><div class="team-role">Thiết kế & Truyền thông</div><div class="team-role">Học sinh lớp 11A4 - THPT Dương Văn Thì</div><p style="font-size:16px; color:#444;">Đảm bảo giao diện trực quan, dễ tiếp cận nhất cho người cao tuổi Việt Nam.</p></div>', unsafe_allow_html=True)
 
         st.markdown("<br><br>", unsafe_allow_html=True)
         col_left, col_right = st.columns(2, gap="large")
@@ -326,6 +326,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
