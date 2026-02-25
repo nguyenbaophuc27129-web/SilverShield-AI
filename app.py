@@ -277,6 +277,19 @@ with main_body:
 
         st.markdown('<div class="rules-main-header">🌟 GƯƠNG MẶT PHÁT TRIỂN SILVERSHIELD</div>', unsafe_allow_html=True)
         col_t1, col_t2, col_t3 = st.columns(3, gap="large")
+        <style>
+    .team-img {
+        width: 150px;           /* Chiều rộng cố định */
+        height: 150px;          /* Chiều cao phải bằng chiều rộng */
+        border-radius: 50% !important;   /* Tạo hình tròn tuyệt đối */
+        object-fit: cover;      /* QUAN TRỌNG: Giúp ảnh tự cắt cúp để vừa khít ô tròn mà không bị méo */
+        object-position: center; /* Giữ trung tâm ảnh ở giữa ô tròn */
+        border: 4px solid #f0f2f6; /* Viền ngoài cho đẹp */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
         with col_t1:
             st.markdown('<div class="team-card"><img src="https://via.placeholder.com/150" class="team-img"><div class="team-name">Nguyễn Bảo Phúc</div><div class="team-role">Trưởng nhóm & Kỹ thuật AI</div><div class="team-role">Học sinh lớp 11A4 - THPT Dương Văn Thì</div><p style="font-size:16px; color:#444;">Phụ trách kiến trúc hệ thống và huấn luyện mô hình ngôn ngữ cho Vệ sĩ Silver.</p></div>', unsafe_allow_html=True)
         with col_t2:
@@ -326,6 +339,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
