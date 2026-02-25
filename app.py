@@ -275,7 +275,7 @@ with main_body:
             </style>
         """, unsafe_allow_html=True)
 
-        elif st.session_state['page'] == 'GIỚI THIỆU':
+    elif st.session_state['page'] == 'GIỚI THIỆU':
         # --- CSS PHẢI NẰM TRONG st.markdown ĐỂ KHÔNG BỊ LỖI SYNTAX ---
         st.markdown("""
             <style>
@@ -397,6 +397,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
