@@ -27,7 +27,7 @@ st.markdown(f"""
             box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
             margin-bottom: 20px;
         ">
-            📞 GỌI KHẨN CẤP CHO CON CHÁU
+            📞 GỌI KHẨN CẤP CHO NGƯỜI THÂN
         </div>
     </a>
     """, unsafe_allow_html=True)
@@ -419,6 +419,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
