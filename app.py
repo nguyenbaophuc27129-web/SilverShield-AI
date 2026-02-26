@@ -380,7 +380,7 @@ with main_body:
             
         col_left, col_right = st.columns(2, gap="large")
         with col_left:
-            st.markdown('<div class="info-box"><div class="info-title">📜 CÂU CHUYỆN CỦA CHÚNG TÔI</div><div class="info-text">Xuất phát từ thực trạng nhức nhối khi người cao tuổi thường xuyên bị kẻ xấu lợi dụng trên không gian mạng, một trong chúng tôi đã từng có người thân bị nhứng thông tin giả mạo lừa đảo khiến để lại những hậu quả về mặt tinh thần và vật chất rất lớn. Vì thế mà đội thi DVT - Empire CBZ X là các học sinh đến từ trường <b>THPT Dương Văn Thì</b> - đã quyết tâm tạo ra một giải pháp bảo vệ người lớn tuổi khỏi những mối nguy hiểm trên không gian mạng. SilverShield ra đời như một người bạn đồng hành cùng chúng ta đưa ra các giải pháp thực sự hữu ích.</div></div>', unsafe_allow_html=True)
+            st.markdown('<div class="info-box"><div class="info-title">📜 CÂU CHUYỆN CỦA CHÚNG TÔI</div><div class="info-text">Xuất phát từ thực trạng nhức nhối khi người cao tuổi thường xuyên bị kẻ xấu lợi dụng trên không gian mạng, một trong chúng tôi đã từng có người thân bị nhứng thông tin giả mạo lừa đảo khiến để lại những hậu quả về mặt tinh thần và vật chất rất lớn. Vì thế mà đội thi DVT - Empire X CBZ là các học sinh đến từ trường <b>THPT Dương Văn Thì</b> - đã quyết tâm tạo ra một giải pháp bảo vệ người lớn tuổi khỏi những mối nguy hiểm trên không gian mạng. SilverShield ra đời như một người bạn đồng hành cùng chúng ta đưa ra các giải pháp thực sự hữu ích.</div></div>', unsafe_allow_html=True)
         with col_right:
             st.markdown('<div class="info-box" style="border-top-color: #FF6600;"><div class="info-title" style="color: #FF6600;">🚀 SỨ MỆNH CỦA SILVERSHIELD</div><div class="info-text">Sứ mệnh của SilverShield là làm "lá chắn thép" cho người dân an toàn trên không gian mạng, giảm thiểu thiệt hại do lừa đảo trực tuyến và xây dựng một cộng đồng số an toàn, văn minh cho mọi lứa tuổi.</div></div>', unsafe_allow_html=True)
      
@@ -419,6 +419,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
