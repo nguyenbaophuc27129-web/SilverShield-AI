@@ -14,6 +14,33 @@ st.set_page_config(
     page_icon="🛡️", # Bạn có thể dùng Emoji hoặc đường link URL ảnh PNG chiếc khiên bạc
     layout="wide"
 )
+icon_url = "https://raw.githubusercontent.com/nguyenbaophuc27129-web/SilverShield-AI/main/t%E1%BA%A3i%20xu%E1%BB%91ng%20(1).png" 
+
+st.markdown(
+    f"""
+    <script>
+        // Tìm phần đầu (head) của trang web cha (vì Streamlit chạy trong iframe)
+        var link = window.parent.document.querySelector("link[rel*='icon']") || window.parent.document.createElement('link');
+        link.type = 'image/x-icon';
+        link.rel = 'shortcut icon';
+        link.href = '{icon_url}';
+        window.parent.document.getElementsByTagName('head')[0].appendChild(link);
+
+        // Đặc biệt cho iPhone (Apple Touch Icon)
+        var appleLink = window.parent.document.createElement('link');
+        appleLink.rel = 'apple-touch-icon';
+        appleLink.href = '{icon_url}';
+        window.parent.document.getElementsByTagName('head')[0].appendChild(appleLink);
+        
+        // Đổi tiêu đề ứng dụng khi lưu
+        var meta = window.parent.document.createElement('meta');
+        meta.name = 'apple-mobile-web-app-title';
+        meta.content = 'SilverShield';
+        window.parent.document.getElementsByTagName('head')[0].appendChild(meta);
+    </script>
+    """,
+    unsafe_allow_html=True,
+)
 st.markdown("""
     <style>
         /* --- PHẦN THÊM MỚI: TỐI ƯU FONT CHO NGƯỜI LỚN TUỔI --- */
@@ -395,6 +422,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
