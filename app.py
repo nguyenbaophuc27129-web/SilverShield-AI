@@ -217,7 +217,7 @@ with main_body:
                         <li><b>Bước 1:</b> Chọn MỤC "VỆ SĨ SILVER" để được hỗ trợ nhanh nhất</li>
                         <li><b>Bước 2:</b> Nhập nội dung nghi ngờ vào khung tin nhắn hoặc nhấn gửi hình ảnh</li>
                         <li><b>Bước 3:</b> Hết sức bình tĩnh và làm theo chỉ dẫn </li>
-                        <li><b>Hai hình thức nhận chỉ dẫn chi tiết:</b> Văn bản được viết trên hệ thống hoặc chờ 2-3 phút để có audio nghe một cách tức thì tiện lợi ! </li>
+                        <li><b>Hai hình thức nhận chỉ dẫn chi tiết:</b> Văn bản được viết trên hệ thống hoặc chờ 3-5 phút để có audio nghe một cách tức thì tiện lợi ! </li>
                     </ul>
                 </div>
             """, unsafe_allow_html=True)
@@ -419,6 +419,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
