@@ -8,29 +8,88 @@ import time  # Thêm thư viện để xử lý thời gian chờ
 styles.apply_styles()
 styles.render_header_structure() 
 
-st.subheader("🆘 Hỗ trợ khẩn cấp")
-
-# Số điện thoại của người thân (Thay bằng số thực tế)
-phone_number = "0901234567" 
-
-# Dùng HTML/CSS để tạo nút bấm to, màu đỏ nổi bật
-st.markdown(f"""
-    <a href="tel:{phone_number}" style="text-decoration: none;">
-        <div style="
-            background-color: #FF4B4B;
-            color: white;
-            padding: 20px;
-            text-align: center;
+def emergency_integration():
+    st.markdown("### 🆘 TRỢ GIÚP KHẨN CẤP")
+    
+    # CSS tùy chỉnh để nút bấm trông xịn như ảnh demo
+    st.markdown("""
+        <style>
+        .call-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+            padding: 12px 18px;
             border-radius: 15px;
-            font-size: 25px;
+            margin-bottom: 12px;
+            border: 1px solid #f0f0f0;
+            text-decoration: none !important;
+            transition: 0.3s;
+        }
+        .call-card:hover {
+            background-color: #f9f9f9;
+        }
+        .icon-box {
+            background-color: #25D366;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        .text-info {
+            flex-grow: 1;
+        }
+        .btn-call {
+            background-color: #f0f0f0;
+            padding: 6px 16px;
+            border-radius: 12px;
             font-weight: bold;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
-        ">
-            📞 GỌI KHẨN CẤP CHO NGƯỜI THÂN
-        </div>
-    </a>
+            color: #333;
+        }
+        </style>
     """, unsafe_allow_html=True)
+
+    # 1. NÚT GỌI NGƯỜI THÂN (Ưu tiên hàng đầu)
+    # Thay số điện thoại của bạn vào phần tel:
+    st.markdown("""
+        <a href="tel:0901234567" class="call-card" style="border: 2px solid #25D366;">
+            <div class="icon-box">📞</div>
+            <div class="text-info">
+                <b style="color: #25D366; font-size: 18px;">NGƯỜI THÂN</b><br>
+                <small style="color: #666;">Gọi ngay để được hỗ trợ tức thì</small>
+            </div>
+            <div class="btn-call">GỌI</div>
+        </a>
+    """, unsafe_allow_html=True)
+
+    # 2. NÚT GỌI BỘ CÔNG AN (113)
+    st.markdown("""
+        <a href="tel:113" class="call-card">
+            <div class="icon-box" style="background-color: #FF4B4B;">📞</div>
+            <div class="text-info">
+                <b style="color: black;">BỘ CÔNG AN</b><br>
+                <small style="color: #666;">Chúng tôi luôn bên bạn</small>
+            </div>
+            <div class="btn-call">GỌI</div>
+        </a>
+    """, unsafe_allow_html=True)
+
+    # 3. NÚT GỌI TỔNG ĐÀI 111
+    st.markdown("""
+        <a href="tel:111" class="call-card">
+            <div class="icon-box" style="background-color: #007BFF;">📞</div>
+            <div class="text-info">
+                <b style="color: black;">Tổng đài Quốc gia 111</b><br>
+                <small style="color: #666;">Bảo vệ trẻ em và người yếu thế</small>
+            </div>
+            <div class="btn-call">GỌI</div>
+        </a>
+    """, unsafe_allow_html=True)
+
+emergency_integration()
 # Đoạn CSS này được bổ sung thêm các quy tắc về FONT CHỮ TO RÕ
 st.set_page_config(
     page_title="SILVERSHIELD - Vệ sĩ của bà",
@@ -419,6 +478,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
