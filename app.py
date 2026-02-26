@@ -9,6 +9,11 @@ styles.apply_styles()
 styles.render_header_structure() 
 
 # Đoạn CSS này được bổ sung thêm các quy tắc về FONT CHỮ TO RÕ
+st.set_page_config(
+    page_title="SILVERSHIELD - Vệ sĩ của bà",
+    page_icon="🛡️", # Bạn có thể dùng Emoji hoặc đường link URL ảnh PNG chiếc khiên bạc
+    layout="wide"
+)
 st.markdown("""
     <style>
         /* --- PHẦN THÊM MỚI: TỐI ƯU FONT CHO NGƯỜI LỚN TUỔI --- */
@@ -390,6 +395,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
