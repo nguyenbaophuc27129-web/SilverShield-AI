@@ -387,9 +387,9 @@ with main_body:
     elif st.session_state['page'] == 'TIN TỨC':
         st.markdown('<div class="rules-main-header">📰 BẢN TIN AN NINH TOÀN CẢNH</div>', unsafe_allow_html=True)
         full_news = [
-            {"title": "Lừa đảo qua video call Deepfake", "desc": "Đối tượng dùng AI giả khuôn mặt người thân để vay tiền gấp.", "tag": "CẢNH BÁO", "img": "https://vnn-imgs-f.vgcloud.vn/2023/03/27/10/deepfake-lua-dao.jpg", "url": "https://vnexpress.net/thu-doan-lua-dao-video-call-deepfake-4586231.html"},
-            {"title": "Tin nhắn giả danh ngân hàng", "desc": "Yêu cầu cập nhật thông tin qua link lạ để chiếm đoạt mã OTP.", "tag": "NGUY HIỂM", "img": "https://vnn-imgs-f.vgcloud.vn/2023/08/15/11/qr-code-lua-dao.jpg", "url": "https://vtv.vn/cong-nghe/canh-bao-hinh-thuc-lua-dao-moi-qua-ma-qr-20230814154506307.htm"},
-            {"title": "Cẩm nang phòng chống tội phạm", "desc": "Sổ tay hướng dẫn của Bộ Công An dành cho người dân và người cao tuổi.", "tag": "KIẾN THỨC", "img": "https://vnn-imgs-f.vgcloud.vn/2022/06/20/16/lua-dao-viec-lam.jpg", "url": "https://chinhphu.vn/canh-bao-24-hinh-thuc-lua-dao-tren-khong-gian-mang-103230713145455645.htm"}
+            {"title": "'Săn' các phiên livestream để lừa, hack Facebook hàng loạt người mua", "desc": "Kết quả điều tra ban đầu xác định, nhóm Quyền có tổ chức tụ điểm lừa đảo tại nhà riêng ở Hòa Khánh, thành phố Đà Nẵng, theo dõi các phiên livestream bán hàng trên mạng xã hội nhằm lấy thông tin người đặt hàng (Theo VNEXPRESS)", "tag": "CẢNH BÁO", "img": "https://i1-vnexpress.vnecdn.net/2026/01/29/1-1769658775-1769658788-176965-2587-7887-1769659071.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=AVuz2UlSFgHj8Boek5Y4QA", "url": "https://vnexpress.net/san-cac-phien-livestream-de-lua-hack-facebook-hang-loat-nguoi-mua-5011402.html"},
+            {"title": "Chiêu thức 'bắt cóc online' nhắm vào giới trẻ", "desc": "'Bắt cóc online' là cách tội phạm sử dụng công nghệ để thao túng tâm lý, ép nạn nhân ngắt kết nối với thế giới bên ngoài, rồi tống tiền gia đình hoặc buôn người (Theo VNEXPRESS)", "tag": "NGUY HIỂM", "img": "https://i1-vnexpress.vnecdn.net/2025/10/14/1-1760417753-1845-1760417903.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=LjfcLY3ML0Xzcnmq9q8x7g", "url": "https://vnexpress.net/chieu-thuc-bat-coc-online-nham-vao-gioi-tre-4951160.html"},
+            {"title": "24 hình thức lừa đảo diễn ra trên không gian mạng Việt Nam", "desc": "Lừa đảo trực tuyến là vấn đề đã và đang nhận được nhiều sự quan tâm của toàn xã hội. Các đối tượng xấu lợi dụng bối cảnh bùng nổ công nghệ thông tin để thực hiện nhiều vụ lừa đảo trực tuyến, chiếm đoạt tài sản có giá trị cao (Theo Trường CĐ An Ninh Nhân Dân I)", "tag": "KIẾN THỨC", "img": "https://cdannd1.bocongan.gov.vn/api/Resources/Images/2023/7/20/untitled.jpg", "url": "https://cdannd1.bocongan.gov.vn/news/blog/3333/24-hinh-thuc-lua-dao-dien-ra-tren-khong-gian-mang-viet-nam"}
         ]
         for idx, n in enumerate(full_news):
             c_img, c_txt = st.columns([1, 2.5])
@@ -419,6 +419,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
