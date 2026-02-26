@@ -95,7 +95,7 @@ def apply_styles():
         .hero-bg-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20190223/ourmid/pngtree-blue-lines-futuristic-technology-background-backgroundblue-backgroundflow-light-image_64589.jpg');
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20190220/ourmid/pngtree-technology-cool-digital-light-effect-business-background-image_6960.jpg');
             background-size: cover;
             opacity: 0.2;
         }
