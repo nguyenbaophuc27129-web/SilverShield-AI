@@ -147,7 +147,7 @@ def apply_styles():
     """, unsafe_allow_html=True)
 
 def render_header_structure():
-    st.markdown('<div class="olympic-topbar"><div style="width:1200px; display:flex; justify-content:space-between; padding:0 15px;"><span>🛠️ DVT - Empire CBZ X - THPT Dương Văn Thì</span><span>🛡️ SILVERSHIELD AI</span></div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="olympic-topbar"><div style="width:1200px; display:flex; justify-content:space-between; padding:0 15px;"><span>🛠️ DVT-Empire X CBZ - THPT Dương Văn Thì</span><span>🛡️ SILVERSHIELD AI</span></div></div>', unsafe_allow_html=True)
     st.markdown('<div class="marquee-strip"><div class="marquee-text">📢 CHÀO MỪNG BẠN ĐẾN VỚI HỆ THỐNG SILVERSHIELD AI - PHÒNG CHỐNG LỪA ĐẢO TRỰC TUYẾN CHO NGƯỜI LỚN TUỔI! LUÔN GIỮ BÌNH TĨNH TRƯỚC MỌI TÌNH HUỐNG</div></div>', unsafe_allow_html=True)
 def render_footer_structure():
-    st.markdown('<div class="footer"><h2>SILVERSHIELD</h2><p>"Vì một không gian mạng an toàn"</p><p style="font-size:12px; opacity:0.6;">© 2026 Bản quyền thuộc về Đội ngũ DVT - Empire CBZ X</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="footer"><h2>SILVERSHIELD</h2><p>"Vì một không gian mạng an toàn"</p><p style="font-size:12px; opacity:0.6;">© 2026 Bản quyền thuộc về Đội ngũ DVT - Empire X CBZ</p></div>', unsafe_allow_html=True)
