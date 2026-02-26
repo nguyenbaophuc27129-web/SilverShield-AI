@@ -8,6 +8,29 @@ import time  # Thêm thư viện để xử lý thời gian chờ
 styles.apply_styles()
 styles.render_header_structure() 
 
+st.subheader("🆘 Hỗ trợ khẩn cấp")
+
+# Số điện thoại của người thân (Thay bằng số thực tế)
+phone_number = "0901234567" 
+
+# Dùng HTML/CSS để tạo nút bấm to, màu đỏ nổi bật
+st.markdown(f"""
+    <a href="tel:{phone_number}" style="text-decoration: none;">
+        <div style="
+            background-color: #FF4B4B;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            font-size: 25px;
+            font-weight: bold;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        ">
+            📞 GỌI KHẨN CẤP CHO CON CHÁU
+        </div>
+    </a>
+    """, unsafe_allow_html=True)
 # Đoạn CSS này được bổ sung thêm các quy tắc về FONT CHỮ TO RÕ
 st.set_page_config(
     page_title="SILVERSHIELD - Vệ sĩ của bà",
@@ -396,6 +419,7 @@ with main_body:
 
 # --- 4. FOOTER (SÁT ĐÁY TUYỆT ĐỐI) ---
 styles.render_footer_structure()
+
 
 
 
